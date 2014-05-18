@@ -26,7 +26,7 @@ from qgis.core import *
 # Initialize Qt resources from file resources.py
 import resources_rc
 # Import the code for the dialog
-from qgisforschoolsdialog import QGISforSchoolsDialog
+from ui_qgisforschools import QGISforSchoolsDialog
 import os.path
 
 
