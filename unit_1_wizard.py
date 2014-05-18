@@ -20,21 +20,13 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         QWizard.__init__(self, parent)
         self.setupUi(self)
     
-    @pyqtSignature("")
-    def on___qt__passive_wizardbutton0_clicked(self):
-        """
-        Slot documentation goes here.
-        """
+    #@pyqtSignature("")
+    #def on___qt__passive_wizardbutton1_clicked(self):
+     #   """
+      #  Slot documentation goes here.
+       # """
         # TODO: not implemented yet
-        raise NotImplementedError
-    
-    @pyqtSignature("")
-    def on___qt__passive_wizardbutton1_clicked(self):
-        """
-        Slot documentation goes here.
-        """
-        # TODO: not implemented yet
-        raise NotImplementedError
+        #raise NotImplementedError
     
     @pyqtSignature("")
     def on_pushButton_clicked(self):

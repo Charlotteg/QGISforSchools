@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>80</y>
+     <y>100</y>
      <width>201</width>
      <height>17</height>
     </rect>
@@ -49,7 +49,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>110</y>
+     <y>130</y>
      <width>82</width>
      <height>17</height>
     </rect>
@@ -62,7 +62,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>140</y>
+     <y>160</y>
      <width>82</width>
      <height>17</height>
     </rect>
@@ -80,6 +80,13 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>Welcome to QGIS for Schools!</string>
    </property>
@@ -95,6 +102,19 @@
    </property>
    <property name="standardButtons">
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>231</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Which unit would you like to open?</string>
    </property>
   </widget>
  </widget>
