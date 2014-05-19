@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Unit 1 - Spatial Query</string>
   </property>
+  <property name="whatsThis">
+   <string extracomment="This is unit 1 of the QGISforSchools plugin!"/>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -62,6 +65,9 @@ p, li { white-space: pre-wrap; }
       <width>256</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="whatsThis">
+     <string/>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -177,6 +183,34 @@ p, li { white-space: pre-wrap; }
       <width>171</width>
       <height>20</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="AddLayerButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>380</y>
+      <width>251</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Layers!</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWizardPage" name="wizardPage">
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>180</y>
+      <width>46</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hey man</string>
     </property>
    </widget>
   </widget>

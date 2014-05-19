@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Mon May 19 15:56:09 2014
+# Created: Mon May 19 17:27:57 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,7 @@ class Ui_Wizard(object):
     def setupUi(self, Wizard):
         Wizard.setObjectName(_fromUtf8("Wizard"))
         Wizard.resize(312, 551)
+        Wizard.setWhatsThis(_fromUtf8(""))
         Wizard.setAutoFillBackground(False)
         self.wizardPage1 = QtGui.QWizardPage()
         self.wizardPage1.setObjectName(_fromUtf8("wizardPage1"))
@@ -44,6 +45,7 @@ class Ui_Wizard(object):
         self.wizardPage2.setObjectName(_fromUtf8("wizardPage2"))
         self.textBrowser_2 = QtGui.QTextBrowser(self.wizardPage2)
         self.textBrowser_2.setGeometry(QtCore.QRect(30, 40, 256, 41))
+        self.textBrowser_2.setWhatsThis(_fromUtf8(""))
         self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
         self.FilePathlineEdit = QtGui.QLineEdit(self.wizardPage2)
         self.FilePathlineEdit.setGeometry(QtCore.QRect(30, 180, 171, 20))
@@ -72,7 +74,16 @@ class Ui_Wizard(object):
         self.FilePathlineEdit_3 = QtGui.QLineEdit(self.wizardPage2)
         self.FilePathlineEdit_3.setGeometry(QtCore.QRect(30, 320, 171, 20))
         self.FilePathlineEdit_3.setObjectName(_fromUtf8("FilePathlineEdit_3"))
+        self.AddLayerButton = QtGui.QPushButton(self.wizardPage2)
+        self.AddLayerButton.setGeometry(QtCore.QRect(30, 380, 251, 21))
+        self.AddLayerButton.setObjectName(_fromUtf8("AddLayerButton"))
         Wizard.addPage(self.wizardPage2)
+        self.wizardPage = QtGui.QWizardPage()
+        self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
+        self.label_5 = QtGui.QLabel(self.wizardPage)
+        self.label_5.setGeometry(QtCore.QRect(130, 180, 46, 13))
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        Wizard.addPage(self.wizardPage)
 
         self.retranslateUi(Wizard)
         QtCore.QMetaObject.connectSlotsByName(Wizard)
@@ -96,6 +107,8 @@ class Ui_Wizard(object):
         self.BrowsepushButton_2.setText(_translate("Wizard", "Browse", None))
         self.label_4.setText(_translate("Wizard", "3. Add the equator:", None))
         self.BrowsepushButton_3.setText(_translate("Wizard", "Browse", None))
+        self.AddLayerButton.setText(_translate("Wizard", "Add Layers!", None))
+        self.label_5.setText(_translate("Wizard", "Hey man", None))
 
 
 if __name__ == "__main__":

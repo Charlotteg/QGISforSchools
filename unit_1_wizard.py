@@ -51,9 +51,32 @@ class Unit1Wizard(QWizard, Ui_Wizard):
     @pyqtSignature("")
     def on_BrowsepushButton_2_clicked(self):
         """
-        Open a File Browser Dialog - for the countries layer
+        Open a File Browser Dialog - for the cities layer
         """
         # set the chosen file as the input for the FilePathLineEdit
         inputFile = QFileDialog.getOpenFileName(self, 'Open Cities.shp','', 'Shapefiles (*.shp)')
         self.FilePathlineEdit_2.setText(inputFile)
+    
+    @pyqtSignature("")
+    def on_BrowsepushButton_3_clicked(self):
+        """
+        Open a File Browser Dialog - for the equator layer
+        """
+        # set the chosen file as the input for the FilePathLineEdit
+        inputFile = QFileDialog.getOpenFileName(self, 'Open Equator.shp','', 'Shapefiles (*.shp)')
+        self.FilePathlineEdit_3.setText(inputFile)
 
+    @pyqtSignature("")
+    def on_AddLayerButton_clicked(self):
+        """
+        Add the layers to the map canvas
+        """
+        # 
+        countriesFile = self.FilePathlineEdit.text()
+        countriesLayer = QgsVectorLayer(countriesFile, 'Countries', 'ogr')
+        if not countriesLayer.isValid():
+                QMessageBox.Critical(self,  'Error', 'Could not load, make sure that you have chosen Countries.shp')
+        elif "countries" not in countriesFile:
+                QMessageBox.Critical(self,  'Error',  'You have chosen the wrong shapefile for Countries. Go back and select Countries.shp')
+        else:
+            return QgsMapLayerRegistry.instance().addMapLayer(countriesLayer)
