@@ -53,7 +53,7 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         """
         Open a File Browser Dialog - for the cities layer
         """
-        # set the chosen file as the input for the FilePathLineEdit
+        # set the chosen file as the input for the FilePathLineEdit_2
         inputFile = QFileDialog.getOpenFileName(self, 'Open Cities.shp','', 'Shapefiles (*.shp)')
         self.FilePathlineEdit_2.setText(inputFile)
     
@@ -62,7 +62,7 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         """
         Open a File Browser Dialog - for the equator layer
         """
-        # set the chosen file as the input for the FilePathLineEdit
+        # set the chosen file as the input for the FilePathLineEdit_3
         inputFile = QFileDialog.getOpenFileName(self, 'Open Equator.shp','', 'Shapefiles (*.shp)')
         self.FilePathlineEdit_3.setText(inputFile)
 
@@ -74,9 +74,15 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         # 
         countriesFile = self.FilePathlineEdit.text()
         countriesLayer = QgsVectorLayer(countriesFile, 'Countries', 'ogr')
+        msgBox=QMessageBox()
+        msgBox.setIcon(3)
         if not countriesLayer.isValid():
-                QMessageBox.Critical(self,  'Error', 'Could not load, make sure that you have chosen Countries.shp')
+                msgBox.setText("Could not load the countries layer")
+                msgBox.exec_()
         elif "countries" not in countriesFile:
-                QMessageBox.Critical(self,  'Error',  'You have chosen the wrong shapefile for Countries. Go back and select Countries.shp')
+                
+                msgBox.setText("You have chosen the wrong shapefile for Countries.")
+                msgBox.setInformativeText(" Please go back and select countries.shp")
+                msgBox.exec_()
         else:
             return QgsMapLayerRegistry.instance().addMapLayer(countriesLayer)

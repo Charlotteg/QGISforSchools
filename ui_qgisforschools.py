@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module implementing QGISforSchools.
+Module implementing QGISforSchools introduction page.
 """
 
 from PyQt4.QtGui import *
