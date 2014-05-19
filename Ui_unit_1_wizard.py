@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Sun May 18 20:58:03 2014
+# Created: Mon May 19 15:56:09 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,9 +45,9 @@ class Ui_Wizard(object):
         self.textBrowser_2 = QtGui.QTextBrowser(self.wizardPage2)
         self.textBrowser_2.setGeometry(QtCore.QRect(30, 40, 256, 41))
         self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
-        self.lineEdit = QtGui.QLineEdit(self.wizardPage2)
-        self.lineEdit.setGeometry(QtCore.QRect(30, 180, 171, 20))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+        self.FilePathlineEdit = QtGui.QLineEdit(self.wizardPage2)
+        self.FilePathlineEdit.setGeometry(QtCore.QRect(30, 180, 171, 20))
+        self.FilePathlineEdit.setObjectName(_fromUtf8("FilePathlineEdit"))
         self.BrowsepushButton = QtGui.QPushButton(self.wizardPage2)
         self.BrowsepushButton.setGeometry(QtCore.QRect(210, 180, 75, 23))
         self.BrowsepushButton.setObjectName(_fromUtf8("BrowsepushButton"))
@@ -57,9 +57,9 @@ class Ui_Wizard(object):
         self.label_3 = QtGui.QLabel(self.wizardPage2)
         self.label_3.setGeometry(QtCore.QRect(30, 230, 131, 16))
         self.label_3.setObjectName(_fromUtf8("label_3"))
-        self.lineEdit_2 = QtGui.QLineEdit(self.wizardPage2)
-        self.lineEdit_2.setGeometry(QtCore.QRect(30, 250, 171, 20))
-        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.FilePathlineEdit_2 = QtGui.QLineEdit(self.wizardPage2)
+        self.FilePathlineEdit_2.setGeometry(QtCore.QRect(30, 250, 171, 20))
+        self.FilePathlineEdit_2.setObjectName(_fromUtf8("FilePathlineEdit_2"))
         self.BrowsepushButton_2 = QtGui.QPushButton(self.wizardPage2)
         self.BrowsepushButton_2.setGeometry(QtCore.QRect(210, 250, 75, 23))
         self.BrowsepushButton_2.setObjectName(_fromUtf8("BrowsepushButton_2"))
@@ -69,9 +69,9 @@ class Ui_Wizard(object):
         self.BrowsepushButton_3 = QtGui.QPushButton(self.wizardPage2)
         self.BrowsepushButton_3.setGeometry(QtCore.QRect(210, 320, 75, 23))
         self.BrowsepushButton_3.setObjectName(_fromUtf8("BrowsepushButton_3"))
-        self.lineEdit_3 = QtGui.QLineEdit(self.wizardPage2)
-        self.lineEdit_3.setGeometry(QtCore.QRect(30, 320, 171, 20))
-        self.lineEdit_3.setObjectName(_fromUtf8("lineEdit_3"))
+        self.FilePathlineEdit_3 = QtGui.QLineEdit(self.wizardPage2)
+        self.FilePathlineEdit_3.setGeometry(QtCore.QRect(30, 320, 171, 20))
+        self.FilePathlineEdit_3.setObjectName(_fromUtf8("FilePathlineEdit_3"))
         Wizard.addPage(self.wizardPage2)
 
         self.retranslateUi(Wizard)

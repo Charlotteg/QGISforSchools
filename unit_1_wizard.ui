@@ -71,7 +71,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;***Explanation about adding data ***&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="FilePathlineEdit">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -81,7 +81,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="Unit1Wizard" name="BrowsepushButton">
+   <widget class="QPushButton" name="BrowsepushButton">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -120,7 +120,7 @@ p, li { white-space: pre-wrap; }
      <string>2. Add the cities layer:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="FilePathlineEdit_2">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -169,7 +169,7 @@ p, li { white-space: pre-wrap; }
      <string>Browse</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="FilePathlineEdit_3">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -181,13 +181,6 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>Unit1Wizard</class>
-   <extends>QPushButton</extends>
-   <header>unit1wizard.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
