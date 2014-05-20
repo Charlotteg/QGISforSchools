@@ -65,24 +65,34 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         # set the chosen file as the input for the FilePathLineEdit_3
         inputFile = QFileDialog.getOpenFileName(self, 'Open Equator.shp','', 'Shapefiles (*.shp)')
         self.FilePathlineEdit_3.setText(inputFile)
+        
+ 
+    @pyqtSignature("")
+    def CheckAddLayers(self, LineEditName,  LayerString): 
+        
+        LayerFile = LineEditName.text()
+        NewLayer = QgsVectorLayer(LayerFile,  LayerString,  'ogr')
+        
+        msgBox=QMessageBox()
+        msgBox.setIcon(3)
+        
+        if not NewLayer.isValid():
+            msgBox.setText("Could not load the " + LayerString + " layer")
+            msgBox.exec_()
+        elif LayerString not in LayerFile:
+            msgBox.setText("You have chosen the wrong shapefile for " + LayerString + ".")
+            msgBox.setInformativeText(" Please go back and select " + LayerString +".shp")
+            msgBox.exec_()   
+        else:
+            return NewLayer            
 
     @pyqtSignature("")
     def on_AddLayerButton_clicked(self):
         """
         Add the layers to the map canvas
         """
-        # 
-        countriesFile = self.FilePathlineEdit.text()
-        countriesLayer = QgsVectorLayer(countriesFile, 'Countries', 'ogr')
-        msgBox=QMessageBox()
-        msgBox.setIcon(3)
-        if not countriesLayer.isValid():
-                msgBox.setText("Could not load the countries layer")
-                msgBox.exec_()
-        elif "countries" not in countriesFile:
-                
-                msgBox.setText("You have chosen the wrong shapefile for Countries.")
-                msgBox.setInformativeText(" Please go back and select countries.shp")
-                msgBox.exec_()
-        else:
-            return QgsMapLayerRegistry.instance().addMapLayer(countriesLayer)
+        FilePathlineEdit=self.FilePathlineEdit
+        FilePathlineEdit_2=self.FilePathlineEdit_2
+        Countries = self.CheckAddLayers(FilePathlineEdit,  "countries")
+        Cities = self.CheckAddLayers(FilePathlineEdit_2,  "major_cities")
+        return QgsMapLayerRegistry.instance().addMapLayer(Countries), QgsMapLayerRegistry.instance().addMapLayer(Cities) 
