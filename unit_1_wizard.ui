@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Wizard</class>
- <widget class="QWizard" name="Wizard">
+ <class>Unit1</class>
+ <widget class="QWizard" name="Unit1">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>316</width>
-    <height>557</height>
+    <width>325</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,14 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="locale">
+   <locale language="English" country="UnitedKingdom"/>
+  </property>
   <property name="wizardStyle">
    <enum>QWizard::AeroStyle</enum>
+  </property>
+  <property name="options">
+   <set>QWizard::HelpButtonOnRight</set>
   </property>
   <widget class="QWizardPage" name="wizardPage1">
    <widget class="QLabel" name="label">
@@ -58,7 +64,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;*** Description - goals and steps ***&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;*** Description - goals and steps ***&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -234,7 +240,7 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
   </widget>
-  <widget class="QWizardPage" name="wizardPage">
+  <widget class="QWizardPage" name="wizardPage3">
    <widget class="QTextBrowser" name="textBrowser_4">
     <property name="geometry">
      <rect>
@@ -262,7 +268,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>410</y>
+      <y>400</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -274,10 +280,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QProgressBar" name="QueryprogressBar">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>340</y>
-      <width>118</width>
-      <height>23</height>
+      <x>70</x>
+      <y>360</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="value">
@@ -287,43 +293,14 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>221</width>
-      <height>121</height>
+      <x>20</x>
+      <y>190</y>
+      <width>291</width>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Select features from</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="sourceFeatcomboBox">
-       <item>
-        <property name="text">
-         <string>countries</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>major_cities</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>equator</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="1" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
         <string>with the reference layer</string>
@@ -333,7 +310,41 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="6" column="1">
+      <widget class="QComboBox" name="selTypecomboBox">
+       <item>
+        <property name="text">
+         <string>Intersect</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Are Within</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Contain</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Are disjoint to</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Where the source features</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
       <widget class="QComboBox" name="refFeatcomboBox">
        <item>
         <property name="text">
@@ -352,38 +363,43 @@ p, li { white-space: pre-wrap; }
        </item>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_7">
+     <item row="0" column="1">
+      <widget class="QComboBox" name="srcFeatcomboBox">
+       <item>
+        <property name="text">
+         <string>countries</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>major_cities</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>equator</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Where the features</string>
+        <string>Select features from source layer</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="selTypecomboBox">
-       <item>
-        <property name="text">
-         <string>Intersects</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Is Within</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Contains</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Is disjoint to</string>
-        </property>
-       </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>the reference layer</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
     </layout>

@@ -23,13 +23,12 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         QWizard.__init__(self, parent)
         self.setupUi(self)
     
-    #@pyqtSignature("")
-    #def on___qt__passive_wizardbutton1_clicked(self):
-     #   """
-      #  Slot documentation goes here.
-       # """
-        # TODO: not implemented yet
-        #raise NotImplementedError
+    @pyqtSignature("")
+    def on___qt__passive_wizardbutton1_clicked(self):
+        """
+        Slot documentation goes here.
+        """
+        self.populateSrcList()
     
     @pyqtSignature("")
     def on_pushButton_clicked(self):
@@ -130,24 +129,33 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         
         for layer in layers:
             name = layer.name()
-            nameList.append(name)
+            if name not in nameList:
+                nameList.append(name)
             
-        print nameList
-            
-    
+        #return nameList
+        
+        self.srcFeatcomboBox.clear()
+        
+        self.srcFeatcomboBox.addItems(nameList)
+        
+        
+    @pyqtSignature("")
+    def on_wizardPage3_completeChanged(self):
+        """
+        function description here
+        """
+        self.populateSrcList()
     
     @pyqtSignature("")
     def on_queryButton_clicked(self):
         """
         function description here
         """
-        sourceLayer = self.sourceFeatcomboBox.currentText()
+        sourceLayer = self.srcFeatcomboBox.currentText()
         referenceLayer = self.refFeatcomboBox.currentText()
         
         newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
-        print self.populateSrcList()
-        print sourceLayer
-        print referenceLayer
+        self.populateSrcList()
         return newSelection
        
     @pyqtSignature("")
@@ -158,11 +166,9 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
         refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
         
-        print srcLayer
-        print refLayer
         #if srcLayer[0].geometryType() == 2:
         polyFeats = refLayer[0].getFeatures()
-        print polyFeats
+
         
         selectList = []
         
