@@ -267,8 +267,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="queryButton">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>400</y>
+      <x>130</x>
+      <y>450</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -280,8 +280,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QProgressBar" name="QueryprogressBar">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>360</y>
+      <x>80</x>
+      <y>410</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -290,7 +290,7 @@ p, li { white-space: pre-wrap; }
      <number>24</number>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -403,6 +403,55 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QCheckBox" name="newLayercheckBox">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>320</y>
+      <width>241</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Make a new layer from the selection</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>360</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BrowsepushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>360</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>29</x>
+      <y>299</y>
+      <width>271</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>GroupBox</string>
+    </property>
    </widget>
   </widget>
  </widget>

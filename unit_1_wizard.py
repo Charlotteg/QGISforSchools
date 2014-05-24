@@ -10,9 +10,9 @@ from qgis.core import *
 from qgis.gui import *
 from qgis.utils import *
 
-from Ui_unit_1_wizard import Ui_Wizard
+from Ui_unit_1_wizard import Ui_Unit1
 
-class Unit1Wizard(QWizard, Ui_Wizard):
+class Unit1Wizard(QWizard, Ui_Unit1):
     """
     Class documentation goes here.
     """
@@ -120,7 +120,7 @@ class Unit1Wizard(QWizard, Ui_Wizard):
     @pyqtSignature("")
     def populateSrcList(self):
         """
-        function description here
+        Populate source and reference feature ComboBoxes with the names of the currently loaded layers.
         """   
         #layers = QgsMapLayerRegistry.instance().mapLayers()
         layers = iface.legendInterface().layers()
@@ -135,22 +135,64 @@ class Unit1Wizard(QWizard, Ui_Wizard):
         #return nameList
         
         self.srcFeatcomboBox.clear()
+        self.refFeatcomboBox.clear()
         
         self.srcFeatcomboBox.addItems(nameList)
+        self.refFeatcomboBox.addItems(nameList)
         
+#    @pyqtSignature("")
+#    def on_wizardPage3_completeChanged(self):
+#        """
+#        function description here
+#        """
+#        self.populateSrcList()
+
+    @pyqtSignature("QString")
+    def on_srcFeatcomboBox_activated(self,  p0):
+        """
+        removes the selected source feature from the list of options for reference
+        """
+        srcLayerName = self.srcFeatcomboBox.currentText()
         
-    @pyqtSignature("")
-    def on_wizardPage3_completeChanged(self):
+        layers = iface.legendInterface().layers()
+        
+        refList = []
+        
+        for layer in layers:
+            name = layer.name()
+            if name != srcLayerName:
+                refList.append(name)
+        
+        self.refFeatcomboBox.clear()
+        
+        print refList
+        
+        self.refFeatcomboBox.addItems(refList)
+        
+
+    @pyqtSignature("QString")
+    def on_refFeatcomboBox_activated(self,  p0):
         """
-        function description here
+        populates the 'process' combobox with the correct options based on the source and reference features.
         """
-        self.populateSrcList()
+        srcLayerName = self.srcFeatcomboBox.currentText()
+        refLayerName = self.refFeatcomboBox.currentText()
+        sLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayerName)
+        rLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayerName)
+        
+        Line2Line = [cross,  equal,  intersect,  are disjoint to,  overlap,  touch]
+        Line2Point = [contain,  intersect,  are disjoint to]
+        Point2Point = [equal,  intersect,  are disjoint to,  overlap]
+        Poly2Poly = [contain,  equal,  intersect,  are disjoint to,  overlap, touch,  are within]
+        Poly2Line = [contain,  intersect,  are disjoint to]
+        
     
     @pyqtSignature("")
     def on_queryButton_clicked(self):
         """
         function description here
         """
+        #TO DO: Write rest of functions except point within poly
         sourceLayer = self.srcFeatcomboBox.currentText()
         referenceLayer = self.refFeatcomboBox.currentText()
         
@@ -161,7 +203,7 @@ class Unit1Wizard(QWizard, Ui_Wizard):
     @pyqtSignature("")
     def srcWithinRef(self, srcLayer, refLayer):
         """
-        function description here
+        Checks if feature is within another
         """
         srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
         refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
