@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>325</width>
-    <height>565</height>
+    <width>298</width>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -267,7 +267,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="queryButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>110</x>
       <y>450</y>
       <width>75</width>
       <height>23</height>
@@ -280,8 +280,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QProgressBar" name="QueryprogressBar">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>410</y>
+      <x>60</x>
+      <y>420</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -293,7 +293,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>190</y>
       <width>291</width>
       <height>101</height>
@@ -407,8 +407,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="newLayercheckBox">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>320</y>
+      <x>31</x>
+      <y>321</y>
       <width>241</width>
       <height>17</height>
      </rect>
@@ -420,8 +420,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>360</y>
+      <x>31</x>
+      <y>361</y>
       <width>131</width>
       <height>21</height>
      </rect>
@@ -430,8 +430,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="BrowsepushButton_4">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>360</y>
+      <x>171</x>
+      <y>361</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -443,14 +443,14 @@ p, li { white-space: pre-wrap; }
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>29</x>
-      <y>299</y>
+      <x>10</x>
+      <y>300</y>
       <width>271</width>
       <height>101</height>
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>New Layer</string>
     </property>
    </widget>
   </widget>

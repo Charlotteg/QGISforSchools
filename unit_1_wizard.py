@@ -165,13 +165,20 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         self.refFeatcomboBox.clear()
         
-        print refList
+        #print refList
         
         self.refFeatcomboBox.addItems(refList)
+        
+        self.populateSelBox()
         
 
     @pyqtSignature("QString")
     def on_refFeatcomboBox_activated(self,  p0):
+        
+        self.populateSelBox()
+        
+    @pyqtSignature("")
+    def populateSelBox(self):
         """
         populates the 'process' combobox with the correct options based on the source and reference features.
         """
@@ -180,11 +187,48 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         sLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayerName)
         rLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayerName)
         
-        Line2Line = [cross,  equal,  intersect,  are disjoint to,  overlap,  touch]
-        Line2Point = [contain,  intersect,  are disjoint to]
-        Point2Point = [equal,  intersect,  are disjoint to,  overlap]
-        Poly2Poly = [contain,  equal,  intersect,  are disjoint to,  overlap, touch,  are within]
-        Poly2Line = [contain,  intersect,  are disjoint to]
+        Line2Line = ["cross",  "equal",  "intersect",  "are disjoint to",  "overlap",  "touch"]
+        Line2Point = ["contain",  "intersect",  "are disjoint to"]
+        Point2Point = ["equal",  "intersect",  "are disjoint to",  "overlap"]
+        Poly2Poly = ["contain",  "equal",  "intersect",  "are disjoint to",  "overlap", "touch",  "are within"]
+        Poly2Line = ["contain",  "intersect",  "are disjoint to"]
+        Line2Poly = ["cross",  "intersect",  "are disjoint to ",  "touch",  "within"]
+        Point2Line =["cross",  "intersect",  "are disjoint to",  "touch",  "within"]
+        Poly2Point = ["contain",  "intersect",  "are disjoint to"]
+        Point2Poly = ["cross",  "intersect",  "are disjoint to",  "touch", "within"]
+        
+        sFeats = sLayer[0].getFeatures()
+        sFeat = sFeats.next()
+        sGeom = sFeat.geometry()
+        sType = sGeom.type()
+        
+        rFeats = rLayer[0].getFeatures()
+        rFeat = rFeats.next()
+        rGeom = rFeat.geometry()
+        rType = rGeom.type()
+        
+        self.selTypecomboBox.clear()
+        
+        if sType == 0 and rType == 0:
+            self.selTypecomboBox.addItems(Point2Point)
+        elif sType == 0 and rType ==1:
+            self.selTypecomboBox.addItems(Point2Line)
+        elif sType == 1 and rType == 0:
+            self.selTypecomboBox.addItems(Line2Point)
+        elif sType == 0 and rType == 2:
+            self.selTypecomboBox.addItems(Point2Poly)
+        elif sType == 2 and rType == 1:
+            self.selTypecomboBox.addItems(Poly2Point)
+        elif sType == 1 and rType == 1:
+            self.selTypecomboBox.addItems(Line2Line)
+        elif sType == 1 and rType == 2:
+            self.selTypecomboBox.addItems(Line2Poly)
+        elif sType == 2 and rType == 1:
+            self.selTypecomboBox.addItems(Poly2Line)
+        elif sType == 2 and rType == 2:
+            self.selTypecomboBox.addItems(Poly2Poly)
+        else:
+            print "problems!"
         
     
     @pyqtSignature("")
@@ -198,6 +242,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
         self.populateSrcList()
+        
         return newSelection
        
     @pyqtSignature("")
@@ -222,6 +267,6 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                     selectList.append(point.id())
                     
         return srcLayer[0].setSelectedFeatures(selectList)
-        print selectList
+        #print selectList
             
 
