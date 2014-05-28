@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\dock_widget.ui'
 #
-# Created: Sat May 24 16:32:39 2014
+# Created: Wed May 28 19:03:52 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -29,6 +29,11 @@ class Ui_DockWidget(object):
         DockWidget.resize(368, 736)
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
+        self.comboBox = QtGui.QComboBox(self.dockWidgetContents)
+        self.comboBox.setGeometry(QtCore.QRect(130, 80, 69, 22))
+        self.comboBox.setObjectName(_fromUtf8("comboBox"))
+        self.comboBox.addItem(_fromUtf8(""))
+        self.comboBox.addItem(_fromUtf8(""))
         DockWidget.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(DockWidget)
@@ -36,6 +41,8 @@ class Ui_DockWidget(object):
 
     def retranslateUi(self, DockWidget):
         DockWidget.setWindowTitle(_translate("DockWidget", "DockWidget", None))
+        self.comboBox.setItemText(0, _translate("DockWidget", "hello", None))
+        self.comboBox.setItemText(1, _translate("DockWidget", "world", None))
 
 
 if __name__ == "__main__":

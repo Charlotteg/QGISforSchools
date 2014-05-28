@@ -3,6 +3,8 @@
 """
 Module implementing unit1wizard.
 """
+import ntpath
+
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
@@ -29,6 +31,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         Slot documentation goes here.
         """
         self.populateSrcList()
+
     
     @pyqtSignature("")
     def on_pushButton_clicked(self):
@@ -116,7 +119,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         return QgsMapLayerRegistry.instance().addMapLayer(Countries), QgsMapLayerRegistry.instance().addMapLayer(Cities), QgsMapLayerRegistry.instance().addMapLayer(Equator) 
 
-
+#***************************************Unit 1 Wizard Page 2 *****************************************************************************
     @pyqtSignature("")
     def populateSrcList(self):
         """
@@ -192,7 +195,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         Point2Point = ["equal",  "intersect",  "are disjoint to",  "overlap"]
         Poly2Poly = ["contain",  "equal",  "intersect",  "are disjoint to",  "overlap", "touch",  "are within"]
         Poly2Line = ["contain",  "intersect",  "are disjoint to"]
-        Line2Poly = ["cross",  "intersect",  "are disjoint to ",  "touch",  "within"]
+        Line2Poly = ["cross",  "intersect",  "are disjoint to",  "touch",  "within"]
         Point2Line =["cross",  "intersect",  "are disjoint to",  "touch",  "within"]
         Poly2Point = ["contain",  "intersect",  "are disjoint to"]
         Point2Poly = ["cross",  "intersect",  "are disjoint to",  "touch", "within"]
@@ -217,7 +220,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             self.selTypecomboBox.addItems(Line2Point)
         elif sType == 0 and rType == 2:
             self.selTypecomboBox.addItems(Point2Poly)
-        elif sType == 2 and rType == 1:
+        elif sType == 2 and rType == 0:
             self.selTypecomboBox.addItems(Poly2Point)
         elif sType == 1 and rType == 1:
             self.selTypecomboBox.addItems(Line2Line)
@@ -239,34 +242,196 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         #TO DO: Write rest of functions except point within poly
         sourceLayer = self.srcFeatcomboBox.currentText()
         referenceLayer = self.refFeatcomboBox.currentText()
-        
-        newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
-        self.populateSrcList()
+        selectionType = self.selTypecomboBox.currentText()
+        print sourceLayer,  referenceLayer,  selectionType
+        #newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
+        #newSelection = self.srcCrossesRef(sourceLayer,  referenceLayer,  selectionType)
+        newSelection = self.srcIntersectRef(sourceLayer,  referenceLayer,  selectionType)
+        #self.populateSrcList()
+        self.makeNewLayer(sourceLayer)
         
         return newSelection
+        print "done"
        
     @pyqtSignature("")
     def srcWithinRef(self, srcLayer, refLayer):
         """
-        Checks if feature is within another
+        determines which source features are within the reference features
         """
         srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
         refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
         
-        #if srcLayer[0].geometryType() == 2:
-        polyFeats = refLayer[0].getFeatures()
+        refFeats = refLayer[0].getFeatures()
 
         
         selectList = []
         
-        for feat in polyFeats:
-            polyGeom = feat.geometry()
-            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(polyGeom.boundingBox()))
+        for feat in refFeats:
+            refGeom = feat.geometry()
+            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
             for point in srcPoints:
-                if point.geometry().within(polyGeom):
+                if point.geometry().within(refGeom):
                     selectList.append(point.id())
                     
         return srcLayer[0].setSelectedFeatures(selectList)
         #print selectList
+           
+    @pyqtSignature("")
+    def srcDisjointRef(self, srcLayer, refLayer):
+        """
+        determines which source features are within the reference features
+        """
+        srcPoints = srcLayer[0].getFeatures()
+        refFeats = refLayer[0].getFeatures()
+        
+        selectList = []
+        for point in srcPoints:
+            selectList.append(point.id())
             
+        print "selectListfull = "
+        print selectList
+        
+        for feat in refFeats:
+            refGeom = feat.geometry()
+            #srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
+            srcPoints = srcLayer[0].getFeatures()
+            for point in srcPoints:
+                if point.geometry().intersects(refGeom):
+                    selectList.remove(point.id())
+                    
+        
+        print "selectListremoved = " 
+        print selectList
+        
+        return selectList
 
+    @pyqtSignature("")
+    def srcIntersectRef(self, srcLayer, refLayer, selType):
+        """
+        Determines which source features cross reference features
+        """
+        srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
+        refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
+        refFeats = refLayer[0].getFeatures()
+        srcPoints = srcLayer[0].getFeatures()
+        
+        selectList = []
+        
+        if selType == "are disjoint to":
+            selectList = self.srcDisjointRef(srcLayer, refLayer)
+            
+        else:
+        
+            for feat in refFeats:
+                
+                refGeom = feat.geometry()
+                srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
+                for point in srcPoints:
+                    if selType == "within":
+                        if point.geometry().within(refGeom):
+                            selectList.append(point.id())
+                    elif selType == "cross":
+                        if point.geometry().crosses(refGeom):
+                            selectList.append(point.id())
+                    elif selType == "equal":
+                        if point.geometry().equals(refGeom):
+                            selectList.append(point.id())
+                    elif selType == "intersect":
+                        if point.geometry().intersects(refGeom):
+                            selectList.append(point.id())
+                    #elif selType == "are disjoint to":
+                     #   self.srcDisjointRef(srcPoints,  refFeats)
+                    elif selType == "overlap":
+                        if point.geometry().overlaps(refGeom):
+                            selectList.append(point.id())
+                    elif selType == "touches":
+                        if point.geometry().touches(refGeom):
+                            selectList.append(point.id())
+                    else:
+                        if point.geometry().contains(refGeom):
+                            selectList.append(point.id())
+                    
+        return srcLayer[0].setSelectedFeatures(selectList)
+
+    @pyqtSignature("")
+    def srcCrossesRef(self, srcLayer, refLayer,  selType):
+        """
+        Determines which source features cross reference features
+        """
+        srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
+        refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
+        refFeats = refLayer[0].getFeatures()
+        
+        selectList = []
+        
+        for feat in refFeats:
+            
+            refGeom = feat.geometry()
+            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
+                
+                
+            for point in srcPoints:
+                if selType == "within":
+                    if point.geometry().within(refGeom):
+                        selectList.append(point.id())
+                elif selType == "cross":
+                    if point.geometry().crosses(refGeom):
+                        selectList.append(point.id())
+                elif selType == "equal":
+                    if point.geometry().equals(refGeom):
+                        selectList.append(point.id())
+                elif selType == "intersect":
+                    if point.geometry().intersects(refGeom):
+                        selectList.append(point.id())
+                elif selType == "are disjoint to":
+                    if point.geometry().disjoint(refGeom):
+                        selectList.append(point.id())
+                elif selType == "overlap":
+                    if point.geometry().overlaps(refGeom):
+                        selectList.append(point.id())
+                elif selType == "touches":
+                    if point.geometry().touches(refGeom):
+                        selectList.append(point.id())
+                else:
+                    if point.geometry().contains(refGeom):
+                        selectList.append(point.id())
+                    
+        return srcLayer[0].setSelectedFeatures(selectList)
+
+
+    @pyqtSignature("")
+    def on_clearSelectionButton_clicked(self):
+        """
+        Clears current selection
+        """
+        layers = iface.legendInterface().layers()
+        
+        for layer in layers:
+            layer.removeSelection()
+            
+    
+    @pyqtSignature("")
+    def on_BrowsepushButton_4_clicked(self):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """
+#        if self.newLayercheckBox.isChecked():
+#            self.FilePathlineEdit_4.setEnabled(True)
+            
+        inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
+        self.FilePathlineEdit_4.setText(inputFile)
+        
+    @pyqtSignature("")
+    def makeNewLayer(self,  sourceLayer):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """ 
+        SelectionLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
+        SelectedFeats = SelectionLayer[0].selectedFeatures()
+        
+        newLayerFilePath = self.FilePathlineEdit_2
+        newLayerName =  ntpath.basename(newLayerFilePath)
+        
+        newLayer = QgsVectorFileWriter()
+        print SelectionLayer
+        
