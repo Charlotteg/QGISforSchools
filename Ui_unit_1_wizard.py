@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Wed May 28 19:03:52 2014
+# Created: Thu May 29 13:53:37 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,6 +26,7 @@ except AttributeError:
 class Ui_Unit1(object):
     def setupUi(self, Unit1):
         Unit1.setObjectName(_fromUtf8("Unit1"))
+        Unit1.setEnabled(True)
         Unit1.resize(298, 557)
         Unit1.setWhatsThis(_fromUtf8(""))
         Unit1.setAutoFillBackground(False)
@@ -103,27 +104,18 @@ class Ui_Unit1(object):
         self.QueryprogressBar.setGeometry(QtCore.QRect(60, 420, 201, 21))
         self.QueryprogressBar.setProperty("value", 24)
         self.QueryprogressBar.setObjectName(_fromUtf8("QueryprogressBar"))
-        self.newLayercheckBox = QtGui.QCheckBox(self.wizardPage3)
-        self.newLayercheckBox.setGeometry(QtCore.QRect(31, 321, 241, 17))
-        self.newLayercheckBox.setObjectName(_fromUtf8("newLayercheckBox"))
-        self.lineEdit = QtGui.QLineEdit(self.wizardPage3)
-        self.lineEdit.setGeometry(QtCore.QRect(31, 361, 131, 21))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.BrowsepushButton_4 = QtGui.QPushButton(self.wizardPage3)
-        self.BrowsepushButton_4.setGeometry(QtCore.QRect(171, 361, 75, 23))
-        self.BrowsepushButton_4.setObjectName(_fromUtf8("BrowsepushButton_4"))
         self.clearSelectionButton = QtGui.QPushButton(self.wizardPage3)
         self.clearSelectionButton.setGeometry(QtCore.QRect(60, 450, 81, 21))
         self.clearSelectionButton.setObjectName(_fromUtf8("clearSelectionButton"))
         self.selTypecomboBox = QtGui.QComboBox(self.wizardPage3)
-        self.selTypecomboBox.setGeometry(QtCore.QRect(110, 240, 93, 20))
+        self.selTypecomboBox.setGeometry(QtCore.QRect(110, 240, 91, 21))
         self.selTypecomboBox.setObjectName(_fromUtf8("selTypecomboBox"))
         self.selTypecomboBox.addItem(_fromUtf8(""))
         self.selTypecomboBox.addItem(_fromUtf8(""))
         self.selTypecomboBox.addItem(_fromUtf8(""))
         self.selTypecomboBox.addItem(_fromUtf8(""))
         self.refFeatcomboBox = QtGui.QComboBox(self.wizardPage3)
-        self.refFeatcomboBox.setGeometry(QtCore.QRect(110, 190, 85, 20))
+        self.refFeatcomboBox.setGeometry(QtCore.QRect(110, 190, 91, 21))
         self.refFeatcomboBox.setObjectName(_fromUtf8("refFeatcomboBox"))
         self.refFeatcomboBox.addItem(_fromUtf8(""))
         self.refFeatcomboBox.addItem(_fromUtf8(""))
@@ -136,29 +128,45 @@ class Ui_Unit1(object):
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.label_7 = QtGui.QLabel(self.wizardPage3)
-        self.label_7.setGeometry(QtCore.QRect(10, 210, 130, 16))
+        self.label_7.setGeometry(QtCore.QRect(20, 220, 130, 16))
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName(_fromUtf8("label_7"))
         self.srcFeatcomboBox = QtGui.QComboBox(self.wizardPage3)
-        self.srcFeatcomboBox.setGeometry(QtCore.QRect(110, 140, 83, 20))
+        self.srcFeatcomboBox.setGeometry(QtCore.QRect(110, 140, 91, 21))
         self.srcFeatcomboBox.setObjectName(_fromUtf8("srcFeatcomboBox"))
         self.srcFeatcomboBox.addItem(_fromUtf8(""))
         self.srcFeatcomboBox.addItem(_fromUtf8(""))
         self.srcFeatcomboBox.addItem(_fromUtf8(""))
         self.label_8 = QtGui.QLabel(self.wizardPage3)
-        self.label_8.setGeometry(QtCore.QRect(190, 270, 93, 16))
+        self.label_8.setGeometry(QtCore.QRect(180, 270, 93, 16))
         self.label_8.setAlignment(QtCore.Qt.AlignCenter)
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.label_6 = QtGui.QLabel(self.wizardPage3)
         self.label_6.setGeometry(QtCore.QRect(20, 170, 116, 16))
         self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.newLayergroupBox = QtGui.QGroupBox(self.wizardPage3)
+        self.newLayergroupBox.setGeometry(QtCore.QRect(20, 300, 241, 101))
+        self.newLayergroupBox.setObjectName(_fromUtf8("newLayergroupBox"))
+        self.newLayercheckBox = QtGui.QCheckBox(self.newLayergroupBox)
+        self.newLayercheckBox.setGeometry(QtCore.QRect(10, 30, 241, 17))
+        self.newLayercheckBox.setObjectName(_fromUtf8("newLayercheckBox"))
+        self.FilePathlineEdit_4 = QtGui.QLineEdit(self.newLayergroupBox)
+        self.FilePathlineEdit_4.setEnabled(False)
+        self.FilePathlineEdit_4.setGeometry(QtCore.QRect(10, 60, 131, 21))
+        self.FilePathlineEdit_4.setObjectName(_fromUtf8("FilePathlineEdit_4"))
+        self.BrowsepushButton_4 = QtGui.QPushButton(self.newLayergroupBox)
+        self.BrowsepushButton_4.setEnabled(False)
+        self.BrowsepushButton_4.setGeometry(QtCore.QRect(150, 60, 75, 23))
+        self.BrowsepushButton_4.setObjectName(_fromUtf8("BrowsepushButton_4"))
         Unit1.addPage(self.wizardPage3)
         self.wizardPage = QtGui.QWizardPage()
         self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
         Unit1.addPage(self.wizardPage)
 
         self.retranslateUi(Unit1)
+        QtCore.QObject.connect(self.newLayercheckBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.FilePathlineEdit_4.setEnabled)
+        QtCore.QObject.connect(self.newLayercheckBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.BrowsepushButton_4.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(Unit1)
 
     def retranslateUi(self, Unit1):
@@ -192,8 +200,6 @@ class Ui_Unit1(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">***Info about spatial query. Instructions***</span></p></body></html>", None))
         self.queryButton.setText(_translate("Unit1", "Go!", None))
-        self.newLayercheckBox.setText(_translate("Unit1", "Make a new layer from the selection", None))
-        self.BrowsepushButton_4.setText(_translate("Unit1", "Browse", None))
         self.clearSelectionButton.setText(_translate("Unit1", "Clear Selection", None))
         self.selTypecomboBox.setItemText(0, _translate("Unit1", "Intersect", None))
         self.selTypecomboBox.setItemText(1, _translate("Unit1", "Are Within", None))
@@ -209,6 +215,9 @@ class Ui_Unit1(object):
         self.srcFeatcomboBox.setItemText(2, _translate("Unit1", "equator", None))
         self.label_8.setText(_translate("Unit1", "the reference layer", None))
         self.label_6.setText(_translate("Unit1", "with the reference layer", None))
+        self.newLayergroupBox.setTitle(_translate("Unit1", "New Layer", None))
+        self.newLayercheckBox.setText(_translate("Unit1", "Make a new layer from the selection", None))
+        self.BrowsepushButton_4.setText(_translate("Unit1", "Browse", None))
 
 
 if __name__ == "__main__":

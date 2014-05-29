@@ -233,6 +233,8 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         else:
             print "problems!"
         
+        
+#*****************QUERY BUTTON CLICKED *********************************
     
     @pyqtSignature("")
     def on_queryButton_clicked(self):
@@ -246,13 +248,22 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         print sourceLayer,  referenceLayer,  selectionType
         #newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
         #newSelection = self.srcCrossesRef(sourceLayer,  referenceLayer,  selectionType)
-        newSelection = self.srcIntersectRef(sourceLayer,  referenceLayer,  selectionType)
+        newSelection = self.srcSpatialQuery(sourceLayer,  referenceLayer,  selectionType)
         #self.populateSrcList()
-        self.makeNewLayer(sourceLayer)
         
-        return newSelection
+        if self.newLayercheckBox.isChecked():
+            self.makeNewLayer(sourceLayer)
+            layerFilePath = self.FilePathlineEdit_4.text()
+            newLayerName =  ntpath.basename(layerFilePath)
+            legendName = newLayerName.split(".")
+            newLayer = QgsVectorLayer(layerFilePath,  legendName[0],  'ogr')
+            return newSelection, QgsMapLayerRegistry.instance().addMapLayer(newLayer)  
+        else:
+            return newSelection
+            
         print "done"
        
+# ********************************************************************************
     @pyqtSignature("")
     def srcWithinRef(self, srcLayer, refLayer):
         """
@@ -279,7 +290,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
     @pyqtSignature("")
     def srcDisjointRef(self, srcLayer, refLayer):
         """
-        determines which source features are within the reference features
+        determines which source features are spatially unrelated to the reference features
         """
         srcPoints = srcLayer[0].getFeatures()
         refFeats = refLayer[0].getFeatures()
@@ -297,7 +308,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             srcPoints = srcLayer[0].getFeatures()
             for point in srcPoints:
                 if point.geometry().intersects(refGeom):
-                    selectList.remove(point.id())
+                        selectList.remove(point.id())
                     
         
         print "selectListremoved = " 
@@ -306,9 +317,9 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         return selectList
 
     @pyqtSignature("")
-    def srcIntersectRef(self, srcLayer, refLayer, selType):
+    def srcSpatialQuery(self, srcLayer, refLayer, selType):
         """
-        Determines which source features cross reference features
+        Compiles spatial query functions
         """
         srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
         refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
@@ -354,7 +365,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         return srcLayer[0].setSelectedFeatures(selectList)
 
     @pyqtSignature("")
-    def srcCrossesRef(self, srcLayer, refLayer,  selType):
+    def srcSpatialQuery2(self, srcLayer, refLayer,  selType):
         """
         Determines which source features cross reference features
         """
@@ -426,12 +437,44 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         Open a File Browser Dialog to select location to save new layer
         """ 
-        SelectionLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
+        SelectionLayer = QgsMapLayerRegistry.instance().mapLayersByName(sourceLayer)
         SelectedFeats = SelectionLayer[0].selectedFeatures()
         
-        newLayerFilePath = self.FilePathlineEdit_2
+        newLayerFilePath = self.FilePathlineEdit_4.text()
         newLayerName =  ntpath.basename(newLayerFilePath)
         
-        newLayer = QgsVectorFileWriter()
-        print SelectionLayer
+        print newLayerName
+        
+        pendingFields = SelectionLayer[0].pendingFields()
+        fieldNames = []
+        for field in pendingFields:
+            fieldNames.append(field.name())
+        
+        print fieldNames
+        
+        CRS = SelectionLayer[0].crs()
+        
+        print CRS
+        
+        SelectionType = SelectionLayer[0].wkbType()
+        
+        writer = QgsVectorFileWriter(newLayerFilePath,  "CP1250",  pendingFields,  SelectionType,  CRS,  "ESRI Shapefile")
+        
+        if writer.hasError() != QgsVectorFileWriter.NoError:
+            #print "Error when creating shapefile: ",  writer.errorMessage()
+            msgBox=QMessageBox()
+            msgBox.setIcon(3)
+            msgBox.setText("Error when creating shapefile. Check that you have chosen a valid place to save it.")
+            msgBox.exec_()
+
+        
+        for feat in SelectedFeats:
+            writer.addFeature(feat)
+        
+#        newVectorLayer = QgsVectorLayer(newLayerFilePath,  newLayerName,  'ogr')
+#        
+#        print newVectorLayer
+#        
+#        return newVectorLayer
+        
         

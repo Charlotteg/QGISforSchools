@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Unit1</class>
  <widget class="QWizard" name="Unit1">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -280,7 +283,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QProgressBar" name="QueryprogressBar">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>40</x>
       <y>420</y>
       <width>201</width>
       <height>21</height>
@@ -288,42 +291,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="value">
      <number>24</number>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="newLayercheckBox">
-    <property name="geometry">
-     <rect>
-      <x>31</x>
-      <y>321</y>
-      <width>241</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Make a new layer from the selection</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>31</x>
-      <y>361</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="BrowsepushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>171</x>
-      <y>361</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Browse</string>
     </property>
    </widget>
    <widget class="QPushButton" name="clearSelectionButton">
@@ -344,8 +311,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>110</x>
       <y>240</y>
-      <width>93</width>
-      <height>20</height>
+      <width>91</width>
+      <height>21</height>
      </rect>
     </property>
     <item>
@@ -374,8 +341,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>110</x>
       <y>190</y>
-      <width>85</width>
-      <height>20</height>
+      <width>91</width>
+      <height>21</height>
      </rect>
     </property>
     <item>
@@ -418,8 +385,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>210</y>
+      <x>20</x>
+      <y>220</y>
       <width>130</width>
       <height>16</height>
      </rect>
@@ -436,8 +403,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>110</x>
       <y>140</y>
-      <width>83</width>
-      <height>20</height>
+      <width>91</width>
+      <height>21</height>
      </rect>
     </property>
     <item>
@@ -459,7 +426,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>180</x>
       <y>270</y>
       <width>93</width>
       <height>16</height>
@@ -488,17 +455,109 @@ p, li { white-space: pre-wrap; }
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QGroupBox" name="newLayergroupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>300</y>
+      <width>241</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>New Layer</string>
+    </property>
+    <widget class="QCheckBox" name="newLayercheckBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>241</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Make a new layer from the selection</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="FilePathlineEdit_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BrowsepushButton_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>60</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>selTypecomboBox</zorder>
+   <zorder>refFeatcomboBox</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_7</zorder>
+   <zorder>srcFeatcomboBox</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_6</zorder>
    <zorder>textBrowser_4</zorder>
    <zorder>queryButton</zorder>
    <zorder>QueryprogressBar</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>lineEdit</zorder>
-   <zorder>BrowsepushButton_4</zorder>
    <zorder>clearSelectionButton</zorder>
-   <zorder>newLayercheckBox</zorder>
+   <zorder>newLayergroupBox</zorder>
   </widget>
   <widget class="QWizardPage" name="wizardPage"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>newLayercheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>FilePathlineEdit_4</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>95</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newLayercheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>BrowsepushButton_4</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>368</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
