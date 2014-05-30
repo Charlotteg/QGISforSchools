@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Thu May 29 13:53:37 2014
+# Created: Fri May 30 17:21:47 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_Unit1(object):
     def setupUi(self, Unit1):
         Unit1.setObjectName(_fromUtf8("Unit1"))
         Unit1.setEnabled(True)
-        Unit1.resize(298, 557)
+        Unit1.resize(324, 588)
         Unit1.setWhatsThis(_fromUtf8(""))
         Unit1.setAutoFillBackground(False)
         Unit1.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedKingdom))
@@ -101,8 +101,8 @@ class Ui_Unit1(object):
         self.queryButton.setGeometry(QtCore.QRect(150, 450, 75, 23))
         self.queryButton.setObjectName(_fromUtf8("queryButton"))
         self.QueryprogressBar = QtGui.QProgressBar(self.wizardPage3)
-        self.QueryprogressBar.setGeometry(QtCore.QRect(60, 420, 201, 21))
-        self.QueryprogressBar.setProperty("value", 24)
+        self.QueryprogressBar.setGeometry(QtCore.QRect(40, 420, 201, 21))
+        self.QueryprogressBar.setProperty("value", 0)
         self.QueryprogressBar.setObjectName(_fromUtf8("QueryprogressBar"))
         self.clearSelectionButton = QtGui.QPushButton(self.wizardPage3)
         self.clearSelectionButton.setGeometry(QtCore.QRect(60, 450, 81, 21))

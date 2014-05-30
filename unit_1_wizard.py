@@ -195,10 +195,10 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         Point2Point = ["equal",  "intersect",  "are disjoint to",  "overlap"]
         Poly2Poly = ["contain",  "equal",  "intersect",  "are disjoint to",  "overlap", "touch",  "are within"]
         Poly2Line = ["contain",  "intersect",  "are disjoint to"]
-        Line2Poly = ["cross",  "intersect",  "are disjoint to",  "touch",  "within"]
-        Point2Line =["cross",  "intersect",  "are disjoint to",  "touch",  "within"]
+        Line2Poly = ["cross",  "intersect",  "are disjoint to",  "touch",  "are within"]
+        Point2Line =["cross",  "intersect",  "are disjoint to",  "touch",  "are within"]
         Poly2Point = ["contain",  "intersect",  "are disjoint to"]
-        Point2Poly = ["cross",  "intersect",  "are disjoint to",  "touch", "within"]
+        Point2Poly = ["cross",  "intersect",  "are disjoint to",  "touch", "are within"]
         
         sFeats = sLayer[0].getFeatures()
         sFeat = sFeats.next()
@@ -231,6 +231,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         elif sType == 2 and rType == 2:
             self.selTypecomboBox.addItems(Poly2Poly)
         else:
+            #put a messagebox here
             print "problems!"
         
         
@@ -241,28 +242,33 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         function description here
         """
-        #TO DO: Write rest of functions except point within poly
+#        self.QueryprogressBar.setminimum(0)
+#        self.QueryprogressBar.setmaximum(3)
+
+        
         sourceLayer = self.srcFeatcomboBox.currentText()
         referenceLayer = self.refFeatcomboBox.currentText()
         selectionType = self.selTypecomboBox.currentText()
-        print sourceLayer,  referenceLayer,  selectionType
-        #newSelection = self.srcWithinRef(sourceLayer, referenceLayer)
-        #newSelection = self.srcCrossesRef(sourceLayer,  referenceLayer,  selectionType)
+        
+        self.QueryprogressBar.setValue(33)
+
         newSelection = self.srcSpatialQuery(sourceLayer,  referenceLayer,  selectionType)
-        #self.populateSrcList()
+
         
         if self.newLayercheckBox.isChecked():
+            
             self.makeNewLayer(sourceLayer)
             layerFilePath = self.FilePathlineEdit_4.text()
             newLayerName =  ntpath.basename(layerFilePath)
             legendName = newLayerName.split(".")
             newLayer = QgsVectorLayer(layerFilePath,  legendName[0],  'ogr')
-            return newSelection, QgsMapLayerRegistry.instance().addMapLayer(newLayer)  
-        else:
-            return newSelection
             
-        print "done"
-       
+            return newSelection, QgsMapLayerRegistry.instance().addMapLayer(newLayer),  self.populateSrcList(),  self.QueryprogressBar.setValue(100)  
+        else:
+            return newSelection,  self.populateSrcList(),  self.QueryprogressBar.setValue(100)
+            
+
+
 # ********************************************************************************
     @pyqtSignature("")
     def srcWithinRef(self, srcLayer, refLayer):
@@ -284,8 +290,8 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                 if point.geometry().within(refGeom):
                     selectList.append(point.id())
                     
-        return srcLayer[0].setSelectedFeatures(selectList)
-        #print selectList
+        return selectList
+
            
     @pyqtSignature("")
     def srcDisjointRef(self, srcLayer, refLayer):
@@ -298,38 +304,41 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         selectList = []
         for point in srcPoints:
             selectList.append(point.id())
-            
-        print "selectListfull = "
-        print selectList
+
+        selectList2 = []
         
         for feat in refFeats:
             refGeom = feat.geometry()
-            #srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
-            srcPoints = srcLayer[0].getFeatures()
+            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
+            #srcPoints = srcLayer[0].getFeatures()
             for point in srcPoints:
                 if point.geometry().intersects(refGeom):
-                        selectList.remove(point.id())
-                    
+                        selectList2.append(point.id())
         
-        print "selectListremoved = " 
-        print selectList
         
-        return selectList
+        selectList3 = [id for id in selectList if id not in selectList2]        
+        
+        return selectList3
 
     @pyqtSignature("")
     def srcSpatialQuery(self, srcLayer, refLayer, selType):
         """
         Compiles spatial query functions
         """
+        self.QueryprogressBar.reset()
+        
         srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
         refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
         refFeats = refLayer[0].getFeatures()
         srcPoints = srcLayer[0].getFeatures()
         
+        self.QueryprogressBar.setValue(66)
+
         selectList = []
         
         if selType == "are disjoint to":
             selectList = self.srcDisjointRef(srcLayer, refLayer)
+            
             
         else:
         
@@ -338,7 +347,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                 refGeom = feat.geometry()
                 srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
                 for point in srcPoints:
-                    if selType == "within":
+                    if selType == "are within":
                         if point.geometry().within(refGeom):
                             selectList.append(point.id())
                     elif selType == "cross":
@@ -350,8 +359,6 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                     elif selType == "intersect":
                         if point.geometry().intersects(refGeom):
                             selectList.append(point.id())
-                    #elif selType == "are disjoint to":
-                     #   self.srcDisjointRef(srcPoints,  refFeats)
                     elif selType == "overlap":
                         if point.geometry().overlaps(refGeom):
                             selectList.append(point.id())
