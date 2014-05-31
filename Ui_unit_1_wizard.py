@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Fri May 30 17:21:47 2014
+# Created: Sat May 31 11:21:22 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -90,6 +90,19 @@ class Ui_Unit1(object):
         self.textBrowser_3.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_3.setObjectName(_fromUtf8("textBrowser_3"))
         Unit1.addPage(self.wizardPage2)
+        self.wizardPage_2 = QtGui.QWizardPage()
+        self.wizardPage_2.setObjectName(_fromUtf8("wizardPage_2"))
+        self.textBrowser_5 = QtGui.QTextBrowser(self.wizardPage_2)
+        self.textBrowser_5.setGeometry(QtCore.QRect(10, 40, 281, 451))
+        self.textBrowser_5.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_5.setObjectName(_fromUtf8("textBrowser_5"))
+        self.label_9 = QtGui.QLabel(self.wizardPage_2)
+        self.label_9.setGeometry(QtCore.QRect(70, -20, 261, 81))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        Unit1.addPage(self.wizardPage_2)
         self.wizardPage3 = QtGui.QWizardPage()
         self.wizardPage3.setObjectName(_fromUtf8("wizardPage3"))
         self.textBrowser_4 = QtGui.QTextBrowser(self.wizardPage3)
@@ -194,6 +207,23 @@ class Ui_Unit1(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">When you have added all three layers to the canvas, click Next.</span></p></body></html>", None))
+        self.textBrowser_5.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">GIS not only allows you to make maps, but also helps you to answer questions about how layers are related. </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">A </span><span style=\" font-size:10pt; font-style:italic;\">Spatial Query</span><span style=\" font-size:10pt;\"> investigates how layers are related in space. </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">On the next page is a form that can help you to phrase these kinds of queries. You can select, or make a new layer from, features in the source layer that are related in a particular way to the reference layer</span><span style=\" font-size:8pt;\">.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Source Layer</span><span style=\" font-size:10pt;\"> - The layer you want to select features from</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Reference Layer </span><span style=\" font-size:10pt; color:#000000;\">- The layer that the selection depends on </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Relationship</span><span style=\" font-size:10pt; color:#000000;\"> - The way that the two layers may be related, e.g. contains (a country may contain an airport) or intersect (the equator may intersect some countries).</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; color:#000000;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; text-decoration: underline; color:#000000;\">Example</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#000000;\">Select all of the countries (source layer) that are intersected (relationship) by the equator(reference layer).</span></p></body></html>", None))
+        self.label_9.setText(_translate("Unit1", "Spatial Queries", None))
         self.textBrowser_4.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

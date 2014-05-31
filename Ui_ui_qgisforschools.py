@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\ui_qgisforschools.ui'
 #
-# Created: Fri May 30 17:21:46 2014
+# Created: Sat May 31 11:09:17 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,14 +32,14 @@ class Ui_QGISforSchools(object):
         self.questions.setChecked(True)
         self.questions.setObjectName(_fromUtf8("questions"))
         self.unit1 = QtGui.QRadioButton(QGISforSchools)
-        self.unit1.setGeometry(QtCore.QRect(30, 100, 201, 17))
+        self.unit1.setGeometry(QtCore.QRect(30, 110, 201, 17))
         self.unit1.setChecked(True)
         self.unit1.setObjectName(_fromUtf8("unit1"))
         self.unit2 = QtGui.QRadioButton(QGISforSchools)
-        self.unit2.setGeometry(QtCore.QRect(30, 130, 82, 17))
+        self.unit2.setGeometry(QtCore.QRect(30, 140, 82, 17))
         self.unit2.setObjectName(_fromUtf8("unit2"))
         self.unit3 = QtGui.QRadioButton(QGISforSchools)
-        self.unit3.setGeometry(QtCore.QRect(30, 160, 82, 17))
+        self.unit3.setGeometry(QtCore.QRect(30, 170, 82, 17))
         self.unit3.setObjectName(_fromUtf8("unit3"))
         self.label = QtGui.QLabel(QGISforSchools)
         self.label.setGeometry(QtCore.QRect(30, 20, 231, 21))
@@ -54,8 +54,11 @@ class Ui_QGISforSchools(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.label_2 = QtGui.QLabel(QGISforSchools)
-        self.label_2.setGeometry(QtCore.QRect(30, 70, 231, 21))
+        self.label_2.setGeometry(QtCore.QRect(30, 80, 231, 21))
         self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.label_3 = QtGui.QLabel(QGISforSchools)
+        self.label_3.setGeometry(QtCore.QRect(30, 50, 301, 16))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
 
         self.retranslateUi(QGISforSchools)
         QtCore.QMetaObject.connectSlotsByName(QGISforSchools)
@@ -68,6 +71,7 @@ class Ui_QGISforSchools(object):
         self.unit3.setText(_translate("QGISforSchools", "Unit 3", None))
         self.label.setText(_translate("QGISforSchools", "Welcome to QGIS for Schools!", None))
         self.label_2.setText(_translate("QGISforSchools", "Which unit would you like to open?", None))
+        self.label_3.setText(_translate("QGISforSchools", "These tutorials use data which can be downloaded from:", None))
 
 
 if __name__ == "__main__":

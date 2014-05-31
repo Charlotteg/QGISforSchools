@@ -242,10 +242,9 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         function description here
         """
-#        self.QueryprogressBar.setminimum(0)
-#        self.QueryprogressBar.setmaximum(3)
 
-        
+
+        #put an error message if no layers loaded
         sourceLayer = self.srcFeatcomboBox.currentText()
         referenceLayer = self.refFeatcomboBox.currentText()
         selectionType = self.selTypecomboBox.currentText()
