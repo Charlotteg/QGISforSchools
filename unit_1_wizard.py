@@ -509,9 +509,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         description here
         """
-        
-        
-        
+
         lyrName = self.lyrcomboBox.currentText()
         lyr = QgsMapLayerRegistry.instance().mapLayersByName(lyrName)[0]
         lyrFeats = lyr.getFeatures()
@@ -523,13 +521,18 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         model = QStandardItemModel(rows,  cols)
         
+        self.setFieldNames(model,  lyr)
+        #model.setHorizontalHeaderItem(0, QStandardItem("column 1"))
+        
+        
         for i in range(rows):
             for j in range(cols):
-                featAttribute = featureArray[i, j]
-                if featAttribute == "Null":
-                    item = QStandardItem("-")
-                else:
-                    item = QStandardItem(featAttribute)
+#                featAttribute = featureArray[i, j]
+#                if featAttribute == "Null":
+#                    item = QStandardItem("-")
+#                else:
+#                uAttrib = unicode(featAttribute,  "utf-8")
+                item = QStandardItem(unicode(featureArray[i, j] or 'NULL'))
                 model.setItem(i, j, item)
         
         self.attributeTableView.setModel(model)
@@ -537,7 +540,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
     @pyqtSignature("")
     def createFeatureArray(self,  lyrFeats):
         """
-        description here
+        puts all of the attributes of the layer features into a 2d array, ready to be added to the model
         """        
         featIdlist = []
         fullFeatureList= []
@@ -557,7 +560,19 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         featArray2 = np.reshape(featArray, (rows, cols))
         return featArray2
         
+    @pyqtSignature("")
+    def setFieldNames(self, model,  lyr):
+        """
+        description here
+        """        
+#        provider = lyr.dataProvider()
+        fields = lyr.pendingFields()
+        position = 0
         
+        for field in fields:
+            model.setHorizontalHeaderItem(position, QStandardItem(field.name()))
+            position+=1
+            
 
         
             
