@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Sat May 31 16:12:22 2014
+# Created: Mon Jun 02 16:33:51 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -175,7 +175,24 @@ class Ui_Unit1(object):
         Unit1.addPage(self.wizardPage3)
         self.wizardPage = QtGui.QWizardPage()
         self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
+        self.textEdit = QtGui.QTextEdit(self.wizardPage)
+        self.textEdit.setGeometry(QtCore.QRect(20, 20, 281, 501))
+        self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textEdit.setFrameShadow(QtGui.QFrame.Plain)
+        self.textEdit.setObjectName(_fromUtf8("textEdit"))
         Unit1.addPage(self.wizardPage)
+        self.wizardPage_3 = QtGui.QWizardPage()
+        self.wizardPage_3.setObjectName(_fromUtf8("wizardPage_3"))
+        self.attributeTableView = QtGui.QTableView(self.wizardPage_3)
+        self.attributeTableView.setGeometry(QtCore.QRect(10, 140, 271, 251))
+        self.attributeTableView.setObjectName(_fromUtf8("attributeTableView"))
+        self.lyrcomboBox = QtGui.QComboBox(self.wizardPage_3)
+        self.lyrcomboBox.setGeometry(QtCore.QRect(120, 110, 161, 21))
+        self.lyrcomboBox.setObjectName(_fromUtf8("lyrcomboBox"))
+        self.OpenATButton = QtGui.QPushButton(self.wizardPage_3)
+        self.OpenATButton.setGeometry(QtCore.QRect(190, 480, 75, 23))
+        self.OpenATButton.setObjectName(_fromUtf8("OpenATButton"))
+        Unit1.addPage(self.wizardPage_3)
 
         self.retranslateUi(Unit1)
         QtCore.QObject.connect(self.newLayercheckBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.FilePathlineEdit_4.setEnabled)
@@ -254,6 +271,12 @@ class Ui_Unit1(object):
         self.newLayergroupBox.setTitle(_translate("Unit1", "New Layer", None))
         self.newLayercheckBox.setText(_translate("Unit1", "Make a new layer from the selection", None))
         self.BrowsepushButton_4.setText(_translate("Unit1", "Browse", None))
+        self.textEdit.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Attribute Tables</span></p></body></html>", None))
+        self.OpenATButton.setText(_translate("Unit1", "open AT", None))
 
 
 if __name__ == "__main__":

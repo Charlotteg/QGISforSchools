@@ -4,6 +4,7 @@
 Module implementing unit1wizard.
 """
 import ntpath
+import numpy as np
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -22,8 +23,13 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         Constructor
         """
-        QWizard.__init__(self, parent)
+        QWizard.__init__(self, parent,  Qt.WindowStaysOnTopHint)
         self.setupUi(self)
+        self.userPos = None
+        
+    def moveEvent(self,  event):
+        self.userPos = event.pos()
+
     
     @pyqtSignature("")
     def on___qt__passive_wizardbutton1_clicked(self):
@@ -139,9 +145,11 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         self.srcFeatcomboBox.clear()
         self.refFeatcomboBox.clear()
+        self.lyrcomboBox.clear()
         
         self.srcFeatcomboBox.addItems(nameList)
         self.refFeatcomboBox.addItems(nameList)
+        self.lyrcomboBox.addItems(nameList)
         
 #    @pyqtSignature("")
 #    def on_wizardPage3_completeChanged(self):
@@ -370,50 +378,50 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                     
         return srcLayer[0].setSelectedFeatures(selectList)
 
-    @pyqtSignature("")
-    def srcSpatialQuery2(self, srcLayer, refLayer,  selType):
-        """
-        Determines which source features cross reference features
-        """
-        srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
-        refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
-        refFeats = refLayer[0].getFeatures()
-        
-        selectList = []
-        
-        for feat in refFeats:
-            
-            refGeom = feat.geometry()
-            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
-                
-                
-            for point in srcPoints:
-                if selType == "within":
-                    if point.geometry().within(refGeom):
-                        selectList.append(point.id())
-                elif selType == "cross":
-                    if point.geometry().crosses(refGeom):
-                        selectList.append(point.id())
-                elif selType == "equal":
-                    if point.geometry().equals(refGeom):
-                        selectList.append(point.id())
-                elif selType == "intersect":
-                    if point.geometry().intersects(refGeom):
-                        selectList.append(point.id())
-                elif selType == "are disjoint to":
-                    if point.geometry().disjoint(refGeom):
-                        selectList.append(point.id())
-                elif selType == "overlap":
-                    if point.geometry().overlaps(refGeom):
-                        selectList.append(point.id())
-                elif selType == "touches":
-                    if point.geometry().touches(refGeom):
-                        selectList.append(point.id())
-                else:
-                    if point.geometry().contains(refGeom):
-                        selectList.append(point.id())
-                    
-        return srcLayer[0].setSelectedFeatures(selectList)
+#    @pyqtSignature("")
+#    def srcSpatialQuery2(self, srcLayer, refLayer,  selType):
+#        """
+#        Doesn't work, use srcSpatialQuery1
+#        """
+#        srcLayer = QgsMapLayerRegistry.instance().mapLayersByName(srcLayer)
+#        refLayer = QgsMapLayerRegistry.instance().mapLayersByName(refLayer)
+#        refFeats = refLayer[0].getFeatures()
+#        
+#        selectList = []
+#        
+#        for feat in refFeats:
+#            
+#            refGeom = feat.geometry()
+#            srcPoints = srcLayer[0].getFeatures(QgsFeatureRequest().setFilterRect(refGeom.boundingBox()))
+#                
+#                
+#            for point in srcPoints:
+#                if selType == "within":
+#                    if point.geometry().within(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "cross":
+#                    if point.geometry().crosses(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "equal":
+#                    if point.geometry().equals(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "intersect":
+#                    if point.geometry().intersects(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "are disjoint to":
+#                    if point.geometry().disjoint(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "overlap":
+#                    if point.geometry().overlaps(refGeom):
+#                        selectList.append(point.id())
+#                elif selType == "touches":
+#                    if point.geometry().touches(refGeom):
+#                        selectList.append(point.id())
+#                else:
+#                    if point.geometry().contains(refGeom):
+#                        selectList.append(point.id())
+#                    
+#        return srcLayer[0].setSelectedFeatures(selectList)
 
 
     @pyqtSignature("")
@@ -482,5 +490,77 @@ class Unit1Wizard(QWizard, Ui_Unit1):
 #        print newVectorLayer
 #        
 #        return newVectorLayer
+
+
+#***************************************Unit 1 Wizard Page 3 *****************************************************************************
+  
+    @pyqtSignature("")
+    def on_openATButton_clicked(self):
+        """
+        description here
+        """
         
+        Layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")
+        dialog = QgsAttributeDialog(Layer)
+        dialog.show()
+        
+    @pyqtSignature("QString")
+    def on_lyrcomboBox_activated(self,  p0):
+        """
+        description here
+        """
+        
+        
+        
+        lyrName = self.lyrcomboBox.currentText()
+        lyr = QgsMapLayerRegistry.instance().mapLayersByName(lyrName)[0]
+        lyrFeats = lyr.getFeatures()
+        
+        featureArray = self.createFeatureArray(lyrFeats)
+        shape = featureArray.shape
+        rows = shape[0]
+        cols = shape[1]
+        
+        model = QStandardItemModel(rows,  cols)
+        
+        for i in range(rows):
+            for j in range(cols):
+                featAttribute = featureArray[i, j]
+                if featAttribute == "Null":
+                    item = QStandardItem("-")
+                else:
+                    item = QStandardItem(featAttribute)
+                model.setItem(i, j, item)
+        
+        self.attributeTableView.setModel(model)
+        
+    @pyqtSignature("")
+    def createFeatureArray(self,  lyrFeats):
+        """
+        description here
+        """        
+        featIdlist = []
+        fullFeatureList= []
+        for feat in lyrFeats:
+            featIdlist.append(feat.id())
+            featAttributes = feat.attributes()
+            fullFeatureList.extend(featAttributes)
+        
+        rows = len(featIdlist)
+        cols = len(featAttributes)
+        
+#        print cols
+#        print rows
+#        print len(fullFeatureList)
+    
+        featArray = np.array([fullFeatureList])
+        featArray2 = np.reshape(featArray, (rows, cols))
+        return featArray2
+        
+        
+
+        
+            
+
+
         

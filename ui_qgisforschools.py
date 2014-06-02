@@ -21,7 +21,7 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
         """
         Constructor
         """
-        QDialog.__init__(self, parent)
+        QDialog.__init__(self, parent,  Qt.WindowStaysOnTopHint)
         self.setupUi(self)
         self.unit=1
     
