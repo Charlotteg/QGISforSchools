@@ -24,6 +24,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         Constructor
         """
         QWizard.__init__(self, parent,  Qt.WindowStaysOnTopHint)
+        #QWizard.__init__(self, parent)
         self.setupUi(self)
         self.userPos = None
         
@@ -102,6 +103,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             return None
         elif not NewLayer.isValid():
             msgBox.setText("Could not load the " + LayerString + " layer")
+            msgBox.setInformativeText(" Please make sure that you have used the Browse button to select " + LayerString +".shp")
             msgBox.exec_()
         elif LayerString not in LayerFile:
             msgBox.setText("You have chosen the wrong shapefile for " + LayerString + ".")
@@ -122,6 +124,12 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         Countries = self.CheckAddLayers(FilePathlineEdit,  "countries")
         Cities = self.CheckAddLayers(FilePathlineEdit_2,  "major_cities")
         Equator = self.CheckAddLayers(FilePathLineEdit_3,  "equator")
+        
+        
+        if Countries is not None:
+            CountriesRenderer = Countries.rendererV2()
+            CountriesSymbol = CountriesRenderer.symbol()
+            CountriesSymbol.setColor(QColor('#31a354'))
         
         return QgsMapLayerRegistry.instance().addMapLayer(Countries), QgsMapLayerRegistry.instance().addMapLayer(Cities), QgsMapLayerRegistry.instance().addMapLayer(Equator) 
 
@@ -494,20 +502,11 @@ class Unit1Wizard(QWizard, Ui_Unit1):
 
 #***************************************Unit 1 Wizard Page 3 *****************************************************************************
   
-    @pyqtSignature("")
-    def on_openATButton_clicked(self):
-        """
-        description here
-        """
-        
-        Layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")
-        dialog = QgsAttributeDialog(Layer)
-        dialog.show()
-        
+
     @pyqtSignature("QString")
     def on_lyrcomboBox_activated(self,  p0):
         """
-        description here
+        populate the attribute table with data based on the layer chosen in the lyrcomboBox
         """
 
         lyrName = self.lyrcomboBox.currentText()
@@ -532,10 +531,24 @@ class Unit1Wizard(QWizard, Ui_Unit1):
 #                    item = QStandardItem("-")
 #                else:
 #                uAttrib = unicode(featAttribute,  "utf-8")
-                item = QStandardItem(unicode(featureArray[i, j] or 'NULL'))
+ #               item = QStandardItem(unicode(featureArray[i, j] or 'NULL'))
+ 
+#                data = featureArray[i, j]
+#                if isinstance(data, int):
+#                   item = QStandardItem.setData 
+#                else:
+
+                item = QStandardItem(featureArray[i, j])
                 model.setItem(i, j, item)
+                
+                
+        
+        self.attributeTableView.setSortingEnabled(True)
         
         self.attributeTableView.setModel(model)
+        
+        selected = self.attributeTableView.selectionModel().selectedRows()
+
         
     @pyqtSignature("")
     def createFeatureArray(self,  lyrFeats):
@@ -563,7 +576,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
     @pyqtSignature("")
     def setFieldNames(self, model,  lyr):
         """
-        description here
+        Set the column names for the attribute table
         """        
 #        provider = lyr.dataProvider()
         fields = lyr.pendingFields()
@@ -574,8 +587,13 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             position+=1
             
 
-        
-            
+    @pyqtSignature("QItemSelection")
+    def on_attributeTableView_selectionChanged(self, QItemSelection):
+        """
+        populate the attribute table with data based on the layer chosen in the lyrcomboBox
+        """
+        selectionModel = self.attributeTableView.selectionModel()
+        print "howdy"
 
 
         

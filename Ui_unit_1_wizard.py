@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Mon Jun 02 16:33:51 2014
+# Created: Tue Jun 03 21:20:30 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -189,9 +189,11 @@ class Ui_Unit1(object):
         self.lyrcomboBox = QtGui.QComboBox(self.wizardPage_3)
         self.lyrcomboBox.setGeometry(QtCore.QRect(120, 110, 161, 21))
         self.lyrcomboBox.setObjectName(_fromUtf8("lyrcomboBox"))
-        self.OpenATButton = QtGui.QPushButton(self.wizardPage_3)
-        self.OpenATButton.setGeometry(QtCore.QRect(190, 480, 75, 23))
-        self.OpenATButton.setObjectName(_fromUtf8("OpenATButton"))
+        self.textBrowser_6 = QtGui.QTextBrowser(self.wizardPage_3)
+        self.textBrowser_6.setGeometry(QtCore.QRect(20, 100, 91, 41))
+        self.textBrowser_6.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_6.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
         Unit1.addPage(self.wizardPage_3)
 
         self.retranslateUi(Unit1)
@@ -275,8 +277,17 @@ class Ui_Unit1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Attribute Tables</span></p></body></html>", None))
-        self.OpenATButton.setText(_translate("Unit1", "open AT", None))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Attribute Tables</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600; color:#00007f;\">Attributes</span><span style=\" font-size:8pt;\"> are pieces of information that describe features in a GIS layer. For example, if you were making a map of buildings on the high street, as well as their locations, you might record the type of building it is (e.g. shop, bank), its name, the year it was built and many other attributes.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Atrributes of a layer can be stored in an </span><span style=\" font-size:8pt; font-weight:600; color:#00007f;\">Attribute Table</span><span style=\" font-size:8pt;\">. This format makes it easy to compare, sort and find information about a particular feature very easily. On the next page you will be using the attribute tables of the layers currently loaded to answer some questions.</span></p></body></html>", None))
+        self.textBrowser_6.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Show attribute </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">table from layer:</span></p></body></html>", None))
 
 
 if __name__ == "__main__":

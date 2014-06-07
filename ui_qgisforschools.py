@@ -12,6 +12,7 @@ from qgis.gui import *
 
 from Ui_ui_qgisforschools import Ui_QGISforSchools
 from unit_1_wizard import Unit1Wizard
+from dock_widget import DockWidget
 
 class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     """
@@ -60,6 +61,11 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
             openWizard=Unit1Wizard()
             openWizard.show()
             result = openWizard.exec_()
+        elif self.unit ==2:
+            openWizard = DockWidget()
+            openWizard.show()
+            #result = openWizard.exec_()
+            
         else:
             raise NotImplementedError
     
