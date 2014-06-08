@@ -79,3 +79,5 @@ class QGISforSchools:
             # do something useful (delete the line containing pass and
             # substitute with your code)
             pass
+            
+

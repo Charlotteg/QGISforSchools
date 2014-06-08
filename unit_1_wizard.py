@@ -14,6 +14,7 @@ from qgis.gui import *
 from qgis.utils import *
 
 from Ui_unit_1_wizard import Ui_Unit1
+from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
 
 class Unit1Wizard(QWizard, Ui_Unit1):
     """
@@ -541,12 +542,22 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                 item = QStandardItem(featureArray[i, j])
                 model.setItem(i, j, item)
                 
-                
+        
         
         self.attributeTableView.setSortingEnabled(True)
         
         self.attributeTableView.setModel(model)
         
+        if lyrName == "major_cities":
+            proxyModel = CitiesCustomSortingModel(self)
+            proxyModel.setSourceModel(model)
+            self.attributeTableView.setModel(proxyModel)
+            
+        else:
+            proxyModel = CountriesCustomSortingModel(self)
+            proxyModel.setSourceModel(model)
+            self.attributeTableView.setModel(proxyModel)
+    
         selected = self.attributeTableView.selectionModel().selectedRows()
 
         
@@ -587,13 +598,12 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             position+=1
             
 
-    @pyqtSignature("QItemSelection")
-    def on_attributeTableView_selectionChanged(self, QItemSelection):
-        """
-        populate the attribute table with data based on the layer chosen in the lyrcomboBox
-        """
-        selectionModel = self.attributeTableView.selectionModel()
-        print "howdy"
-
+#    @pyqtSignature("QItemSelection")
+#    def on_attributeTableView_selectionChanged(self, QItemSelection):
+#        """
+#        populate the attribute table with data based on the layer chosen in the lyrcomboBox
+#        """
+#        selectionModel = self.attributeTableView.selectionModel()
+#        print "howdy"
 
         
