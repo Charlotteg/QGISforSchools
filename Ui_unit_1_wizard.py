@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Tue Jun 03 21:20:30 2014
+# Created: Sun Jun 08 22:47:04 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_Unit1(object):
     def setupUi(self, Unit1):
         Unit1.setObjectName(_fromUtf8("Unit1"))
         Unit1.setEnabled(True)
-        Unit1.resize(324, 588)
+        Unit1.resize(307, 574)
         Unit1.setWhatsThis(_fromUtf8(""))
         Unit1.setAutoFillBackground(False)
         Unit1.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedKingdom))
@@ -49,7 +49,7 @@ class Ui_Unit1(object):
         self.wizardPage2 = QtGui.QWizardPage()
         self.wizardPage2.setObjectName(_fromUtf8("wizardPage2"))
         self.textBrowser_2 = QtGui.QTextBrowser(self.wizardPage2)
-        self.textBrowser_2.setGeometry(QtCore.QRect(25, 20, 261, 131))
+        self.textBrowser_2.setGeometry(QtCore.QRect(20, 50, 261, 131))
         self.textBrowser_2.setWhatsThis(_fromUtf8(""))
         self.textBrowser_2.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_2.setFrameShadow(QtGui.QFrame.Plain)
@@ -93,7 +93,7 @@ class Ui_Unit1(object):
         self.wizardPage_2 = QtGui.QWizardPage()
         self.wizardPage_2.setObjectName(_fromUtf8("wizardPage_2"))
         self.textBrowser_5 = QtGui.QTextBrowser(self.wizardPage_2)
-        self.textBrowser_5.setGeometry(QtCore.QRect(10, 40, 281, 451))
+        self.textBrowser_5.setGeometry(QtCore.QRect(10, 30, 281, 391))
         self.textBrowser_5.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_5.setObjectName(_fromUtf8("textBrowser_5"))
         self.label_9 = QtGui.QLabel(self.wizardPage_2)
@@ -182,19 +182,43 @@ class Ui_Unit1(object):
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
         Unit1.addPage(self.wizardPage)
         self.wizardPage_3 = QtGui.QWizardPage()
+        self.wizardPage_3.setEnabled(True)
         self.wizardPage_3.setObjectName(_fromUtf8("wizardPage_3"))
         self.attributeTableView = QtGui.QTableView(self.wizardPage_3)
-        self.attributeTableView.setGeometry(QtCore.QRect(10, 140, 271, 251))
+        self.attributeTableView.setGeometry(QtCore.QRect(20, 120, 271, 251))
         self.attributeTableView.setObjectName(_fromUtf8("attributeTableView"))
         self.lyrcomboBox = QtGui.QComboBox(self.wizardPage_3)
-        self.lyrcomboBox.setGeometry(QtCore.QRect(120, 110, 161, 21))
+        self.lyrcomboBox.setGeometry(QtCore.QRect(130, 90, 161, 21))
         self.lyrcomboBox.setObjectName(_fromUtf8("lyrcomboBox"))
         self.textBrowser_6 = QtGui.QTextBrowser(self.wizardPage_3)
-        self.textBrowser_6.setGeometry(QtCore.QRect(20, 100, 91, 41))
+        self.textBrowser_6.setGeometry(QtCore.QRect(10, 80, 111, 41))
+        self.textBrowser_6.setAutoFillBackground(False)
         self.textBrowser_6.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_6.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_6.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
+        self.textBrowser_7 = QtGui.QTextBrowser(self.wizardPage_3)
+        self.textBrowser_7.setGeometry(QtCore.QRect(20, 390, 281, 51))
+        self.textBrowser_7.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_7.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_7.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.textBrowser_7.setObjectName(_fromUtf8("textBrowser_7"))
+        self.Somalia = QtGui.QRadioButton(self.wizardPage_3)
+        self.Somalia.setGeometry(QtCore.QRect(40, 440, 82, 17))
+        self.Somalia.setObjectName(_fromUtf8("Somalia"))
+        self.Uganda = QtGui.QRadioButton(self.wizardPage_3)
+        self.Uganda.setGeometry(QtCore.QRect(40, 460, 82, 17))
+        self.Uganda.setObjectName(_fromUtf8("Uganda"))
+        self.India = QtGui.QRadioButton(self.wizardPage_3)
+        self.India.setGeometry(QtCore.QRect(40, 480, 82, 17))
+        self.India.setObjectName(_fromUtf8("India"))
         Unit1.addPage(self.wizardPage_3)
+        self.wizardPage_4 = QtGui.QWizardPage()
+        self.wizardPage_4.setObjectName(_fromUtf8("wizardPage_4"))
+        self.textEdit_2 = QtGui.QTextEdit(self.wizardPage_4)
+        self.textEdit_2.setGeometry(QtCore.QRect(10, 10, 241, 441))
+        self.textEdit_2.setObjectName(_fromUtf8("textEdit_2"))
+        Unit1.addPage(self.wizardPage_4)
 
         self.retranslateUi(Unit1)
         QtCore.QObject.connect(self.newLayercheckBox, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.FilePathlineEdit_4.setEnabled)
@@ -208,20 +232,16 @@ class Ui_Unit1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">*** Description - goals and steps ***</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">GIS not only allows you to make maps, but also helps you to answer questions about how layers are related. </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">A </span><span style=\" font-size:10pt; font-style:italic;\">Spatial Query</span><span style=\" font-size:10pt;\"> investigates how layers are related in space. </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">In this unit we/you are going to explore ....</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">In this unit you are going to explore the spatial relationships between countries, major cities, and the equator.</span></p></body></html>", None))
         self.textBrowser_2.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">***Explanation about adding data ***</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">To explore spatial relationships, we must first add the spatial data. This can be in the form of layers of points, lines or polygons that represent features like countries and cities.Use the Browse buttons below to select the countries.shp, cities.shp and equator.shp files, then click Add Layers! to add them to your map. ***too much!***</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">To explore spatial relationships, we must first add the spatial data. This can be in the form of layers of points, lines or polygons that represent features like countries and cities.Use the Browse buttons below to select the </span><span style=\" font-size:8pt; font-weight:600;\">countries.shp</span><span style=\" font-size:8pt;\">,</span><span style=\" font-size:8pt; font-weight:600;\"> cities.shp</span><span style=\" font-size:8pt;\"> and </span><span style=\" font-size:8pt; font-weight:600;\">equator.shp</span><span style=\" font-size:8pt;\"> files, then click</span><span style=\" font-size:8pt; font-weight:600;\"> Add Layers!</span><span style=\" font-size:8pt;\"> to add them to your map.</span></p></body></html>", None))
         self.BrowsepushButton.setText(_translate("Unit1", "Browse", None))
         self.label_2.setText(_translate("Unit1", "1. Add the countries layer:", None))
         self.label_3.setText(_translate("Unit1", "2. Add the cities layer:", None))
@@ -253,7 +273,7 @@ class Ui_Unit1(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Experiment with the different options available to you by changing the source and reference layers and the type of relationship you are looking for and clicking Go! Then try making a new layer that only contains those countries that are intersected by the equator.</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Experiment with the different options available to you by changing the source and reference layers and the type of relationship you are looking for and clicking </span><span style=\" font-size:8pt; font-weight:600;\">Go!</span><span style=\" font-size:8pt;\"> Then try making a new layer that only contains those countries that are intersected by the equator.</span></p></body></html>", None))
         self.queryButton.setText(_translate("Unit1", "Go!", None))
         self.clearSelectionButton.setText(_translate("Unit1", "Clear Selection", None))
         self.selTypecomboBox.setItemText(0, _translate("Unit1", "Intersect", None))
@@ -288,6 +308,30 @@ class Ui_Unit1(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Show attribute </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">table from layer:</span></p></body></html>", None))
+        self.textBrowser_7.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Of all the countries which lie on the equator, which has the lowest gdp, according to the attribute table?</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+        self.Somalia.setText(_translate("Unit1", "Somalia", None))
+        self.Uganda.setText(_translate("Unit1", "Uganda", None))
+        self.India.setText(_translate("Unit1", "India", None))
+        self.textEdit_2.setHtml(_translate("Unit1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">Congratulations! </span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\">You have completed this unit.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; font-weight:600;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">In the completion of this unit you have explored several GIS functionalities and features, such as adding layers, spatial query and attribute tables.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">The next unit is unit 2, in which you will investigate </span><span style=\" font-size:8pt; font-weight:600;\">earthquakes or cartography</span><span style=\" font-size:8pt;\">!</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\"> If you want to learn how to do this without using this plugin please visit </span><a href=\"http://www.geos.ed.ac.uk/GISforTeachers\"><span style=\" font-size:8pt; text-decoration: underline; color:#0000ff;\">http://www.geos.ed.ac.uk/GISforTeachers </span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://www.geos.ed.ac.uk/GISforTeachers\"><span style=\" font-size:8pt; text-decoration: underline; color:#000000;\">where you will be able to find a copy of this unit, which will walk you through it.</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; color:#000000;\"><br /></p></body></html>", None))
 
 
 if __name__ == "__main__":

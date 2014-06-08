@@ -111,6 +111,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             msgBox.setInformativeText(" Please go back and select " + LayerString +".shp")
             msgBox.exec_()   
         else:
+            
             return NewLayer            
 
     @pyqtSignature("")
@@ -131,9 +132,14 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             CountriesRenderer = Countries.rendererV2()
             CountriesSymbol = CountriesRenderer.symbol()
             CountriesSymbol.setColor(QColor('#31a354'))
+            
+        #Countries.setCrs(QgsCoordinateReferenceSystem(4326,  QgsCoordinateReferenceSystem.EpsgCrsId))
         
-        return QgsMapLayerRegistry.instance().addMapLayer(Countries), QgsMapLayerRegistry.instance().addMapLayer(Cities), QgsMapLayerRegistry.instance().addMapLayer(Equator) 
+#        iface.mapCanvas().mapRenderer().setProjectionsEnabled(True)
+#        iface.mapCanvas().mapRenderer().setDestinationCrs(QgsCoordinateReferenceSystem(4326, QgsCoordinateReferenceSystem.EpsgCrsId))
 
+        return QgsMapLayerRegistry.instance().addMapLayer(Countries), QgsMapLayerRegistry.instance().addMapLayer(Cities), QgsMapLayerRegistry.instance().addMapLayer(Equator)
+        
 #***************************************Unit 1 Wizard Page 2 *****************************************************************************
     @pyqtSignature("")
     def populateSrcList(self):
@@ -606,4 +612,34 @@ class Unit1Wizard(QWizard, Ui_Unit1):
 #        selectionModel = self.attributeTableView.selectionModel()
 #        print "howdy"
 
+
+    @pyqtSignature("bool")
+    def on_Somalia_clicked(self, checked):
+        """
+        enable finish/ next button when the correct answer (Somalia) 
+        """
         
+        msgBox=QMessageBox()
+        msgBox.setText("Well done! That is the correct answer")
+        msgBox.exec_()
+        
+    @pyqtSignature("bool")
+    def on_Uganda_clicked(self, checked):
+        """
+        enable finish/ next button when the correct answer (Somalia) 
+        """
+        
+        msgBox=QMessageBox()
+        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp column.")
+        msgBox.exec_()
+        
+    @pyqtSignature("bool")
+    def on_India_clicked(self, checked):
+        """
+        enable finish/ next button when the correct answer (Somalia) 
+        """
+        
+        msgBox=QMessageBox()
+        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp column.")
+        msgBox.exec_()
+
