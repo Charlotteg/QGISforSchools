@@ -550,9 +550,9 @@ class Unit1Wizard(QWizard, Ui_Unit1):
                 
         
         
-        self.attributeTableView.setSortingEnabled(True)
+        #self.attributeTableView.setSortingEnabled(True)
         
-        self.attributeTableView.setModel(model)
+        #self.attributeTableView.setModel(model)
         
         if lyrName == "major_cities":
             proxyModel = CitiesCustomSortingModel(self)
@@ -563,6 +563,9 @@ class Unit1Wizard(QWizard, Ui_Unit1):
             proxyModel = CountriesCustomSortingModel(self)
             proxyModel.setSourceModel(model)
             self.attributeTableView.setModel(proxyModel)
+        
+        
+        
     
         selected = self.attributeTableView.selectionModel().selectedRows()
 
@@ -630,7 +633,7 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         
         msgBox=QMessageBox()
-        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp column.")
+        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp_md_est column.")
         msgBox.exec_()
         
     @pyqtSignature("bool")
@@ -640,6 +643,6 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         """
         
         msgBox=QMessageBox()
-        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp column.")
+        msgBox.setText("Sorry, that's not the right answer. Try sorting the attribute table on the gdp_md_est column.")
         msgBox.exec_()
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module implementing unit1wizard.
+Module with miscellaneous classes used in units
 """
 import ntpath
 import numpy as np
