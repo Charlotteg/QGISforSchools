@@ -26,6 +26,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Constructor
         """
+        #WindowStaysOnTopHint so that the plugin stays on top of the QGIS window when the user scrolls and pans the map etc.
         QWizard.__init__(self, parent,  Qt.WindowStaysOnTopHint)
         #QWizard.__init__(self, parent)
         self.setupUi(self)
@@ -118,11 +119,13 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             
         msgBox=QMessageBox()
         msgBox.setIcon(3)
-            
+         
+        #If the layer is already added, or the field has been left blank, do nothing
         if LayerAdded:
             return None
         elif not LayerFile:
             return None
+        #If the file selected is not a vaild layer, execute an error message box
         elif not NewLayer.isValid():
             msgBox.setText("Could not load the " + LayerString + " layer")
             msgBox.setInformativeText(" Please make sure that you have used the Browse button to select " + LayerString +".shp")
@@ -134,3 +137,78 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         else:
                 
             return NewLayer 
+            
+
+#*************************************** Page 3 *****************************************************************************
+    @pyqtSignature("")
+    def on_wizardPage2_completeChanged(self):
+        """
+        Slot documentation goes here.
+        """
+        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+        fields = Countries.pendingFields()
+        fieldList = []
+        for field in fields:
+            fieldList.append(field.name())
+        print fieldList
+        self.ColumncomboBox.addItems(fieldList)
+        
+    @pyqtSignature("")
+    def on_ChangeColourButton_clicked(self):
+        """
+        Allow the user to select a single colour for the Countries layer
+        """
+        newColor = self.changeColour()
+        
+        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+        CountriesRenderer = Countries.rendererV2()
+        CountriesSymbol = CountriesRenderer.symbol()
+        CountriesSymbol.setColor(newColor)
+        
+        #refresh themap and legend
+        iface.mapCanvas().refresh()
+        iface.legendInterface().refreshLayerSymbology(Countries)
+        
+    @pyqtSignature("")
+    def changeColour(self):
+        """
+        Bring up the colour dialog box and return the selected colour
+        """
+        colorDialog = QColorDialog()
+        
+        colorDialog.exec_()
+        
+        colour = colorDialog.currentColor() 
+        
+        return colour
+        
+    @pyqtSignature("QString")
+    def on_StyleTypecomboBox_activated(self,  p0):
+        """
+        Enable or disable the column/colour ramp comboBoxes or the colour selection button depending on what style type is selected
+        """
+        
+        style = self.StyleTypecomboBox.currentText()
+        
+        if style == "Single Colour":
+            self.ColourRampcomboBox.setEnabled(False)
+            self.ColumncomboBox.setEnabled(False)
+            self.colourRampLabel.setEnabled(False)
+            self.columnLabel.setEnabled(False)
+            self.ChangeColourButton.setEnabled(True)
+        else:
+            self.ColourRampcomboBox.setEnabled(True)
+            self.ColumncomboBox.setEnabled(True)
+            self.colourRampLabel.setEnabled(True)
+            self.columnLabel.setEnabled(True)
+            self.ChangeColourButton.setEnabled(False) 
+            #Populate the countries column comboBox with the layer fields that you can style by
+            Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+            fields = Countries.pendingFields()
+            fieldList = []
+            for field in fields:
+                fieldList.append(field.name())
+            self.ColumncomboBox.addItems(fieldList)
+            
+
+
