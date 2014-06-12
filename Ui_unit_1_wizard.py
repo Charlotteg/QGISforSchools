@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Sun Jun 08 22:47:04 2014
+# Created: Thu Jun 12 16:23:33 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -217,6 +217,8 @@ class Ui_Unit1(object):
         self.wizardPage_4.setObjectName(_fromUtf8("wizardPage_4"))
         self.textEdit_2 = QtGui.QTextEdit(self.wizardPage_4)
         self.textEdit_2.setGeometry(QtCore.QRect(10, 10, 241, 441))
+        self.textEdit_2.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textEdit_2.setFrameShadow(QtGui.QFrame.Plain)
         self.textEdit_2.setObjectName(_fromUtf8("textEdit_2"))
         Unit1.addPage(self.wizardPage_4)
 

@@ -50,3 +50,5 @@ class CountriesCustomSortingModel(QSortFilterProxyModel):
             return True
         else:
             return False
+            
+
