@@ -3,7 +3,7 @@
 """
 Module implementing QGISforSchools introduction page.
 """
-
+#Import the Python, Qt and QGIS libraries
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 

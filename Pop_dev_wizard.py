@@ -148,6 +148,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         fields = Countries.pendingFields()
         fieldList = []
+        self.ColumncomboBox.clear()
         for field in fields:
             fieldList.append(field.name())
         print fieldList
@@ -210,5 +211,34 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
                 fieldList.append(field.name())
             self.ColumncomboBox.addItems(fieldList)
             
+            
+    @pyqtSignature("")
+    def getAttributes(self, field):
+        """
+        get the sorted and deduplicated elements of the field passed
+        """
+        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+
+        feats = layer.getFeatures()
+        
+        fieldIndex = layer.fieldNameIndex(field)
+        
+        valueList = []
+        
+        for feat in feats:
+            valueList.append(feat.attributes()[fieldIndex] )
+        
+        
+        newValueList = sorted(set(valueList))
+        
+        print newValueList
+        
+        
+    @pyqtSignature("QString")
+    def on_ColumncomboBox_activated(self,  p0):
+        
+        field = self.ColumncomboBox.currentText()
+        
+        self.getAttributes(field)
 
 
