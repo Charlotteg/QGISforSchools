@@ -52,3 +52,7 @@ class CountriesCustomSortingModel(QSortFilterProxyModel):
             return False
             
 
+#class customColorRamp(QgsVectorColorBrewerColorRampV2):
+#    def __init__(self,  schemeName):
+#        
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project QGISforSchools -->
-<!-- Saved: 2014-06-12, 22:44:35 -->
+<!-- Saved: 2014-06-13, 22:20:16 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
@@ -15,7 +15,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 11:35:29</Created>
+    <Created>2014-06-13, 19:38:47</Created>
     <Resource>
       <Filename>unit_1_wizard.py</Filename>
       <Linenumber>49</Linenumber>
@@ -24,7 +24,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>36</Linenumber>
@@ -33,7 +33,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>44</Linenumber>
@@ -42,7 +42,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>52</Linenumber>
@@ -51,7 +51,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>60</Linenumber>
@@ -60,7 +60,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: comment</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>80</Linenumber>
@@ -69,7 +69,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 15:42:18</Created>
+    <Created>2014-06-13, 19:38:54</Created>
     <Resource>
       <Filename>ui_qgisforschools.py</Filename>
       <Linenumber>88</Linenumber>
@@ -78,7 +78,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 21:44:41</Created>
+    <Created>2014-06-13, 22:15:36</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>40</Linenumber>
@@ -87,7 +87,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 21:44:41</Created>
+    <Created>2014-06-13, 22:15:36</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>48</Linenumber>
@@ -96,7 +96,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 21:44:41</Created>
+    <Created>2014-06-13, 22:15:36</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>56</Linenumber>
@@ -105,7 +105,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 21:44:41</Created>
+    <Created>2014-06-13, 22:15:36</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>64</Linenumber>
@@ -114,7 +114,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-12, 21:44:41</Created>
+    <Created>2014-06-13, 22:15:36</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>72</Linenumber>

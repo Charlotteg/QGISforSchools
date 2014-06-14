@@ -3,6 +3,8 @@
 """
 Module implementing unit1wizard.
 """
+
+# Import the Python, PyQt and QGIS libraries
 import ntpath
 import numpy as np
 
@@ -13,6 +15,7 @@ from qgis.core import *
 from qgis.gui import *
 from qgis.utils import *
 
+#Import other classes required here
 from Ui_unit_1_wizard import Ui_Unit1
 from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
 

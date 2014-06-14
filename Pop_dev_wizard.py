@@ -3,7 +3,7 @@
 """
 Module implementing PopDevWizard.
 """
-
+# Import the Python, PyQt and QGIS libraries
 import ntpath
 import numpy as np
 
@@ -14,13 +14,13 @@ from qgis.core import *
 from qgis.gui import *
 from qgis.utils import *
 
+#Import other classes required here
 from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
-
 from Ui_Pop_dev_wizard import Ui_PopDevWizard
 
 class PopDevWizard(QWizard, Ui_PopDevWizard):
     """
-    Class documentation goes here.
+    Class defining the functionality of the Population & Development unit of the QGISforSchools Plugin
     """
     def __init__(self, parent = None):
         """
@@ -140,19 +140,19 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             
 
 #*************************************** Page 3 *****************************************************************************
-    @pyqtSignature("")
-    def on_wizardPage2_completeChanged(self):
-        """
-        Slot documentation goes here.
-        """
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        fields = Countries.pendingFields()
-        fieldList = []
-        self.ColumncomboBox.clear()
-        for field in fields:
-            fieldList.append(field.name())
-        print fieldList
-        self.ColumncomboBox.addItems(fieldList)
+#    @pyqtSignature("")
+#    def on_wizardPage2_completeChanged(self):
+#        """
+#        Slot documentation goes here.
+#        """
+#        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+#        fields = Countries.pendingFields()
+#        fieldList = []
+#        self.ColumncomboBox.clear()
+#        for field in fields:
+#            fieldList.append(field.name())
+#        print fieldList
+#        self.ColumncomboBox.addItems(fieldList)
         
     @pyqtSignature("")
     def on_ChangeColourButton_clicked(self):
@@ -166,7 +166,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         CountriesSymbol = CountriesRenderer.symbol()
         CountriesSymbol.setColor(newColor)
         
-        #refresh themap and legend
+        #refresh the map and legend
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Countries)
         
@@ -175,12 +175,12 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Bring up the colour dialog box and return the selected colour
         """
+        #Open the QColorDialog
         colorDialog = QColorDialog()
-        
         colorDialog.exec_()
         
+        #find & return selected colour
         colour = colorDialog.currentColor() 
-        
         return colour
         
     @pyqtSignature("QString")
@@ -204,14 +204,24 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.columnLabel.setEnabled(True)
             self.ChangeColourButton.setEnabled(False) 
             #Populate the countries column comboBox with the layer fields that you can style by
+            self.ColumncomboBox.clear()
             Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
             fields = Countries.pendingFields()
             fieldList = []
             for field in fields:
                 fieldList.append(field.name())
             self.ColumncomboBox.addItems(fieldList)
-            
-            
+            #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
+            self.ColourRampcomboBox.clear()
+            rampNames = QgsVectorColorBrewerColorRampV2.listSchemeNames()
+            rampList = []
+        
+            for name in rampNames:
+                rampList.append(name)
+                colorRamp =QgsVectorColorBrewerColorRampV2.create()
+                rampIcon = QgsSymbolLayerV2Utils.colorRampPreviewIcon(colorRamp,  QSize(50, 16))
+                self.ColourRampcomboBox.addItem( name)
+  
     @pyqtSignature("")
     def getAttributes(self, field):
         """
@@ -231,14 +241,42 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         
         newValueList = sorted(set(valueList))
         
-        print newValueList
+        return newValueList
         
         
     @pyqtSignature("QString")
-    def on_ColumncomboBox_activated(self,  p0):
+    def on_ColourRampcomboBox_activated(self,  p0):
+        
+        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         
         field = self.ColumncomboBox.currentText()
+        colorScheme = self.ColourRampcomboBox.currentText()
         
-        self.getAttributes(field)
+        categories = self.getAttributes(field)
+        numColors = len(categories)
+        
+        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors )
+        catList =[]
+        
+        for category in categories:
+            colorIndex = categories.index(category)
+            symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
+            symbol.setColor(colors[colorIndex])
+            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
+            catList.append(cat)
+        
+        renderer = QgsCategorizedSymbolRendererV2(field, catList)
+        
+        Countries.setRendererV2(renderer)
+        
+        iface.mapCanvas().refresh()
+        iface.legendInterface().refreshLayerSymbology(Countries)
+        
+        
+        
+#        CountriesRenderer = Countries.rendererV2()
+#        CountriesSymbol = CountriesRenderer.symbol()
+#        CountriesSymbol.setColor(newColor)
+        
 
 

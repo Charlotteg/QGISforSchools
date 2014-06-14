@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Thu Jun 12 21:41:01 2014
+# Created: Sat Jun 14 15:42:29 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -125,9 +125,6 @@ class Ui_PopDevWizard(object):
         self.colourRampLabel.setEnabled(False)
         self.colourRampLabel.setGeometry(QtCore.QRect(30, 220, 81, 16))
         self.colourRampLabel.setObjectName(_fromUtf8("colourRampLabel"))
-        self.pushButton = QtGui.QPushButton(self.wizardPage3)
-        self.pushButton.setGeometry(QtCore.QRect(50, 490, 75, 23))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
         PopDevWizard.addPage(self.wizardPage3)
 
         self.retranslateUi(PopDevWizard)
@@ -183,7 +180,6 @@ class Ui_PopDevWizard(object):
         self.ChangeColourButton.setText(_translate("PopDevWizard", "Colour", None))
         self.columnLabel.setText(_translate("PopDevWizard", "Column:", None))
         self.colourRampLabel.setText(_translate("PopDevWizard", "Colour Ramp:", None))
-        self.pushButton.setText(_translate("PopDevWizard", "Colour", None))
 
 
 if __name__ == "__main__":
