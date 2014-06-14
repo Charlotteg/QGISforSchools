@@ -190,6 +190,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         
         style = self.StyleTypecomboBox.currentText()
+        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         
         if style == "Single Colour":
             self.ColourRampcomboBox.setEnabled(False)
@@ -197,6 +198,13 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.colourRampLabel.setEnabled(False)
             self.columnLabel.setEnabled(False)
             self.ChangeColourButton.setEnabled(True)
+            symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
+            #symbol.setColor(QColor('#31a354'))
+            Countries.setRendererV2(QgsSingleSymbolRendererV2(symbol))
+            model = QStandardItemModel(0, 0)
+            model.clear()
+            self.categoryTableView.setModel(model)
+            
         else:
             self.ColourRampcomboBox.setEnabled(True)
             self.ColumncomboBox.setEnabled(True)
@@ -205,12 +213,11 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.ChangeColourButton.setEnabled(False) 
             #Populate the countries column comboBox with the layer fields that you can style by
             self.ColumncomboBox.clear()
-            Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
             fields = Countries.pendingFields()
             fieldList = []
             for field in fields:
                 fieldList.append(field.name())
-            self.ColumncomboBox.addItems(fieldList)
+            self.ColumncomboBox.addItems(fieldList[3:])
             #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
             self.ColourRampcomboBox.clear()
             rampNames = QgsVectorColorBrewerColorRampV2.listSchemeNames()
@@ -221,6 +228,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
                 colorRamp =QgsVectorColorBrewerColorRampV2.create()
                 rampIcon = QgsSymbolLayerV2Utils.colorRampPreviewIcon(colorRamp,  QSize(50, 16))
                 self.ColourRampcomboBox.addItem( name)
+                
+                
+            self.makeClassTable()
   
     @pyqtSignature("")
     def getAttributes(self, field):
@@ -246,6 +256,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_activated(self,  p0):
+        """
+        classify the chosen field and colour each class based on the colour ramp selected
+        """
         
         Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         
@@ -272,11 +285,56 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Countries)
         
+        self.makeClassTable()
+
+
+    @pyqtSignature("QString")
+    def on_ColumncomboBox_activated(self,  p0):
+        """
+        Change classified values based on selected column
+        """
+        self.makeClassTable()
         
+
+    @pyqtSignature("")
+    def makeClassTable(self):
+        """
+        make and show the table of classified field/ symbology
+        """
+        style = self.StyleTypecomboBox.currentText()
+        field = self.ColumncomboBox.currentText()
+        values = self.getAttributes(field)
+        rows = len(values)
+        cols = 2
+        model = QStandardItemModel(rows,  cols) 
+        model.setHorizontalHeaderItem(0, QStandardItem("Symbol"))
+        model.setHorizontalHeaderItem(1, QStandardItem("Value"))
+        icons = self.getIcons()
         
-#        CountriesRenderer = Countries.rendererV2()
-#        CountriesSymbol = CountriesRenderer.symbol()
-#        CountriesSymbol.setColor(newColor)
+        for value in values:
+            item = QStandardItem(value)
+            row = values.index(value) 
+            model.setItem(row,  1,  item)
+            if icons :
+                index = QModelIndex.child(row,  0)
+                iconItem = QStandardItem(icons[row]) 
+                model.setData(index,  icons[row],  Qt.DecorationRole)
+    
+        self.categoryTableView.setModel(model)
+        
+    def getIcons(self):
+        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+        renderer = Countries.rendererV2()
+        symbols = renderer.symbols()
+        print "symbols:"
+        print symbols
+        icons = []
+        for symbol in symbols:
+            icon = QgsSymbolLayerV2Utils.symbolPreviewIcon(symbol, QSize(50, 50))
+            icons.append(icon)
+        print "icons:"
+        print icons
+            
         
 
 

@@ -199,7 +199,7 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
   <widget class="QWizardPage" name="wizardPage3">
-   <widget class="QTableView" name="tableView">
+   <widget class="QTableView" name="categoryTableView">
     <property name="geometry">
      <rect>
       <x>20</x>
