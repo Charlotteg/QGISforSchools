@@ -316,7 +316,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             item = QStandardItem(value)
             row = values.index(value) 
             model.setItem(row,  1,  item)
-            if len(icons)>1 :
+            if row in range(len(icons)) :
                 index = model.createIndex(row,  0)
                 iconItem = QStandardItem(icons[row],  ' ') 
             #iconItem.setIcon(icons[row])
