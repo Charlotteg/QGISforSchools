@@ -310,16 +310,19 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         model.setHorizontalHeaderItem(0, QStandardItem("Symbol"))
         model.setHorizontalHeaderItem(1, QStandardItem("Value"))
         icons = self.getIcons()
+
         
         for value in values:
             item = QStandardItem(value)
             row = values.index(value) 
             model.setItem(row,  1,  item)
-            if icons :
-                index = QModelIndex.child(row,  0)
-                iconItem = QStandardItem(icons[row]) 
-                model.setData(index,  icons[row],  Qt.DecorationRole)
-    
+            if len(icons)>1 :
+                index = model.createIndex(row,  0)
+                iconItem = QStandardItem(icons[row],  ' ') 
+            #iconItem.setIcon(icons[row])
+                #model.setData(index,  icons[0],  Qt.DecorationRole)
+                model.setItem(row, 0,  iconItem)
+                
         self.categoryTableView.setModel(model)
         
     def getIcons(self):
@@ -332,8 +335,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         for symbol in symbols:
             icon = QgsSymbolLayerV2Utils.symbolPreviewIcon(symbol, QSize(50, 50))
             icons.append(icon)
-        print "icons:"
-        print icons
+            
+        return icons
+
             
         
 
