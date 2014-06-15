@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\dock_widget.ui'
 #
-# Created: Sat Jun 14 22:59:35 2014
+# Created: Sun Jun 15 13:55:04 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!

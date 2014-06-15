@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project QGISforSchools -->
-<!-- Saved: 2014-06-13, 22:20:16 -->
+<!-- Saved: 2014-06-14, 23:06:38 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
@@ -78,7 +78,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-13, 22:15:36</Created>
+    <Created>2014-06-14, 22:55:24</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>40</Linenumber>
@@ -87,7 +87,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-13, 22:15:36</Created>
+    <Created>2014-06-14, 22:55:24</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>48</Linenumber>
@@ -96,7 +96,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-13, 22:15:36</Created>
+    <Created>2014-06-14, 22:55:24</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>56</Linenumber>
@@ -105,7 +105,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-13, 22:15:36</Created>
+    <Created>2014-06-14, 22:55:24</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>64</Linenumber>
@@ -114,7 +114,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-13, 22:15:36</Created>
+    <Created>2014-06-14, 22:55:24</Created>
     <Resource>
       <Filename>Pop_dev_wizard.py</Filename>
       <Linenumber>72</Linenumber>
