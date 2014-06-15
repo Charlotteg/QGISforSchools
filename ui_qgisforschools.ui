@@ -13,22 +13,6 @@
   <property name="windowTitle">
    <string>QGISforSchools</string>
   </property>
-  <widget class="QCheckBox" name="questions">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>200</y>
-     <width>241</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Ask me questions!</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QRadioButton" name="unit1">
    <property name="geometry">
     <rect>
@@ -39,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Unit 1 - population distribution</string>
+    <string>Unit 1 - Population &amp;&amp;  Development</string>
    </property>
    <property name="checked">
     <bool>true</bool>

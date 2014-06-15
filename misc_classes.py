@@ -19,7 +19,7 @@ class CitiesCustomSortingModel(QSortFilterProxyModel):
         dataleft = left.data()
         dataright = right.data()
         
-        if col > 2:
+        if col > 0:
             dataleft = float(dataleft)
             dataright = float(dataright)
          
@@ -38,7 +38,7 @@ class CountriesCustomSortingModel(QSortFilterProxyModel):
         dataleft = left.data()
         dataright = right.data()
             
-        if col == 4 or 5 or 6:
+        if col == 1 or col == 2:
             dataleft = float(dataleft)
             dataright = float(dataright)
             

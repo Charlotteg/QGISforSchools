@@ -536,24 +536,13 @@ class Unit1Wizard(QWizard, Ui_Unit1):
         
         for i in range(rows):
             for j in range(cols):
-#                featAttribute = featureArray[i, j]
-#                if featAttribute == "Null":
-#                    item = QStandardItem("-")
-#                else:
-#                uAttrib = unicode(featAttribute,  "utf-8")
- #               item = QStandardItem(unicode(featureArray[i, j] or 'NULL'))
- 
-#                data = featureArray[i, j]
-#                if isinstance(data, int):
-#                   item = QStandardItem.setData 
-#                else:
 
                 item = QStandardItem(featureArray[i, j])
                 model.setItem(i, j, item)
                 
         
         
-        #self.attributeTableView.setSortingEnabled(True)
+        self.attributeTableView.setSortingEnabled(True)
         
         #self.attributeTableView.setModel(model)
         

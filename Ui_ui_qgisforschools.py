@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\ui_qgisforschools.ui'
 #
-# Created: Sun Jun 15 13:55:03 2014
+# Created: Sun Jun 15 23:35:17 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,10 +27,6 @@ class Ui_QGISforSchools(object):
     def setupUi(self, QGISforSchools):
         QGISforSchools.setObjectName(_fromUtf8("QGISforSchools"))
         QGISforSchools.resize(403, 284)
-        self.questions = QtGui.QCheckBox(QGISforSchools)
-        self.questions.setGeometry(QtCore.QRect(30, 200, 241, 41))
-        self.questions.setChecked(True)
-        self.questions.setObjectName(_fromUtf8("questions"))
         self.unit1 = QtGui.QRadioButton(QGISforSchools)
         self.unit1.setGeometry(QtCore.QRect(30, 110, 201, 17))
         self.unit1.setChecked(True)
@@ -65,8 +61,7 @@ class Ui_QGISforSchools(object):
 
     def retranslateUi(self, QGISforSchools):
         QGISforSchools.setWindowTitle(_translate("QGISforSchools", "QGISforSchools", None))
-        self.questions.setText(_translate("QGISforSchools", "Ask me questions!", None))
-        self.unit1.setText(_translate("QGISforSchools", "Unit 1 - population distribution", None))
+        self.unit1.setText(_translate("QGISforSchools", "Unit 1 - Population &&  Development", None))
         self.unit2.setText(_translate("QGISforSchools", "Unit 2", None))
         self.unit3.setText(_translate("QGISforSchools", "Unit 3", None))
         self.label.setText(_translate("QGISforSchools", "Welcome to QGIS for Schools!", None))
