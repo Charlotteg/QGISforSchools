@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Mon Jun 16 14:14:27 2014
+# Created: Mon Jun 16 14:19:16 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -774,6 +774,8 @@ class Ui_PopDevWizard(object):
         self.label_47.setObjectName(_fromUtf8("label_47"))
         self.starView = QtGui.QGraphicsView(self.wizardPage11)
         self.starView.setGeometry(QtCore.QRect(20, 260, 256, 192))
+        self.starView.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.starView.setFrameShadow(QtGui.QFrame.Sunken)
         self.starView.setObjectName(_fromUtf8("starView"))
         self.label_51 = QtGui.QLabel(self.wizardPage11)
         self.label_51.setGeometry(QtCore.QRect(50, 100, 71, 31))

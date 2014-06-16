@@ -55,21 +55,19 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     @pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
-        Slot documentation goes here.
+        Open the correct unit wizard based on the selection made
         """
-        # TODO: not implemented yet
+        msgBox=QMessageBox()
+        msgBox.setIcon(3)
+        
         self.close()
         if self.unit==1:
-            openWizard=Unit1Wizard()
+            openWizard=PopDevWizard()
             openWizard.show()
             result = openWizard.exec_()
-        elif self.unit ==2:
-            openWizard = PopDevWizard()
-            openWizard.show()
-            result = openWizard.exec_()
-            
         else:
-            raise NotImplementedError
+            msgBox.setText("Sorry, this unit is not quite ready yet!")
+            msgBox.exec_()
     
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
