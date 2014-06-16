@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Sun Jun 15 23:35:18 2014
+# Created: Mon Jun 16 14:14:27 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -254,6 +254,9 @@ class Ui_PopDevWizard(object):
         self.ColumncomboBox_2.setEnabled(True)
         self.ColumncomboBox_2.setGeometry(QtCore.QRect(110, 210, 151, 20))
         self.ColumncomboBox_2.setObjectName(_fromUtf8("ColumncomboBox_2"))
+        self.ColumncomboBox_2.addItem(_fromUtf8(""))
+        self.ColumncomboBox_2.addItem(_fromUtf8(""))
+        self.ColumncomboBox_2.addItem(_fromUtf8(""))
         self.Score_label_4 = QtGui.QLabel(self.wizardPage5)
         self.Score_label_4.setGeometry(QtCore.QRect(230, 500, 46, 21))
         font = QtGui.QFont()
@@ -431,7 +434,7 @@ class Ui_PopDevWizard(object):
         self.groupBox_5.setObjectName(_fromUtf8("groupBox_5"))
         self.ColumncomboBox_3 = QtGui.QComboBox(self.groupBox_5)
         self.ColumncomboBox_3.setEnabled(True)
-        self.ColumncomboBox_3.setGeometry(QtCore.QRect(90, 40, 151, 20))
+        self.ColumncomboBox_3.setGeometry(QtCore.QRect(90, 30, 151, 20))
         self.ColumncomboBox_3.setObjectName(_fromUtf8("ColumncomboBox_3"))
         self.columnLabel_3 = QtGui.QLabel(self.groupBox_5)
         self.columnLabel_3.setEnabled(True)
@@ -461,11 +464,11 @@ class Ui_PopDevWizard(object):
         self.groupBox_6.setObjectName(_fromUtf8("groupBox_6"))
         self.obesityColumncomboBox = QtGui.QComboBox(self.groupBox_6)
         self.obesityColumncomboBox.setEnabled(True)
-        self.obesityColumncomboBox.setGeometry(QtCore.QRect(90, 34, 151, 20))
+        self.obesityColumncomboBox.setGeometry(QtCore.QRect(90, 30, 151, 20))
         self.obesityColumncomboBox.setObjectName(_fromUtf8("obesityColumncomboBox"))
         self.columnLabel_4 = QtGui.QLabel(self.groupBox_6)
         self.columnLabel_4.setEnabled(True)
-        self.columnLabel_4.setGeometry(QtCore.QRect(10, 20, 41, 20))
+        self.columnLabel_4.setGeometry(QtCore.QRect(10, 30, 41, 20))
         self.columnLabel_4.setObjectName(_fromUtf8("columnLabel_4"))
         self.colourRampLabel_3 = QtGui.QLabel(self.wizardPage8)
         self.colourRampLabel_3.setEnabled(True)
@@ -754,7 +757,7 @@ class Ui_PopDevWizard(object):
         self.label_46 = QtGui.QLabel(self.wizardPage11)
         self.label_46.setGeometry(QtCore.QRect(30, 20, 231, 21))
         font = QtGui.QFont()
-        font.setPointSize(10)
+        font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         self.label_46.setFont(font)
@@ -769,14 +772,30 @@ class Ui_PopDevWizard(object):
         self.label_47.setFont(font)
         self.label_47.setAlignment(QtCore.Qt.AlignCenter)
         self.label_47.setObjectName(_fromUtf8("label_47"))
-        self.graphicsView = QtGui.QGraphicsView(self.wizardPage11)
-        self.graphicsView.setGeometry(QtCore.QRect(20, 120, 256, 192))
-        self.graphicsView.setObjectName(_fromUtf8("graphicsView"))
+        self.starView = QtGui.QGraphicsView(self.wizardPage11)
+        self.starView.setGeometry(QtCore.QRect(20, 260, 256, 192))
+        self.starView.setObjectName(_fromUtf8("starView"))
+        self.label_51 = QtGui.QLabel(self.wizardPage11)
+        self.label_51.setGeometry(QtCore.QRect(50, 100, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Levenim MT"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_51.setFont(font)
+        self.label_51.setObjectName(_fromUtf8("label_51"))
+        self.Score_label_10 = QtGui.QLabel(self.wizardPage11)
+        self.Score_label_10.setGeometry(QtCore.QRect(100, 160, 81, 51))
+        font = QtGui.QFont()
+        font.setPointSize(26)
+        self.Score_label_10.setFont(font)
+        self.Score_label_10.setAlignment(QtCore.Qt.AlignCenter)
+        self.Score_label_10.setObjectName(_fromUtf8("Score_label_10"))
         PopDevWizard.addPage(self.wizardPage11)
 
         self.retranslateUi(PopDevWizard)
         self.StyleTypecomboBox_2.setCurrentIndex(1)
-        self.ColumncomboBox_2.setCurrentIndex(-1)
+        self.ColumncomboBox_2.setCurrentIndex(2)
         self.ColumncomboBox_3.setCurrentIndex(-1)
         self.obesityColumncomboBox.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(PopDevWizard)
@@ -856,6 +875,9 @@ class Ui_PopDevWizard(object):
         self.colourRampLabel_2.setText(_translate("PopDevWizard", "Colour Ramp:", None))
         self.StyleTypecomboBox_2.setItemText(0, _translate("PopDevWizard", "Single Colour", None))
         self.StyleTypecomboBox_2.setItemText(1, _translate("PopDevWizard", "Categorized", None))
+        self.ColumncomboBox_2.setItemText(0, _translate("PopDevWizard", "economy", None))
+        self.ColumncomboBox_2.setItemText(1, _translate("PopDevWizard", "income_grp", None))
+        self.ColumncomboBox_2.setItemText(2, _translate("PopDevWizard", "pop_group", None))
         self.Score_label_4.setText(_translate("PopDevWizard", "0", None))
         self.textBrowser_4.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -962,6 +984,8 @@ class Ui_PopDevWizard(object):
         self.checkAnswersPopDens.setText(_translate("PopDevWizard", "Check my answer!", None))
         self.label_46.setText(_translate("PopDevWizard", "Congratulations!", None))
         self.label_47.setText(_translate("PopDevWizard", "You have now completed Unit 1.", None))
+        self.label_51.setText(_translate("PopDevWizard", "SCORE:", None))
+        self.Score_label_10.setText(_translate("PopDevWizard", "0", None))
 
 
 if __name__ == "__main__":

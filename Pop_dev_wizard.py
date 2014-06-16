@@ -6,6 +6,7 @@ Module implementing PopDevWizard.
 # Import the Python, PyQt and QGIS libraries
 import ntpath
 import numpy as np
+import math
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -382,6 +383,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         self.Score_label_7.clear()
         self.Score_label_8.clear()
         self.Score_label_9.clear()
+        self.Score_label_10.clear()
         self.Score_label.setText(str(self.score))
         self.Score_label_2.setText(str(self.score))
         self.Score_label_3.setText(str(self.score))
@@ -391,6 +393,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         self.Score_label_7.setText(str(self.score))
         self.Score_label_8.setText(str(self.score))
         self.Score_label_9.setText(str(self.score))
+        self.Score_label_10.setText(str(self.score))
+        self.drawStars()
     
     
 #*************************************** Page 5 *****************************************************************************    
@@ -889,3 +893,95 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         else:
             msgBox.setText("Well done. Click Next to move on.")
             msgBox.exec_()   
+            
+#*************************************** Page 10***************************************************************************** 
+
+    def drawStars(self):
+        """
+        Draw stars based on the number of points the user has accumulated
+        """
+        scene = QGraphicsScene()
+        
+        
+        self.starView.setScene(scene)        
+
+        
+#        starPoints = [QPoint(0, 6), QPoint(5, 5),  QPoint(7, 0),  QPoint(9, 5),  QPoint(14, 6),  QPoint(10, 9),  QPoint(11, 14),  QPoint(7,  11),  QPoint(3, 14),  QPoint(4, 9)]
+#        star = QPolygon()
+#        for point in starPoints:
+#            i = starPoints.index(point)
+#            star.setPoint(i,  point)
+#            
+#        starF = QPolygonF(star)
+#        starG = QGraphicsPolygonItem(starF)
+
+        starPoly = QPolygonF()
+        starPoly << QPointF(10, 40)
+        starPoly << QPointF(40, 40)
+        starPoly << QPointF(50, 10)
+        starPoly << QPointF(60, 40)
+        starPoly << QPointF(90, 40)
+        starPoly << QPointF(65, 60)
+        starPoly << QPointF(75, 90)
+        starPoly << QPointF(50, 70)
+        starPoly << QPointF(25, 90)
+        starPoly << QPointF(35, 60)
+        
+        starPoly2 = QPolygonF()
+        starPoly2 << QPointF(10, 40)
+        starPoly2 << QPointF(40, 40)
+        starPoly2 << QPointF(50, 10)
+        starPoly2 << QPointF(60, 40)
+        starPoly2 << QPointF(90, 40)
+        starPoly2 << QPointF(65, 60)
+        starPoly2 << QPointF(75, 90)
+        starPoly2 << QPointF(50, 70)
+        starPoly2 << QPointF(25, 90)
+        starPoly2 << QPointF(35, 60)
+        
+        starPoly3 = QPolygonF()
+        starPoly3 << QPointF(10, 40)
+        starPoly3 << QPointF(40, 40)
+        starPoly3 << QPointF(50, 10)
+        starPoly3 << QPointF(60, 40)
+        starPoly3 << QPointF(90, 40)
+        starPoly3 << QPointF(65, 60)
+        starPoly3 << QPointF(75, 90)
+        starPoly3 << QPointF(50, 70)
+        starPoly3 << QPointF(25, 90)
+        starPoly3 << QPointF(35, 60)
+
+            
+        yellowBrush = QBrush(QColor(255, 217,  10,  255))
+        yellowPen = QPen(QColor(255,  217,  10,  255))
+        greyBrush = QBrush(QColor(207, 207, 207,  255))
+        greyPen = QPen(QColor(207, 207, 207, 255))
+
+        starPoly2.translate(50, 55)
+        starPoly3.translate(100, 0)
+
+        
+        #scene.addPolygon(star,  blackPen,  yellowBrush)
+        polygon = QGraphicsPolygonItem()
+        ellipse = QGraphicsEllipseItem()
+        
+        if self.score > 30:
+            scene.addPolygon(starPoly,  yellowPen,  yellowBrush)
+            scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
+            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
+        elif self.score <= 30 and self.score> 20:
+            scene.addPolygon(starPoly,  greyPen,  greyBrush)
+            scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
+            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
+        elif self.score <= 20 and self.score > 7 :
+            scene.addPolygon(starPoly,  greyPen,  greyBrush)
+            scene.addPolygon(starPoly2, greyPen,  greyBrush)
+            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)  
+        else:
+            scene.addPolygon(starPoly,  greyPen,  greyBrush)
+            scene.addPolygon(starPoly2, greyPen,  greyBrush)
+            scene.addPolygon(starPoly3,  greyPen,  greyBrush)
+        
+        
+
+        

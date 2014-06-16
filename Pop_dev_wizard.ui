@@ -789,8 +789,23 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="currentIndex">
-     <number>-1</number>
+     <number>2</number>
     </property>
+    <item>
+     <property name="text">
+      <string>economy</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>income_grp</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>pop_group</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="Score_label_4">
     <property name="geometry">
@@ -1372,7 +1387,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>40</y>
+       <y>30</y>
        <width>151</width>
        <height>20</height>
       </rect>
@@ -1471,7 +1486,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>34</y>
+       <y>30</y>
        <width>151</width>
        <height>20</height>
       </rect>
@@ -1487,7 +1502,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>30</y>
        <width>41</width>
        <height>20</height>
       </rect>
@@ -2376,7 +2391,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -2411,14 +2426,56 @@ p, li { white-space: pre-wrap; }
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QGraphicsView" name="starView">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>260</y>
       <width>256</width>
       <height>192</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_51">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>100</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Levenim MT</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>SCORE:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Score_label_10">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>160</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
