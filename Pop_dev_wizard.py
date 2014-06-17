@@ -981,6 +981,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             scene.addPolygon(starPoly,  greyPen,  greyBrush)
             scene.addPolygon(starPoly2, greyPen,  greyBrush)
             scene.addPolygon(starPoly3,  greyPen,  greyBrush)
+            
+            
         
         
 
