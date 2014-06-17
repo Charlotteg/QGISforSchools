@@ -12,7 +12,6 @@ from qgis.gui import *
 
 from Ui_ui_qgisforschools import Ui_QGISforSchools
 from unit_1_wizard import Unit1Wizard
-from dock_widget import DockWidget
 from Ui_Pop_dev_wizard import Ui_PopDevWizard
 from Pop_dev_wizard import PopDevWizard
 

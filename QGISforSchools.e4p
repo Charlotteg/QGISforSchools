@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project QGISforSchools -->
-<!-- Saved: 2014-06-12, 22:44:34 -->
+<!-- Saved: 2014-06-17, 23:45:26 -->
 <!-- Copyright (C) 2014 Charlotte Graves, charlottergraves@gmail.com -->
 <Project version="4.6">
   <Language>en</Language>
@@ -21,16 +21,13 @@
     <Source>ui_qgisforschools.py</Source>
     <Source>Ui_unit_1_wizard.py</Source>
     <Source>unit_1_wizard.py</Source>
-    <Source>Ui_dock_widget.py</Source>
     <Source>Layer_behaviours.py</Source>
-    <Source>dock_widget.py</Source>
     <Source>Ui_Pop_dev_wizard.py</Source>
     <Source>Pop_dev_wizard.py</Source>
   </Sources>
   <Forms>
     <Form>ui_qgisforschools.ui</Form>
     <Form>unit_1_wizard.ui</Form>
-    <Form>dock_widget.ui</Form>
     <Form>Pop_dev_wizard.ui</Form>
   </Forms>
   <Translations>

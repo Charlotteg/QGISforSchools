@@ -16,7 +16,9 @@ from qgis.gui import *
 from qgis.utils import *
 
 #Import other classes required here
+from colours import colourManager
 from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
+from addlayers import AddLayers
 from Ui_Pop_dev_wizard import Ui_PopDevWizard
 
 class PopDevWizard(QWizard, Ui_PopDevWizard):
@@ -63,8 +65,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         CountrieslineEdit = self.CountrieslineEdit
         
-        Countries = self.CheckAddLayers(CountrieslineEdit,  "countries")
-        
+        Countries = AddLayers().CheckAddLayers(CountrieslineEdit,  "countries")
         
         if Countries is not None:
             CountriesRenderer = Countries.rendererV2()
@@ -74,44 +75,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         
         return QgsMapLayerRegistry.instance().addMapLayer(Countries),  iface.actionMapTips().trigger()
         
-    
-    def CheckAddLayers(self, LineEditName,  LayerString): 
-        """
-        Performs checks to determine whether the layers to be added to the canvas:
-        1. have not already been added
-        2. have a file specified
-        3. are valid
-        4. are the correct layers
-        
-        Parameters: The name of the LineEdit that contains the filePath (LineEditName)
-                        The string that you wish the layer to be called/shapefile name
-        
-        """
-
-        LayerFile = LineEditName.text()
-        NewLayer = QgsVectorLayer(LayerFile,  LayerString,  'ogr')
-        LayerAdded = QgsMapLayerRegistry.instance().mapLayersByName(LayerString)
-            
-        msgBox=QMessageBox()
-        msgBox.setIcon(3)
-         
-        #If the layer is already added, or the field has been left blank, do nothing
-        if LayerAdded:
-            return None
-        elif not LayerFile:
-            return None
-        #If the file selected is not a vaild layer, execute an error message box
-        elif not NewLayer.isValid():
-            msgBox.setText("Could not load the " + LayerString + " layer")
-            msgBox.setInformativeText(" Please make sure that you have used the Browse button to select " + LayerString +".shp")
-            msgBox.exec_()
-        elif LayerString not in LayerFile:
-            msgBox.setText("You have chosen the wrong shapefile for " + LayerString + ".")
-            msgBox.setInformativeText(" Please go back and select " + LayerString +".shp")
-            msgBox.exec_()   
-        else:
-                
-            return NewLayer 
             
 
 #*************************************** Page 3 *****************************************************************************
@@ -122,17 +85,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Allow the user to select a single colour for the Countries layer
         """
-        newColor = self.changeColour()
-        
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        CountriesRenderer = Countries.rendererV2()
-        CountriesSymbol = CountriesRenderer.symbol()
-        CountriesSymbol.setColor(newColor)
-        
-        #refresh the map and legend
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Countries)
-        
+        colourManager().updateSingleColour("countries")
+    
     @pyqtSignature("")
     def changeColour(self):
         """
@@ -187,39 +141,16 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.ColourRampcomboBox.clear()
             self.ColourRampcomboBox_2.clear()
             rampNames = QgsVectorColorBrewerColorRampV2.listSchemeNames()
-            rampList = []
         
             for name in rampNames:
-                #rampList.append(name)
-                #colorRamp =QgsVectorColorBrewerColorRampV2.create()
-                #rampIcon = QgsSymbolLayerV2Utils.colorRampPreviewIcon(colorRamp,  QSize(50, 16))
                 self.ColourRampcomboBox.addItem(name)
                 self.ColourRampcomboBox_2.addItem(name)
                 self.ColourRampcomboBox_3.addItem(name)
                 
                 
-            self.makeClassTable()
-  
-    @pyqtSignature("")
-    def getAttributes(self, field):
-        """
-        get the sorted and deduplicated elements of the field passed
-        """
-        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-
-        feats = layer.getFeatures()
-        
-        fieldIndex = layer.fieldNameIndex(field)
-        
-        valueList = []
-        
-        for feat in feats:
-            valueList.append(feat.attributes()[fieldIndex] )
-        
-        
-        newValueList = sorted(set(valueList))
-        
-        return newValueList
+            #self.makeClassTable()
+            tableViews = [self.categoryTableView,  self.categoryTableView_2]
+            colourManager().makeClassTable(Countries,  self.ColumncomboBox, tableViews)
         
         
     @pyqtSignature("QString")
@@ -227,36 +158,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         classify the chosen field and colour each class based on the colour ramp selected
         """
-        self.changeColumnColor()
-        
-    def changeColumnColor(self):
-        
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        
-        field = self.ColumncomboBox.currentText()
-        colorScheme = self.ColourRampcomboBox.currentText()
-        
-        categories = self.getAttributes(field)
-        numColors = len(categories)
-        
-        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors )
-        catList =[]
-        
-        for category in categories:
-            colorIndex = categories.index(category)
-            symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
-            symbol.setColor(colors[colorIndex])
-            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
-            catList.append(cat)
-        
-        renderer = QgsCategorizedSymbolRendererV2(field, catList)
-        
-        Countries.setRendererV2(renderer)
-        
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Countries)
-        
-        self.makeClassTable()
+        #self.changeColumnColor()
+        tableViews = [self.categoryTableView,  self.categoryTableView_2]
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox,  self.ColourRampcomboBox,  tableViews)
 
 
     @pyqtSignature("QString")
@@ -264,52 +168,10 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Change classified values based on selected column
         """
-        self.changeColumnColor()
+        tableViews = [self.categoryTableView,  self.categoryTableView_2]
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox,  self.ColourRampcomboBox,  tableViews)
 
 
-    @pyqtSignature("")
-    def makeClassTable(self):
-        """
-        make and show the table of classified field/ symbology
-        """
-        style = self.StyleTypecomboBox.currentText()
-        field = self.ColumncomboBox.currentText()
-        values = self.getAttributes(field)
-        rows = len(values)
-        cols = 2
-        model = QStandardItemModel(rows,  cols) 
-        model.setHorizontalHeaderItem(0, QStandardItem("Symbol"))
-        model.setHorizontalHeaderItem(1, QStandardItem("Value"))
-        icons = self.getIcons()
-
-        
-        for value in values:
-            item = QStandardItem(value)
-            row = values.index(value) 
-            model.setItem(row,  1,  item)
-            if row in range(len(icons)) :
-                index = model.createIndex(row,  0)
-                iconItem = QStandardItem(icons[row],  ' ') 
-            #iconItem.setIcon(icons[row])
-                #model.setData(index,  icons[0],  Qt.DecorationRole)
-                model.setItem(row, 0,  iconItem)
-                
-        self.categoryTableView.setModel(model)
-        self.categoryTableView_2.setModel(model)
-        
-    def getIcons(self):
-        """
-        make and return a list of Qicons from the symbols currently used to represent the countries layer
-        """
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        renderer = Countries.rendererV2()
-        symbols = renderer.symbols()
-        icons = []
-        for symbol in symbols:
-            icon = QgsSymbolLayerV2Utils.symbolPreviewIcon(symbol, QSize(50, 50))
-            icons.append(icon)
-            
-        return icons
         
 #*************************************** Page 4 *****************************************************************************
 
@@ -403,16 +265,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Allow the user to select a single colour for the Countries layer
         """
-        newColor = self.changeColour()
-        
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        CountriesRenderer = Countries.rendererV2()
-        CountriesSymbol = CountriesRenderer.symbol()
-        CountriesSymbol.setColor(newColor)
-        
-        #refresh the map and legend
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Countries)
+        colourManager().updateSingleColour("countries")
         
     @pyqtSignature("QString")
     def on_StyleTypecomboBox_2_activated(self,  p0):
@@ -429,7 +282,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.columnLabel_2.setEnabled(False)
             self.ChangeColourButton_2.setEnabled(True)
             symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
-            #symbol.setColor(QColor('#31a354'))
             Countries.setRendererV2(QgsSingleSymbolRendererV2(symbol))
             model = QStandardItemModel(0, 0)
             model.clear()
@@ -454,88 +306,28 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             rampList = []
         
             for name in rampNames:
-                #rampList.append(name)
-                #colorRamp =QgsVectorColorBrewerColorRampV2.create()
-                #rampIcon = QgsSymbolLayerV2Utils.colorRampPreviewIcon(colorRamp,  QSize(50, 16))
                 self.ColourRampcomboBox_2.addItem(name)
                 
                 
-            self.makeClassTable()
-            self.makeClassTable2()
+#            self.makeClassTable()
+#            self.makeClassTable2()
+            tableViews = [self.categoryTableView,  self.categoryTableView_2]
+            colourManager().makeClassTable(Countries,  self.ColumncomboBox_2, tableViews)
 
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_2_activated(self,  p0):
-        self.changeColumnColor2()
+        #self.changeColumnColor2()
+        tableViews = [self.categoryTableView,  self.categoryTableView_2]
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox_2,  self.ColourRampcomboBox_2,  tableViews)
         
-    def changeColumnColor2(self):
-        """
-        classify the chosen field and colour each class based on the colour ramp selected
-        """
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        
-        field = self.ColumncomboBox_2.currentText()
-        colorScheme = self.ColourRampcomboBox_2.currentText()
-        
-        categories = self.getAttributes(field)
-        numColors = len(categories)
-        
-        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors )
-        catList =[]
-        
-        for category in categories:
-            colorIndex = categories.index(category)
-            symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
-            symbol.setColor(colors[colorIndex])
-            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
-            catList.append(cat)
-        
-        renderer = QgsCategorizedSymbolRendererV2(field, catList)
-        
-        Countries.setRendererV2(renderer)
-        
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Countries)
-        
-        self.makeClassTable()
-        self.makeClassTable2()
-
 
     @pyqtSignature("QString")
     def on_ColumncomboBox_2_activated(self,  p0):
         """
         Change classified values based on selected column
         """
-        self.changeColumnColor2()
-        
-    @pyqtSignature("")
-    def makeClassTable2(self):
-        """
-        make and show the table of classified field/ symbology
-        """
-        style = self.StyleTypecomboBox_2.currentText()
-        field = self.ColumncomboBox_2.currentText()
-        values = self.getAttributes(field)
-        rows = len(values)
-        cols = 2
-        model = QStandardItemModel(rows,  cols) 
-        model.setHorizontalHeaderItem(0, QStandardItem("Symbol"))
-        model.setHorizontalHeaderItem(1, QStandardItem("Value"))
-        icons = self.getIcons()
-
-        
-        for value in values:
-            item = QStandardItem(value)
-            row = values.index(value) 
-            model.setItem(row,  1,  item)
-            if row in range(len(icons)) :
-                index = model.createIndex(row,  0)
-                iconItem = QStandardItem(icons[row],  ' ') 
-            #iconItem.setIcon(icons[row])
-                #model.setData(index,  icons[0],  Qt.DecorationRole)
-                model.setItem(row, 0,  iconItem)
-                
-        self.categoryTableView.setModel(model)
-        self.categoryTableView_2.setModel(model)
+        tableViews = [self.categoryTableView,  self.categoryTableView_2]
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox_2,  self.ColourRampcomboBox_2,  tableViews)
         
 #*************************************** Page 6 *****************************************************************************    
 
@@ -613,7 +405,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         obesitylineEdit = self.obesitylineEdit
         
-        obesityLayer = self.CheckAddLayers(obesitylineEdit,  "obesity")
+        obesityLayer = AddLayers().CheckAddLayers(obesitylineEdit,  "obesity")
         
         QgsMapLayerRegistry.instance().addMapLayer(obesityLayer)
         
