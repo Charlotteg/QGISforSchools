@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Mon Jun 16 14:19:16 2014
+# Created: Wed Jun 18 16:20:40 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -787,9 +787,9 @@ class Ui_PopDevWizard(object):
         self.label_51.setFont(font)
         self.label_51.setObjectName(_fromUtf8("label_51"))
         self.Score_label_10 = QtGui.QLabel(self.wizardPage11)
-        self.Score_label_10.setGeometry(QtCore.QRect(100, 160, 81, 51))
+        self.Score_label_10.setGeometry(QtCore.QRect(100, 140, 91, 71))
         font = QtGui.QFont()
-        font.setPointSize(26)
+        font.setPointSize(48)
         self.Score_label_10.setFont(font)
         self.Score_label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.Score_label_10.setObjectName(_fromUtf8("Score_label_10"))

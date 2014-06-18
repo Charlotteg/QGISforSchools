@@ -16,6 +16,7 @@ from qgis.gui import *
 from qgis.utils import *
 
 #Import other classes required here
+from score import ScoreSystem
 from colours import colourManager
 from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
 from addlayers import AddLayers
@@ -46,6 +47,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         self.q5 = False
         self.q6 = False
         self.q7 = False
+        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5, self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9,  self.Score_label_10]
         
        
 #*************************************** Page 2 *****************************************************************************
@@ -86,19 +88,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         Allow the user to select a single colour for the Countries layer
         """
         colourManager().updateSingleColour("countries")
-    
-    @pyqtSignature("")
-    def changeColour(self):
-        """
-        Bring up the colour dialog box and return the selected colour
-        """
-        #Open the QColorDialog
-        colorDialog = QColorDialog()
-        colorDialog.exec_()
-        
-        #find & return selected colour
-        colour = colorDialog.currentColor() 
-        return colour
         
     @pyqtSignature("QString")
     def on_StyleTypecomboBox_activated(self,  p0):
@@ -180,57 +169,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.popAnsClicks += 1
-        points = self.assignPoints()
-        
-        if  self.mediumPop.isChecked() and self.usaPop.isChecked() and self.q1 == False and self.q2 == False:
-            self.score += (2*points)
-            self.q1 = True
-            self.q2 = True
-        elif self.mediumPop.isChecked() and self.q1 == False:
-            self.score += points
-            self.q1 = True
-        elif self.usaPop.isChecked() and self.q2 == False:
-            self.score += points
-            self.q2 = True  
-        else:
-            self.score += 0
-        
-        self.ansMsgBoxes()
-        self.updateScore()
-        
-    def assignPoints(self):
-        """
-        Assign a different number of points depending on the number of trials. i.e. 5 points for getting it right
-        first time, 3 for getting it right second time and 1 point thereafter.
-        """
-        if self.popAnsClicks == 1:
-            points = 5
-        elif self.popAnsClicks == 2:
-            points = 3
-        else:
-            points = 1
-
-        return points
+        self.score,  self.q1,  self.q2 = ScoreSystem(self.score).checkAnswers(self.popAnsClicks,  self.mediumPop,  self.q1,  1,  self.usaPop,  self.q2,  2)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
             
-
-    def ansMsgBoxes(self):
-        """
-        show message boxes telling the user if they have got the questions right and informing them to move on
-        or highlighting to the user which question they got wrong and telling them to try again.
-        """
-        msgBox=QMessageBox()
-        if self.q1 == False and self.q2 == False:
-            msgBox.setText("That is the wrong answer for question 1 and 2. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q1 == False:
-            msgBox.setText("That is the wrong answer for question 1. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q2 == False:
-            msgBox.setText("That is the wrong answer for question 2. Look at the map and try again.")
-            msgBox.exec_() 
-        else:
-            msgBox.setText("Well done. Click Next to move on.")
-            msgBox.exec_() 
             
     def updateScore(self):
         """
@@ -256,7 +197,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         self.Score_label_8.setText(str(self.score))
         self.Score_label_9.setText(str(self.score))
         self.Score_label_10.setText(str(self.score))
-        self.drawStars()
+        #self.drawStars()
+        ScoreSystem(self.score).drawStars(self.starView)
     
     
 #*************************************** Page 5 *****************************************************************************    
@@ -309,14 +251,11 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
                 self.ColourRampcomboBox_2.addItem(name)
                 
                 
-#            self.makeClassTable()
-#            self.makeClassTable2()
             tableViews = [self.categoryTableView,  self.categoryTableView_2]
             colourManager().makeClassTable(Countries,  self.ColumncomboBox_2, tableViews)
 
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_2_activated(self,  p0):
-        #self.changeColumnColor2()
         tableViews = [self.categoryTableView,  self.categoryTableView_2]
         colourManager().changeColumnColor("countries",  self.ColumncomboBox_2,  self.ColourRampcomboBox_2,  tableViews)
         
@@ -335,57 +274,10 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         check answers and add points if correct based on the number of answers already submitted
         """
+        
         self.devAnsClicks += 1
-        points = self.assignDevPoints()
-        
-        if  self.africa.isChecked() and self.ufi.isChecked() and self.q3 == False and self.q4 == False:
-            self.score += (2*points)
-            self.q3 = True
-            self.q4 = True
-        elif self.africa.isChecked() and self.q3 == False:
-            self.score += points
-            self.q3 = True
-        elif self.ufi.isChecked() and self.q4 == False:
-            self.score += points
-            self.q4 = True  
-        else:
-            self.score += 0
-        
-        self.ansDevMsgBoxes()
-        self.updateScore()
-        
-    def assignDevPoints(self):
-        """
-        Assign a different number of points depending on the number of trials. i.e. 5 points for getting it right
-        first time, 3 for getting it right second time and 1 point thereafter.
-        """
-        if self.devAnsClicks == 1:
-            points = 5
-        elif self.devAnsClicks == 2:
-            points = 3
-        else:
-            points = 1
-
-        return points
-        
-    def ansDevMsgBoxes(self):
-        """
-        show message boxes telling the user if they have got the questions right and informing them to move on
-        or highlighting to the user which question they got wrong and telling them to try again.
-        """
-        msgBox=QMessageBox()
-        if self.q3 == False and self.q4 == False:
-            msgBox.setText("That is the wrong answer for question 3 and 4. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q3 == False:
-            msgBox.setText("That is the wrong answer for question 3. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q4 == False:
-            msgBox.setText("That is the wrong answer for question 4. Look at the map and try again.")
-            msgBox.exec_() 
-        else:
-            msgBox.setText("Well done. Click Next to move on.")
-            msgBox.exec_() 
+        self.score,  self.q3,  self.q4 = ScoreSystem(self.score).checkAnswers(self.devAnsClicks,  self.africa,  self.q3,  3,  self.ufi,  self.q4,  4)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
             
 #*************************************** Page 7 *****************************************************************************    
 
@@ -420,140 +312,28 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
 
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_3_activated(self,  p0):
-        self.changeColumnColor3()
-        self.changeObesityColumnColor()
+
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox_3,  self.ColourRampcomboBox_3)
+        colourManager().changeColumnColor("obesity",  self.obesityColumncomboBox,  self.ColourRampcomboBox_3)
+        colourManager().make3ClassTable("countries",  "obesity",  self.ColumncomboBox_3,  self.obesityColumncomboBox,  self.obesityTableView)
         
     @pyqtSignature("QString")
     def on_obesityColumncomboBox_activated(self,  p0):
         """
         Change classified values based on selected column
         """
-        self.changeColumnColor3()
-        self.changeObesityColumnColor()
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox_3,  self.ColourRampcomboBox_3)
+        colourManager().changeColumnColor("obesity",  self.obesityColumncomboBox,  self.ColourRampcomboBox_3)
+        colourManager().make3ClassTable("countries",  "obesity",  self.ColumncomboBox_3,  self.obesityColumncomboBox,  self.obesityTableView)
         
     @pyqtSignature("QString")
     def on_ColumncomboBox_3_activated(self,  p0):
         """
         Change classified values based on selected column
         """
-        self.changeColumnColor3()
-        self.changeObesityColumnColor()
-        
-    def changeColumnColor3(self):
-        """
-        classify the chosen field and colour each class based on the colour ramp selected
-        """
-        Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        
-        field = self.ColumncomboBox_3.currentText()
-        colorScheme = self.ColourRampcomboBox_3.currentText()
-        
-        categories = self.getAttributes(field)
-        numColors = len(categories)
-        
-        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors )
-        catList =[]
-        
-        for category in categories:
-            colorIndex = categories.index(category)
-            symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
-            symbol.setColor(colors[colorIndex])
-            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
-            catList.append(cat)
-        
-        renderer = QgsCategorizedSymbolRendererV2(field, catList)
-        
-        Countries.setRendererV2(renderer)
-        
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Countries)
-        
-        
-    def changeObesityColumnColor(self):
-        """
-        classify the chosen field and colour each class based on the colour ramp selected
-        """
- 
-        obesityLayer = QgsMapLayerRegistry.instance().mapLayersByName("obesity")[0]
-        
-        field = self.obesityColumncomboBox.currentText()
-        colorScheme = self.ColourRampcomboBox_3.currentText()
-        
-        categories = self.getObesityAttributes(field)
-        numColors = len(categories)
-        
-        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors )
-        catList =[]
-        
-        for category in categories:
-            colorIndex = categories.index(category)
-            symbol = QgsSymbolV2.defaultSymbol(obesityLayer.geometryType())
-            symbol.setColor(colors[colorIndex])
-            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
-            catList.append(cat)
-        
-        renderer = QgsCategorizedSymbolRendererV2(field, catList)
-        
-        obesityLayer.setRendererV2(renderer)
-        
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(obesityLayer)
-        
-        self.makeClassTable3()
-
-
-    @pyqtSignature("")
-    def makeClassTable3(self):
-        """
-        make and show the table of classified field/ symbology. This one has 3 columns: symbol, obesity value and income value
-        """
-        incomeField = self.ColumncomboBox_3.currentText()
-        incomeValues = self.getAttributes(incomeField)
-        obesityField = self.obesityColumncomboBox.currentText()
-        obesityValues = self.getObesityAttributes(obesityField)
-        rows = len(obesityValues)
-        cols = 3
-        model = QStandardItemModel(rows,  cols) 
-        model.setHorizontalHeaderItem(0, QStandardItem("Symbol"))
-        model.setHorizontalHeaderItem(1, QStandardItem("Obesity"))
-        model.setHorizontalHeaderItem(2, QStandardItem("Income"))
-        icons = self.getIcons()
-        print obesityValues
-        
-        for value in obesityValues:
-            item = QStandardItem(value)
-            row = obesityValues.index(value) 
-            model.setItem(row,  1,  item)
-            if row in range(len(icons)) :
-                index = model.createIndex(row,  0)
-                iconItem = QStandardItem(icons[row],  ' ') 
-                model.setItem(row, 0,  iconItem)
-            if row in range(len(incomeValues)):
-                incomeItem = QStandardItem(incomeValues[row])
-                model.setItem(row, 2,  incomeItem)
-                
-        self.obesityTableView.setModel(model)
-        
-    @pyqtSignature("")
-    def getObesityAttributes(self, field):
-        """
-        get the sorted and deduplicated elements of the field passed from the obesity layer
-        """
-        layer = QgsMapLayerRegistry.instance().mapLayersByName("obesity")[0]
-
-        feats = layer.getFeatures()
-        
-        fieldIndex = layer.fieldNameIndex(field)
-        
-        valueList = []
-        
-        for feat in feats:
-            valueList.append(feat.attributes()[fieldIndex] )
-        
-        
-        newValueList = sorted(set(valueList))
-        
-        return newValueList
+        colourManager().changeColumnColor("countries",  self.ColumncomboBox_3,  self.ColourRampcomboBox_3)
+        colourManager().changeColumnColor("obesity",  self.obesityColumncomboBox,  self.ColourRampcomboBox_3)
+        colourManager().make3ClassTable("countries",  "obesity",  self.ColumncomboBox_3,  self.obesityColumncomboBox,  self.obesityTableView)
         
 #*************************************** Page 9 *****************************************************************************    
 
@@ -588,56 +368,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.obsAnsClicks += 1
-        points = self.assignObsPoints()
-        
-        if  self.hivhi.isChecked() and self.vLoOb.isChecked() and self.q5 == False and self.q6 == False:
-            self.score += (2*points)
-            self.q5 = True
-            self.q6 = True
-        elif self.hivhi.isChecked() and self.q5 == False:
-            self.score += points
-            self.q5 = True
-        elif self.vLoOb.isChecked() and self.q6 == False:
-            self.score += points
-            self.q6 = True  
-        else:
-            self.score += 0
-        
-        self.ansObsMsgBoxes()
-        self.updateScore()
-        
-    def assignObsPoints(self):
-        """
-        Assign a different number of points depending on the number of trials. i.e. 5 points for getting it right
-        first time, 3 for getting it right second time and 1 point thereafter.
-        """
-        if self.obsAnsClicks == 1:
-            points = 5
-        elif self.obsAnsClicks == 2:
-            points = 3
-        else:
-            points = 1
-
-        return points
-        
-    def ansObsMsgBoxes(self):
-        """
-        show message boxes telling the user if they have got the questions right and informing them to move on
-        or highlighting to the user which question they got wrong and telling them to try again.
-        """
-        msgBox=QMessageBox()
-        if self.q5 == False and self.q6 == False:
-            msgBox.setText("That is the wrong answer for question 5 and 6. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q5 == False:
-            msgBox.setText("That is the wrong answer for question 5. Look at the map and try again.")
-            msgBox.exec_() 
-        elif self.q6 == False:
-            msgBox.setText("That is the wrong answer for question 6. Look at the map and try again.")
-            msgBox.exec_() 
-        else:
-            msgBox.setText("Well done. Click Next to move on.")
-            msgBox.exec_()   
+        self.score,  self.q5,  self.q6 = ScoreSystem(self.score).checkAnswers(self.obsAnsClicks,  self.hivhi,  self.q5,  5,  self.vLoOb,  self.q6,  6)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView) 
   
 #*************************************** Page 10*****************************************************************************      
 
@@ -647,135 +379,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.popDensAnsClicks += 1
-        points = self.assignPopDensPoints()
         
-        if  self.a.isChecked() and self.q7 == False:
-            self.score += points
-            self.q7 = True
-        else:
-            self.score += 0
-        
-        self.ansPopDensMsgBoxes()
-        self.updateScore()
-        
-    def assignPopDensPoints(self):
-        """
-        Assign a different number of points depending on the number of trials. i.e. 5 points for getting it right
-        first time, 3 for getting it right second time and 1 point thereafter.
-        """
-        if self.popDensAnsClicks == 1:
-            points = 5
-        elif self.popDensAnsClicks == 2:
-            points = 3
-        else:
-            points = 1
-
-        return points
-        
-    def ansPopDensMsgBoxes(self):
-        """
-        show message boxes telling the user if they have got the questions right and informing them to move on
-        or highlighting to the user which question they got wrong and telling them to try again.
-        """
-        msgBox=QMessageBox()
-    
-        if self.q7 == False:
-            msgBox.setText("That is the wrong answer for question 7. Look at the map and try again.")
-            msgBox.exec_() 
-        else:
-            msgBox.setText("Well done. Click Next to move on.")
-            msgBox.exec_()   
-            
-#*************************************** Page 10***************************************************************************** 
-
-    def drawStars(self):
-        """
-        Draw stars based on the number of points the user has accumulated
-        """
-        scene = QGraphicsScene()
-        
-        
-        self.starView.setScene(scene)        
-
-        
-#        starPoints = [QPoint(0, 6), QPoint(5, 5),  QPoint(7, 0),  QPoint(9, 5),  QPoint(14, 6),  QPoint(10, 9),  QPoint(11, 14),  QPoint(7,  11),  QPoint(3, 14),  QPoint(4, 9)]
-#        star = QPolygon()
-#        for point in starPoints:
-#            i = starPoints.index(point)
-#            star.setPoint(i,  point)
-#            
-#        starF = QPolygonF(star)
-#        starG = QGraphicsPolygonItem(starF)
-
-        starPoly = QPolygonF()
-        starPoly << QPointF(10, 40)
-        starPoly << QPointF(40, 40)
-        starPoly << QPointF(50, 10)
-        starPoly << QPointF(60, 40)
-        starPoly << QPointF(90, 40)
-        starPoly << QPointF(65, 60)
-        starPoly << QPointF(75, 90)
-        starPoly << QPointF(50, 70)
-        starPoly << QPointF(25, 90)
-        starPoly << QPointF(35, 60)
-        
-        starPoly2 = QPolygonF()
-        starPoly2 << QPointF(10, 40)
-        starPoly2 << QPointF(40, 40)
-        starPoly2 << QPointF(50, 10)
-        starPoly2 << QPointF(60, 40)
-        starPoly2 << QPointF(90, 40)
-        starPoly2 << QPointF(65, 60)
-        starPoly2 << QPointF(75, 90)
-        starPoly2 << QPointF(50, 70)
-        starPoly2 << QPointF(25, 90)
-        starPoly2 << QPointF(35, 60)
-        
-        starPoly3 = QPolygonF()
-        starPoly3 << QPointF(10, 40)
-        starPoly3 << QPointF(40, 40)
-        starPoly3 << QPointF(50, 10)
-        starPoly3 << QPointF(60, 40)
-        starPoly3 << QPointF(90, 40)
-        starPoly3 << QPointF(65, 60)
-        starPoly3 << QPointF(75, 90)
-        starPoly3 << QPointF(50, 70)
-        starPoly3 << QPointF(25, 90)
-        starPoly3 << QPointF(35, 60)
-
-            
-        yellowBrush = QBrush(QColor(255, 217,  10,  255))
-        yellowPen = QPen(QColor(255,  217,  10,  255))
-        greyBrush = QBrush(QColor(207, 207, 207,  255))
-        greyPen = QPen(QColor(207, 207, 207, 255))
-
-        starPoly2.translate(50, 55)
-        starPoly3.translate(100, 0)
-
-        
-        #scene.addPolygon(star,  blackPen,  yellowBrush)
-        polygon = QGraphicsPolygonItem()
-        ellipse = QGraphicsEllipseItem()
-        
-        if self.score > 30:
-            scene.addPolygon(starPoly,  yellowPen,  yellowBrush)
-            scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
-            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
-        elif self.score <= 30 and self.score> 20:
-            scene.addPolygon(starPoly,  greyPen,  greyBrush)
-            scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
-            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
-        elif self.score <= 20 and self.score > 7 :
-            scene.addPolygon(starPoly,  greyPen,  greyBrush)
-            scene.addPolygon(starPoly2, greyPen,  greyBrush)
-            scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)  
-        else:
-            scene.addPolygon(starPoly,  greyPen,  greyBrush)
-            scene.addPolygon(starPoly2, greyPen,  greyBrush)
-            scene.addPolygon(starPoly3,  greyPen,  greyBrush)
-            
-            
-        
-        
-
+        self.score,  self.q7 = ScoreSystem(self.score).checkAnswers(self.popDensAnsClicks,  self.a,  self.q7,  7)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView) 
         
