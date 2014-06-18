@@ -14,6 +14,7 @@ from Ui_ui_qgisforschools import Ui_QGISforSchools
 from unit_1_wizard import Unit1Wizard
 from Ui_Pop_dev_wizard import Ui_PopDevWizard
 from Pop_dev_wizard import PopDevWizard
+from earthquakes_wizard import EarthquakesWizard
 
 class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     """
@@ -62,6 +63,10 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
         self.close()
         if self.unit==1:
             openWizard=PopDevWizard()
+            openWizard.show()
+            result = openWizard.exec_()
+        elif self.unit==2:
+            openWizard=EarthquakesWizard()
             openWizard.show()
             result = openWizard.exec_()
         else:

@@ -32,8 +32,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         #WindowStaysOnTopHint so that the plugin stays on top of the QGIS window when the user scrolls and pans the map etc.
         QWizard.__init__(self, parent,  Qt.WindowStaysOnTopHint)
-        #QWizard.__init__(self, parent)
         self.setupUi(self)
+        #initialise variables that are used in multiple functions
         self.userPos = None
         self.popAnsClicks = 0
         self.devAnsClicks = 0
@@ -173,32 +173,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
             
             
-    def updateScore(self):
-        """
-        update the score at the bottom of the window
-        """
-        self.Score_label.clear()
-        self.Score_label_2.clear()
-        self.Score_label_3.clear()
-        self.Score_label_4.clear()
-        self.Score_label_5.clear()
-        self.Score_label_6.clear()
-        self.Score_label_7.clear()
-        self.Score_label_8.clear()
-        self.Score_label_9.clear()
-        self.Score_label_10.clear()
-        self.Score_label.setText(str(self.score))
-        self.Score_label_2.setText(str(self.score))
-        self.Score_label_3.setText(str(self.score))
-        self.Score_label_4.setText(str(self.score))
-        self.Score_label_5.setText(str(self.score))
-        self.Score_label_6.setText(str(self.score))
-        self.Score_label_7.setText(str(self.score))
-        self.Score_label_8.setText(str(self.score))
-        self.Score_label_9.setText(str(self.score))
-        self.Score_label_10.setText(str(self.score))
-        #self.drawStars()
-        ScoreSystem(self.score).drawStars(self.starView)
     
     
 #*************************************** Page 5 *****************************************************************************    

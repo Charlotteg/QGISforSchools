@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Wed Jun 18 16:20:40 2014
+# Created: Wed Jun 18 21:53:41 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,7 @@ class Ui_PopDevWizard(object):
     def setupUi(self, PopDevWizard):
         PopDevWizard.setObjectName(_fromUtf8("PopDevWizard"))
         PopDevWizard.resize(293, 591)
+        PopDevWizard.setToolTip(_fromUtf8(""))
         PopDevWizard.setSizeGripEnabled(True)
         PopDevWizard.setWizardStyle(QtGui.QWizard.ModernStyle)
         PopDevWizard.setOptions(QtGui.QWizard.NoBackButtonOnStartPage)
@@ -804,7 +805,6 @@ class Ui_PopDevWizard(object):
 
     def retranslateUi(self, PopDevWizard):
         PopDevWizard.setWindowTitle(_translate("PopDevWizard", "Population and Development", None))
-        PopDevWizard.setToolTip(_translate("PopDevWizard", "Population and Development", None))
         PopDevWizard.setWhatsThis(_translate("PopDevWizard", "Population and Development", None))
         self.IntrotextBrowser.setWhatsThis(_translate("PopDevWizard", "Population & Development Intro", None))
         self.IntrotextBrowser.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
