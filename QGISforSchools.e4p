@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project QGISforSchools -->
-<!-- Saved: 2014-06-17, 23:45:26 -->
+<!-- Saved: 2014-06-18, 22:00:33 -->
 <!-- Copyright (C) 2014 Charlotte Graves, charlottergraves@gmail.com -->
 <Project version="4.6">
   <Language>en</Language>
@@ -24,11 +24,15 @@
     <Source>Layer_behaviours.py</Source>
     <Source>Ui_Pop_dev_wizard.py</Source>
     <Source>Pop_dev_wizard.py</Source>
+    <Source>score.py</Source>
+    <Source>Ui_earthquakes_wizard.py</Source>
+    <Source>earthquakes_wizard.py</Source>
   </Sources>
   <Forms>
     <Form>ui_qgisforschools.ui</Form>
     <Form>unit_1_wizard.ui</Form>
     <Form>Pop_dev_wizard.ui</Form>
+    <Form>earthquakes_wizard.ui</Form>
   </Forms>
   <Translations>
   </Translations>

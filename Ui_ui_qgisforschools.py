@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\ui_qgisforschools.ui'
 #
-# Created: Mon Jun 16 14:19:14 2014
+# Created: Thu Jun 19 19:18:04 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,7 +32,7 @@ class Ui_QGISforSchools(object):
         self.unit1.setChecked(True)
         self.unit1.setObjectName(_fromUtf8("unit1"))
         self.unit2 = QtGui.QRadioButton(QGISforSchools)
-        self.unit2.setGeometry(QtCore.QRect(30, 140, 82, 17))
+        self.unit2.setGeometry(QtCore.QRect(30, 140, 161, 16))
         self.unit2.setObjectName(_fromUtf8("unit2"))
         self.unit3 = QtGui.QRadioButton(QGISforSchools)
         self.unit3.setGeometry(QtCore.QRect(30, 170, 82, 17))
@@ -62,7 +62,7 @@ class Ui_QGISforSchools(object):
     def retranslateUi(self, QGISforSchools):
         QGISforSchools.setWindowTitle(_translate("QGISforSchools", "QGISforSchools", None))
         self.unit1.setText(_translate("QGISforSchools", "Unit 1 - Population &&  Development", None))
-        self.unit2.setText(_translate("QGISforSchools", "Unit 2", None))
+        self.unit2.setText(_translate("QGISforSchools", "Unit 2 - Earthquakes", None))
         self.unit3.setText(_translate("QGISforSchools", "Unit 3", None))
         self.label.setText(_translate("QGISforSchools", "Welcome to QGIS for Schools!", None))
         self.label_2.setText(_translate("QGISforSchools", "Which unit would you like to open?", None))

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\unit_1_wizard.ui'
 #
-# Created: Mon Jun 16 14:19:15 2014
+# Created: Thu Jun 19 19:18:05 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!

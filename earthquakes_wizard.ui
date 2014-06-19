@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>EQWizard</class>
  <widget class="QWizard" name="EQWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>292</width>
+    <height>591</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Earthquakes</string>
   </property>
@@ -48,7 +56,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;In this unit you will explore the distribution of the earthquakes that took place in 2011. You will see how GIS can help you answer all sorts of spatial queries.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;You will be asked questions as you go. You will earn 5 points for getting the answer right first time, 3 for getting it right second time and 1 for getting it right any time thereafter.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;You will be asked questions as you go. You will earn &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#aa007f;&quot;&gt;5&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; points for getting the answer right first time, &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#aa007f;&quot;&gt;3&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; for getting it right second time and &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#aa007f;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; for getting it right any time thereafter.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
@@ -90,19 +98,6 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="plateBrowseButton">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>280</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Browse</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
@@ -121,16 +116,6 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>20</x>
       <y>210</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="platesLineEdit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>280</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -307,7 +292,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>countries.shp, plateboundaries.shp and</string>
+     <string>countries.shp, plate_boundaries.shp and</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_10">
@@ -325,7 +310,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>earthquakes.shp. Use the Browse</string>
+     <string>earthquakes_2011.shp. Use the Browse</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -364,8 +349,180 @@ p, li { white-space: pre-wrap; }
      <string>the Earthquakes data file.</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="platesLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="platesBrowseButton">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>280</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QWizardPage" name="wizardPage"/>
+  <widget class="QWizardPage" name="wizardPage">
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>510</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Your Score:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Score_label_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>512</y>
+      <width>46</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="colourRampLabel">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>229</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Colour Ramp:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="StyleTypecomboBox">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>169</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Single Colour</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Graduated</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="ColourRampcomboBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>229</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="ColumncomboBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>199</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ChangeColourButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>169</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Colour</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="columnLabel">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>199</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Column:</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="earthquakeTableView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>260</y>
+      <width>256</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>

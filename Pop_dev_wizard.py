@@ -244,6 +244,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         
 #*************************************** Page 6 *****************************************************************************    
 
+    @pyqtSignature("")
     def on_checkAnswersDev_released(self):
         """
         check answers and add points if correct based on the number of answers already submitted
@@ -337,6 +338,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         else:
             legend.setLayerVisible(layer, False)
 
+    @pyqtSignature("")
     def on_checkAnswersObs_released(self):
         """
         check answers and add points if correct based on the number of answers already submitted
@@ -348,6 +350,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
 #*************************************** Page 10*****************************************************************************      
 
 
+    @pyqtSignature("")
     def on_checkAnswersPopDens_released(self):
         """
         check answers and add points if correct based on the number of answers already submitted

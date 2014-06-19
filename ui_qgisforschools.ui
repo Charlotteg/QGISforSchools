@@ -34,12 +34,12 @@
     <rect>
      <x>30</x>
      <y>140</y>
-     <width>82</width>
-     <height>17</height>
+     <width>161</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Unit 2</string>
+    <string>Unit 2 - Earthquakes</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="unit3">

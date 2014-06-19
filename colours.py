@@ -82,6 +82,48 @@ class colourManager():
         
         if tableViews is not None:
             self.makeClassTable(Layer,  ColumncomboBox, tableViews)
+            
+    
+    
+    def setGraduatedColour(self,  layerName,  ColumncomboBox,  ColourRampcomboBox,  tableViews = None):
+        """
+        Colour the layer by the selected categories specified in the field chosen in the ColumncomboBox.
+        Colour scheme is determined by the current contents of the ColourRampcomboBox and the table views
+        specified are updated with details of which colour is assigned to which category.
+        
+        Parameters: layer name, ColumncomboBox, ColourRampcomboBox, 
+        table views (optional parameter, can pass a list or individual)
+        """
+        
+        Layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
+        
+        field = ColumncomboBox.currentText()
+        colorScheme = ColourRampcomboBox.currentText()
+        
+        categories = self.getAttributes(field,  Layer)
+        numColors = len(categories)
+        
+        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, 5)
+        catList =[]
+        
+#        for category in categories:
+#            colorIndex = categories.index(category)
+        symbol = QgsSymbolV2.defaultSymbol(Layer.geometryType())
+#            symbol.setColor(colors[colorIndex])
+#            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
+#            catList.append(cat)
+        
+        mode = QgsGraduatedSymbolRendererV2.Pretty
+        
+        renderer = QgsGraduatedSymbolRendererV2.createRenderer(Layer,  field,  5, symbol,  colors)
+        
+        Layer.setRendererV2(renderer)
+        
+        iface.mapCanvas().refresh()
+        iface.legendInterface().refreshLayerSymbology(Layer)
+        
+        if tableViews is not None:
+            self.makeClassTable(Layer,  ColumncomboBox, tableViews)
         
     def getAttributes(self, field,  layer):
         """
