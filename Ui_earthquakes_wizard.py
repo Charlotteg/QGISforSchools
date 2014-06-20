@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Thu Jun 19 21:27:02 2014
+# Created: Fri Jun 20 14:39:30 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -180,6 +180,11 @@ class Ui_EQWizard(object):
         self.earthquakeTableView.setGeometry(QtCore.QRect(20, 260, 256, 191))
         self.earthquakeTableView.setShowGrid(False)
         self.earthquakeTableView.setObjectName(_fromUtf8("earthquakeTableView"))
+        self.textBrowser_2 = QtGui.QTextBrowser(self.wizardPage)
+        self.textBrowser_2.setGeometry(QtCore.QRect(10, 0, 271, 161))
+        self.textBrowser_2.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_2.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_2.setObjectName(_fromUtf8("textBrowser_2"))
         EQWizard.addPage(self.wizardPage)
 
         self.retranslateUi(EQWizard)
@@ -226,6 +231,12 @@ class Ui_EQWizard(object):
         self.StyleTypecomboBox.setItemText(1, _translate("EQWizard", "Graduated", None))
         self.ChangeColourButton.setText(_translate("EQWizard", "Colour", None))
         self.columnLabel.setText(_translate("EQWizard", "Column:", None))
+        self.textBrowser_2.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600;\">Colour Schemes</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can use colour to distinguish between earthquakes of different magnitudes. Experiment with the colour and column options below. Make sure that you choose </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Graduated</span><span style=\" font-size:10pt;\"> and the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Magnitude</span><span style=\" font-size:10pt;\"> column before you click </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Next</span><span style=\" font-size:10pt;\"> as this will help you with the following questions.</span></p></body></html>", None))
 
 
 if __name__ == "__main__":

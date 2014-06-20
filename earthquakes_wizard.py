@@ -113,7 +113,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
             earthquakes.setRendererV2(QgsSingleSymbolRendererV2(symbol))
             model = QStandardItemModel(0, 0)
             model.clear()
-            self.categoryTableView.setModel(model)
+            self.earthquakeTableView.setModel(model)
             
         else:
             self.ColourRampcomboBox.setEnabled(True)
@@ -128,7 +128,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
             fieldList = []
             for field in fields:
                 fieldList.append(field.name())
-            self.ColumncomboBox.addItems(fieldList[1, 2, 3])
+            self.ColumncomboBox.addItems(fieldList[1:4])
 
             #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
             self.ColourRampcomboBox.clear()
@@ -141,7 +141,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
                 
             #self.makeClassTable()
             tableViews = self.earthquakeTableView
-            colourManager().makeClassTable(earthquakes,  self.ColumncomboBox, tableViews)
+            colourManager().setGraduatedColour("earthquakes",  self.ColumncomboBox,  self.ColourRampcomboBox,  5,  self.earthquakeTableView)
         
         
     @pyqtSignature("QString")
@@ -149,9 +149,9 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         classify the chosen field and colour each class based on the colour ramp selected
         """
-        #self.changeColumnColor()
-        tableViews = [self.categoryTableView,  self.categoryTableView_2]
-        colourManager().changeColumnColor("countries",  self.ColumncomboBox,  self.ColourRampcomboBox,  tableViews)
+        tableViews = self.earthquakeTableView
+        colourManager().setGraduatedColour("earthquakes",  self.ColumncomboBox,  self.ColourRampcomboBox, 5, tableViews)
+
 
 
     @pyqtSignature("QString")
@@ -159,6 +159,19 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         Change classified values based on selected column
         """
-        tableViews = [self.categoryTableView,  self.categoryTableView_2]
-        colourManager().changeColumnColor("countries",  self.ColumncomboBox,  self.ColourRampcomboBox,  tableViews)
+        tableViews = self.earthquakeTableView
+        colourManager().setGraduatedColour("earthquakes",  self.ColumncomboBox,  self.ColourRampcomboBox, 5, tableViews)
 
+#*************************************** Page 4 *****************************************************************************
+
+    @pyqtSignature("")
+    def on_scaleCheckBox_clicked(self):
+        """
+        set the earthquake symbols to proportional or standard based on checkbox state
+        """
+        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+        state = self.countriesCheckBox.checkState()
+        if state:
+            return None
+        else:
+            return None

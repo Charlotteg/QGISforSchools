@@ -84,14 +84,15 @@ class colourManager():
             self.makeClassTable(Layer,  ColumncomboBox, tableViews)
             
     
-    
-    def setGraduatedColour(self,  layerName,  ColumncomboBox,  ColourRampcomboBox,  tableViews = None):
+
+    def setGraduatedColour(self,  layerName, ColumncomboBox,  ColourRampcomboBox, numColors,  tableViews = None):
         """
-        Colour the layer by the selected categories specified in the field chosen in the ColumncomboBox.
-        Colour scheme is determined by the current contents of the ColourRampcomboBox and the table views
-        specified are updated with details of which colour is assigned to which category.
+        Divide the field into 'pretty breaks' ranges and colour each range based on the colour scheme specified 
+         by the current contents of the ColourRampcomboBox. The table views
+        specified are updated with details of which colour is assigned to which range. 
+        The number of ranges is suggested by the numColors value.
         
-        Parameters: layer name, ColumncomboBox, ColourRampcomboBox, 
+        Parameters: layer name, rangeList, ColumncomboBox, ColourRampcomboBox, numColors
         table views (optional parameter, can pass a list or individual)
         """
         
@@ -99,31 +100,25 @@ class colourManager():
         
         field = ColumncomboBox.currentText()
         colorScheme = ColourRampcomboBox.currentText()
-        
-        categories = self.getAttributes(field,  Layer)
-        numColors = len(categories)
-        
-        colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, 5)
-        catList =[]
-        
-#        for category in categories:
-#            colorIndex = categories.index(category)
         symbol = QgsSymbolV2.defaultSymbol(Layer.geometryType())
-#            symbol.setColor(colors[colorIndex])
-#            cat = QgsRendererCategoryV2(category, symbol ,  str(category))
-#            catList.append(cat)
         
-        mode = QgsGraduatedSymbolRendererV2.Pretty
+        if symbol is None:
+            if Layer.geometryType() == QGis.Point:
+                symbol = QgsMarkerSymbolV2()
         
-        renderer = QgsGraduatedSymbolRendererV2.createRenderer(Layer,  field,  5, symbol,  colors)
-        
+        colorRamp = QgsVectorColorBrewerColorRampV2.create({'schemeName': str(colorScheme),  'colors': str(numColors)})
+        renderer = QgsGraduatedSymbolRendererV2.createRenderer(Layer,  field,  numColors,  QgsGraduatedSymbolRendererV2.Pretty,  symbol,  colorRamp)
         Layer.setRendererV2(renderer)
-        
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Layer)
         
+        Labels = []
+        for range in renderer.ranges():
+            Labels.append(range.label())
+            
         if tableViews is not None:
-            self.makeClassTable(Layer,  ColumncomboBox, tableViews)
+            self.makeClassTable(Layer,  ColumncomboBox,  tableViews,  Labels)
+        
         
     def getAttributes(self, field,  layer):
         """
@@ -147,30 +142,43 @@ class colourManager():
         newValueList = sorted(set(valueList))
         
         return newValueList
-        
+    
+    
+    
     def getIcons(self,  layer):
         """
         make and return a list of Qicons from the symbols currently used to represent the given layer
         """
-        Countries = layer
-        renderer = Countries.rendererV2()
+        Layer = layer
+        renderer = Layer.rendererV2()
         symbols = renderer.symbols()
         icons = []
         for symbol in symbols:
-            icon = QgsSymbolLayerV2Utils.symbolPreviewIcon(symbol, QSize(50, 50))
+            if symbol.type() == 0:
+                width = 10
+                height = 10
+            else:
+                width = 50
+                height = 50
+            icon = QgsSymbolLayerV2Utils.symbolPreviewIcon(symbol, QSize(width, height))
             icons.append(icon)
             
         return icons
         
 
-    def makeClassTable(self, layer, columncomboBox, tableViews):
+
+
+    def makeClassTable(self, layer, columncomboBox, tableViews,  graduatedLabels = None):
         """
         make the 2 column table of classified fields and symbology
         
         parameters: layer, columncomboBox to define field, table views to update
         """
         field = columncomboBox.currentText()
-        values = self.getAttributes(field,  layer)
+        if graduatedLabels is not None:
+            values = graduatedLabels
+        else:
+            values = self.getAttributes(field,  layer)
         rows = len(values)
         cols = 2
         model = QStandardItemModel(rows,  cols) 
@@ -189,6 +197,8 @@ class colourManager():
                 model.setItem(row, 0,  iconItem)
                 
         self.setTableViews(model,  tableViews)
+
+
 
     def make3ClassTable(self, layerName, otherLayerName,  ColumncomboBox, otherColumncomboBox, tableViews):
         """
@@ -225,6 +235,8 @@ class colourManager():
                 model.setItem(row, 2,  iItem)
 
         self.setTableViews(model,  tableViews)
+
+
 
 
     def setTableViews(self, model, tableViews):
