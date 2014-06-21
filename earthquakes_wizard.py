@@ -14,6 +14,7 @@ from PyQt4.QtCore import *
 from qgis.core import *
 from qgis.gui import *
 from qgis.utils import *
+from qgis.analysis import *
 
 #Import other classes required here
 from score import ScoreSystem
@@ -33,7 +34,10 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         QWizard.__init__(self, parent,  Qt.WindowStaysOnTopHint)
         self.setupUi(self)
-        
+        self.score = 0
+        self.magAnsClicks = 0
+        self.q1 = False
+        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3]
 #*************************************** Page 2 *****************************************************************************
     @pyqtSignature("")
     def on_countriesBrowseButton_clicked(self):
@@ -169,9 +173,84 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         set the earthquake symbols to proportional or standard based on checkbox state
         """
-        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        state = self.countriesCheckBox.checkState()
+        layer = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
+        field = self.scaleComboBox.currentText()
+        state = self.scaleCheckBox.checkState()
         if state:
-            return None
+            self.scaleComboBox.setEnabled(True)
+            self.label_17.setEnabled(True)
+            self.label_16.setEnabled(True)
+            if field == "Magnitude":
+                expression = "(Magnitude^3)/10"
+            elif field == "latitude":
+                expression = "abs(latitude)/5"
+            else:
+                expression = "abs(longitude)/5"
+            colourManager().propSymbols(layer,  expression)
         else:
-            return None
+            colourManager().propSymbols(layer,  "2")
+            self.scaleComboBox.setEnabled(False)
+            self.label_17.setEnabled(False)
+            self.label_16.setEnabled(False)
+
+    @pyqtSignature("QString")
+    def on_scaleComboBox_activated(self,  p0):
+        """
+        scale earthquake symbols  based on the field chosen in scaleComboBox
+        """
+        layer = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
+        field = self.scaleComboBox.currentText()
+        if field == "Magnitude":
+            expression = "(Magnitude^3)/10"
+        elif field == "latitude":
+            expression = "abs(latitude)/5"
+        else:
+            expression = "abs(longitude)/5"
+        colourManager().propSymbols(layer,  expression)
+ 
+    @pyqtSignature("") 
+    def on_checkAnswersMag_released(self):
+        """
+        check answers and add points if correct based on the number of answers already submitted
+        """
+        
+        self.magAnsClicks += 1
+        self.score,  self.q1 = ScoreSystem(self.score).checkAnswers(self.magAnsClicks,  self.twoFour,  self.q1,  1)
+        ScoreSystem(self.score).updateScore(self.scoreLabels)
+
+
+#*************************************** Page 5 *****************************************************************************
+
+    @pyqtSignature("")
+    def on_bufferBrowseButton_clicked(self):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """
+        
+        inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
+        self.bufferLineEdit.setText(inputFile)
+
+    
+    @pyqtSignature("") 
+    def on_bufferButton_clicked(self):
+        """
+        create buffer
+        """
+        AddLayers().CheckBufferLayer(self.inputComboBox, self.bufferLineEdit,  self.distanceLineEdit,  self.bufferProgressBar)
+
+
+#*************************************** Page 6 *****************************************************************************
+
+    @pyqtSignature("") 
+    def on_transparencyButton_clicked(self):
+        earthquakes = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
+        plates = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
+        countries = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
+        layers = QgsMapLayerRegistry.instance().mapLayers()
+        for layer in layers:
+            if layer != earthquakes and layer != plates and layer != countries:
+               bufferLayer = layer
+        alpha = self.alphaSlider.value()
+        bufferLayer.setLayerTransparency(alpha)
+        print "yo"
+

@@ -237,8 +237,6 @@ class colourManager():
         self.setTableViews(model,  tableViews)
 
 
-
-
     def setTableViews(self, model, tableViews):
         """
         show the table of classified fields and symbology in the given tableViews
@@ -250,4 +248,16 @@ class colourManager():
                 tableView.setModel(model)
         else:
             tableViews.setModel(model)
+            
+            
+    
+    def propSymbols(self,  layer,  expression):
+        
+        renderer = layer.rendererV2()
+
+        renderer.setSizeScaleField(expression)
+
+        layer.setRendererV2(renderer)
+        
+        iface.mapCanvas().refresh()
         

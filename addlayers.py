@@ -3,12 +3,15 @@
 """
 Module containing a class that deals with adding layers to the canvas
 """
+import ntpath
+
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 from qgis.core import *
 from qgis.gui import *
 from qgis.utils import *
+from qgis.analysis import *
 
 class AddLayers():
     """
@@ -53,4 +56,64 @@ class AddLayers():
         #if there are no problems with the shapefile, then return it
         else:
                 
-            return NewLayer 
+            return NewLayer
+           
+    def CheckBufferLayer(self, inputComboBox,  filePathEdit,  distanceEdit,  progressBar=None): 
+            
+        layerName = inputComboBox.currentText()
+        layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
+        
+        
+        if progressBar is not None:
+            progressBar.setValue(10)
+        
+        newLayerFilePath = filePathEdit.text()
+        newLayerSuffix =  ntpath.basename(newLayerFilePath)
+        newLayerName = newLayerSuffix.split( '.')[0]
+        
+        distance = distanceEdit.text()
+        
+        if progressBar is not None:
+            progressBar.setValue(20)
+        
+        
+        msgBox=QMessageBox()
+        msgBox.setIcon(3)
+
+        try:
+            distFloat = float(distance)
+
+        except ValueError:
+            msgBox.setText("Could not create the layer")
+            msgBox.setInformativeText(" Please make sure that you have typed a number into the distance box")
+            msgBox.exec_()
+            
+        else:
+            
+            if progressBar is not None:
+                progressBar.setValue(40)
+        
+            
+            analyser = QgsGeometryAnalyzer().buffer(layer,  newLayerFilePath,  distFloat,  False,  True)
+            
+            if progressBar is not None:
+                progressBar.setValue(60)
+        
+            bufferLayer = QgsVectorLayer(newLayerFilePath,  newLayerName,  'ogr')
+            
+
+            if not newLayerFilePath:
+                return None
+            #If the file selected is not a vaild layer, execute an error message box
+            elif not bufferLayer.isValid():
+                msgBox.setText("Could not create the layer")
+                msgBox.setInformativeText(" Please make sure that you have used the Browse button to select a valid save location for the new layer")
+                msgBox.exec_()
+            #if there are no problems with the shapefile, then add it to the project
+            else:
+                QgsMapLayerRegistry.instance().addMapLayer(bufferLayer)
+                if progressBar is not None:
+                    progressBar.setValue(100)
+
+            
+            

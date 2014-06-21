@@ -96,15 +96,15 @@ class ScoreSystem():
                 msgBox.setText("Well done. Click Next to move on.")
                 msgBox.exec_()  
                
-    def updateScore(self,  ScoreLabelList,  starView):
+    def updateScore(self,  ScoreLabelList,  starView=None):
         """
         update the score at the bottom of the window
         """
         for label in ScoreLabelList:
             label.clear()
             label.setText(str(self.score))
-            
-        self.drawStars(starView)
+        if starView is not None:
+            self.drawStars(starView)
         
     def drawStars(self,  graphicsView):
         """
