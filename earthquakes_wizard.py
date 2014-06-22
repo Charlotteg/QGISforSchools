@@ -17,6 +17,8 @@ from qgis.utils import *
 from qgis.analysis import *
 
 #Import other classes required here
+from attributeTable import AttributeTable
+from query import SpatialQuery
 from score import ScoreSystem
 from colours import colourManager
 from misc_classes import CitiesCustomSortingModel,  CountriesCustomSortingModel
@@ -36,8 +38,18 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.setupUi(self)
         self.score = 0
         self.magAnsClicks = 0
+        self.distAnsClicks = 0
+        self.numAnsClicks = 0
+        self.eqAnsClicks = 0
+        self.effAnsClicks = 0
         self.q1 = False
-        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3]
+        self.q2 = False
+        self.q3 = False
+        self.q4 = False
+        self.q5 = False
+        self.q6 = False
+        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5,  self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9]
+        self.bufferLayer = None
 #*************************************** Page 2 *****************************************************************************
     @pyqtSignature("")
     def on_countriesBrowseButton_clicked(self):
@@ -211,7 +223,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
     @pyqtSignature("") 
     def on_checkAnswersMag_released(self):
         """
-        check answers and add points if correct based on the number of answers already submitted
+        check answers to q1 and add points if correct based on the number of answers already submitted
         """
         
         self.magAnsClicks += 1
@@ -236,21 +248,289 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         create buffer
         """
-        AddLayers().CheckBufferLayer(self.inputComboBox, self.bufferLineEdit,  self.distanceLineEdit,  self.bufferProgressBar)
+        self.bufferLayer = AddLayers().CheckBufferLayer(self.inputComboBox, self.bufferLineEdit,  self.distanceLineEdit,  self.bufferProgressBar)
 
 
 #*************************************** Page 6 *****************************************************************************
 
     @pyqtSignature("") 
+    def on_bufferColourButton_clicked(self):
+        """
+        change the colour of the buffer layer
+        """
+        msgBox=QMessageBox()
+        msgBox.setIcon(3)
+        
+        if self.bufferLayer is not None:
+            colourManager().updateSingleColour(self.bufferLayer)
+        else:
+            msgBox.setText("Could not re-colour the layer")
+            msgBox.setInformativeText(" QGISforSchools cannot find the buffer layer. Try going back a step and making a new one.")
+            msgBox.exec_()
+        
+    @pyqtSignature("") 
     def on_transparencyButton_clicked(self):
-        earthquakes = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
-        plates = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
-        countries = QgsMapLayerRegistry.instance().mapLayersByName("earthquakes")[0]
-        layers = QgsMapLayerRegistry.instance().mapLayers()
-        for layer in layers:
-            if layer != earthquakes and layer != plates and layer != countries:
-               bufferLayer = layer
-        alpha = self.alphaSlider.value()
-        bufferLayer.setLayerTransparency(alpha)
-        print "yo"
+        """
+        set transparency of the buffer layer
+        """
+        alpha = self.alphaSpinBox.value()
+        if self.bufferLayer is not None:
+            bufferLayer = QgsMapLayerRegistry.instance().mapLayersByName(self.bufferLayer)[0]
+            bufferLayer.setLayerTransparency(alpha)
+        else:
+            pass
+        iface.mapCanvas().refresh()
+        SpatialQuery().populateSrcBox(self.inputComboBox_2,  self.refComboBox)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
+        
+    @pyqtSignature("") 
+    def on_checkAnswersDist_clicked(self):
+        """
+        check answer to question 2 and assign points
+        """
+        self.distAnsClicks += 1
+        self.score,  self.q2 = ScoreSystem(self.score).checkAnswers(self.distAnsClicks,  self.plates,  self.q2,  2)
+        ScoreSystem(self.score).updateScore(self.scoreLabels)
 
+
+#*************************************** Page 7 *****************************************************************************
+    @pyqtSignature("QString")
+    def on_inputComboBox_2_activated(self,  p0):
+        """
+        Populate the reference comboBox with all layers but the selected input layer and populate query comboBox
+        """
+        SpatialQuery().populateRefBox(self.inputComboBox_2,  self.refComboBox,  self.queryComboBox)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
+    
+
+    @pyqtSignature("QString")
+    def on_refComboBox_activated(self,  p0):
+        """
+        Populate the query combo box with options relevant to the input and reference layers chosen
+        """
+        SpatialQuery().populateSelBox(self.inputComboBox_2,  self.refComboBox,  self.queryComboBox)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
+        
+        
+    @pyqtSignature("") 
+    def on_runQuery_clicked(self):
+        """
+        run the spatial query
+        """
+        SpatialQuery().startSpatialQuery(self.inputComboBox_2,  self.refComboBox,  self.queryComboBox,  self.newLayercheckBox,  self.queryLineEdit,  self.queryProgBar)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
+        AttributeTable().attributeTable(self.lyrComboBox, self.attribTableView)
+
+
+    @pyqtSignature("") 
+    def on_clearSelection_clicked(self):
+        """
+        clear selections
+        """
+        SpatialQuery().clearSelection()
+    
+    
+    @pyqtSignature("") 
+    def on_newLayercheckBox_clicked(self):
+        """
+        enable browse button and queryLineEdit
+        """
+        state = self.newLayercheckBox.checkState()
+        
+        if state:
+            self.queryLineEdit.setEnabled(True)
+            self.queryBrowseButton.setEnabled(True)
+        else:
+            self.queryLineEdit.setEnabled(False)
+            self.queryBrowseButton.setEnabled(False)
+    
+    @pyqtSignature("") 
+    def on_queryBrowseButton_clicked(self):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """
+
+        inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
+        self.queryLineEdit.setText(inputFile)
+
+
+
+#*************************************** Page 8 *****************************************************************************
+    @pyqtSignature("QString")
+    def on_lyrComboBox_activated(self,  p0):
+        """
+        fill the table view with an attribute table for that layer
+        """
+        AttributeTable().attributeTable(self.lyrComboBox, self.attribTableView)
+
+    @pyqtSignature("") 
+    def on_checkAnswersNum_clicked(self):
+        """
+        check answer to question 3 and assign points
+        """
+        self.numAnsClicks += 1
+        points = ScoreSystem(self.score).assignPoints(self.numAnsClicks)
+        msgBox=QMessageBox()
+        
+        if self.numSpinBox.value() == 14736 and self.q3 == False:
+            self.score += points
+            self.q3 = True
+            ScoreSystem(self.score).ansMsgBoxes(self.q3,  3)
+            ScoreSystem(self.score).updateScore(self.scoreLabels)
+        elif self.numSpinBox.value() == 14736 and self.q3 == True:
+            msgBox.setText("Well done. Click Next to move on.")
+            msgBox.exec_() 
+        else:
+            msgBox.setText("That is the wrong answer for question 3. Look at the attribute table and try again.")
+            msgBox.exec_() 
+            
+#*************************************** Page 9 *****************************************************************************
+    @pyqtSignature("") 
+    def on_checkAnswersEQ_clicked(self):
+        """
+        check answer to questions 4 and 5 and assign points
+        """
+        self.eqAnsClicks+= 1
+        
+        self.score,  self.q4,  self.q5 = ScoreSystem(self.score).checkAnswers(self.eqAnsClicks,  self.epicentre,  self.q4,  4,  self.plateMovement,  self.q5,  5)
+        ScoreSystem(self.score).updateScore(self.scoreLabels)
+        
+        #set check box names for next page
+        
+        layers = iface.legendInterface().layers()
+        
+        checkList = [self.lyrCheckBox,  self.lyrCheckBox_2,  self.lyrCheckBox_3,  self.lyrCheckBox_4,  self.lyrCheckBox_5]
+        nameList = []
+        
+        for layer in layers:
+            i = layers.index(layer)
+            name = layer.name()
+            checkbox = checkList[i]
+            checkbox.setText(name)
+
+ 
+#*************************************** Page 10 *****************************************************************************
+
+    def showHideLayers(self,  checkBox):
+        """
+        hide or show layer
+        """
+        #error catching for wrong layer name?
+        layerName = checkBox.text()
+        layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
+        state = checkBox.checkState()
+        legend = iface.legendInterface()
+        
+        if state:
+            legend.setLayerVisible(layer,  True)
+        else:
+            legend.setLayerVisible(layer, False)
+
+
+    @pyqtSignature("") 
+    def on_lyrCheckBox_clicked(self):
+        """
+        hide or show layer
+        """
+        self.showHideLayers(self.lyrCheckBox)
+
+    @pyqtSignature("") 
+    def on_lyrCheckBox_2_clicked(self):
+        """
+        hide or show layer
+        """
+        self.showHideLayers(self.lyrCheckBox_2)
+
+    @pyqtSignature("") 
+    def on_lyrCheckBox_3_clicked(self):
+        """
+        hide or show layer
+        """
+        self.showHideLayers(self.lyrCheckBox_3)
+
+    @pyqtSignature("") 
+    def on_lyrCheckBox_4_clicked(self):
+        """
+        hide or show layer
+        """
+        self.showHideLayers(self.lyrCheckBox_4)
+    
+    @pyqtSignature("") 
+    def on_lyrCheckBox_5_clicked(self):
+        """
+        hide or show layer
+        """
+        self.showHideLayers(self.lyrCheckBox_5)
+
+    @pyqtSignature("") 
+    def on_checkAnswersEffects_clicked(self):
+        """
+        check answer to questions 4 and 5 and assign points
+        """
+        self.effAnsClicks+= 1
+        
+        self.score,  self.q6 = ScoreSystem(self.score).checkAnswers(self.effAnsClicks,  self.shake,  self.q6,  6)
+        ScoreSystem(self.score).updateScore(self.scoreLabels)
+        SpatialQuery().populateSrcBox(self.inputComboBox_3,  self.refComboBox_2)
+
+#*************************************** Page 11 *****************************************************************************
+
+    @pyqtSignature("QString")
+    def on_inputComboBox_3_activated(self,  p0):
+        """
+        Populate the reference comboBox with all layers but the selected input layer and populate query comboBox
+        """
+        SpatialQuery().populateRefBox(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2)
+        #SpatialQuery().populateSrcBox(self.lyrComboBox_2)
+    
+
+    @pyqtSignature("QString")
+    def on_refComboBox_2_activated(self,  p0):
+        """
+        Populate the query combo box with options relevant to the input and reference layers chosen
+        """
+        SpatialQuery().populateSelBox(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2)
+        #SpatialQuery().populateSrcBox(self.lyrComboBox)
+        
+        
+    @pyqtSignature("") 
+    def on_runQuery_2_clicked(self):
+        """
+        run the spatial query
+        """
+        SpatialQuery().startSpatialQuery(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2,  self.newLayercheckBox_2,  self.queryLineEdit_2,  self.queryProgBar_2)
+        #SpatialQuery().populateSrcBox(self.lyrComboBox)
+        #AttributeTable().attributeTable(self.lyrComboBox, self.attribTableView)
+
+
+    @pyqtSignature("") 
+    def on_clearSelection_2_clicked(self):
+        """
+        clear selections
+        """
+        SpatialQuery().clearSelection()
+    
+    
+    @pyqtSignature("") 
+    def on_newLayercheckBox_2_clicked(self):
+        """
+        enable browse button and queryLineEdit
+        """
+        state = self.newLayercheckBox.checkState()
+        
+        if state:
+            self.queryLineEdit.setEnabled(True)
+            self.queryBrowseButton.setEnabled(True)
+        else:
+            self.queryLineEdit.setEnabled(False)
+            self.queryBrowseButton.setEnabled(False)
+    
+    @pyqtSignature("") 
+    def on_queryBrowseButton_2_clicked(self):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """
+
+        inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
+        self.queryLineEdit.setText(inputFile)
+    

@@ -114,6 +114,8 @@ class AddLayers():
                 QgsMapLayerRegistry.instance().addMapLayer(bufferLayer)
                 if progressBar is not None:
                     progressBar.setValue(100)
+        
+        return newLayerName
 
             
             
