@@ -37,7 +37,7 @@ class SpatialQuery():
         if refbox is not None:
             refbox.addItems(nameList)
         
-    def populateRefBox(self,  inputbox,  refbox,  querybox):
+    def populateRefBox(self,  inputbox,  refbox,  querybox=None):
         """
         removes the selected source feature from the list of options for reference
         """
@@ -56,7 +56,8 @@ class SpatialQuery():
         
         refbox.addItems(refList)
         
-        self.populateSelBox(inputbox,  refbox,  querybox)
+        if querybox is not None:
+            self.populateSelBox(inputbox,  refbox,  querybox)
         
 
     def populateSelBox(self,  inputbox,  refbox, querybox):

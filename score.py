@@ -77,20 +77,20 @@ class ScoreSystem():
         msgBox=QMessageBox()
         if qy is not None and y is not None:
             if qx == False and qy == False:
-                msgBox.setText("That is the wrong answer for question " +str(x) +" and " +str(y) + ". Look at the map and try again.")
+                msgBox.setText("That is the wrong answer for question " +str(x) +" and " +str(y) + ". Try again.")
                 msgBox.exec_() 
             elif qx == False:
-                msgBox.setText("That is the wrong answer for question "+ str(x) + ". Look at the map and try again.")
+                msgBox.setText("That is the wrong answer for question "+ str(x) + ". Try again.")
                 msgBox.exec_() 
             elif qy == False:
-                msgBox.setText("That is the wrong answer for question " + str(y)+ ". Look at the map and try again.")
+                msgBox.setText("That is the wrong answer for question " + str(y)+ ". Try again.")
                 msgBox.exec_() 
             else:
                 msgBox.setText("Well done. Click Next to move on.")
                 msgBox.exec_() 
         else:
             if qx == False:
-                msgBox.setText("That is the wrong answer for question "+ str(x)+". Look at the map and try again.")
+                msgBox.setText("That is the wrong answer for question "+ str(x)+". Try again.")
                 msgBox.exec_() 
             else:
                 msgBox.setText("Well done. Click Next to move on.")

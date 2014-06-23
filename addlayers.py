@@ -93,8 +93,8 @@ class AddLayers():
             if progressBar is not None:
                 progressBar.setValue(40)
         
-            
-            analyser = QgsGeometryAnalyzer().buffer(layer,  newLayerFilePath,  distFloat,  False,  True)
+            progress = QProgressDialog("Buffering Layer...",  "Cancel",  0,  100)
+            analyser = QgsGeometryAnalyzer().buffer(layer,  newLayerFilePath,  distFloat,  False,  True,  -1,  progress)
             
             if progressBar is not None:
                 progressBar.setValue(60)
@@ -116,6 +116,28 @@ class AddLayers():
                     progressBar.setValue(100)
         
         return newLayerName
+    
 
-            
-            
+    def clipLayer(self, inputComboBox, refComboBox, filePathEdit): 
+        
+        layerAName = inputComboBox.currentText()
+        layerBName = refComboBox.currentText()
+        
+        layerA = QgsMapLayerRegistry.instance().mapLayersByName(layerAName)[0]
+        layerB = QgsMapLayerRegistry.instance().mapLayersByName(layerBName)[0]
+        
+        newPath = filePathEdit.text()
+        
+        progress = QProgressDialog("Clipping Layer...",  "Cancel",  0,  100)
+        
+        QgsOverlayAnalyzer().intersection(layerA,  layerB,  newPath, False,  progress)
+        
+
+        newLayerSuffix =  ntpath.basename(newPath)
+        newLayerName = newLayerSuffix.split( '.')[0]
+        
+        newLayer = QgsVectorLayer(newPath,  newLayerName,  'ogr')
+        
+        return newLayer
+        
+        

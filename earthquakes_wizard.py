@@ -42,13 +42,15 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.numAnsClicks = 0
         self.eqAnsClicks = 0
         self.effAnsClicks = 0
+        self.numAnsClicks2 = 0
         self.q1 = False
         self.q2 = False
         self.q3 = False
         self.q4 = False
         self.q5 = False
         self.q6 = False
-        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5,  self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9]
+        self.q7 = False
+        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5,  self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9,  self.Score_label_10]
         self.bufferLayer = None
 #*************************************** Page 2 *****************************************************************************
     @pyqtSignature("")
@@ -228,7 +230,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         
         self.magAnsClicks += 1
         self.score,  self.q1 = ScoreSystem(self.score).checkAnswers(self.magAnsClicks,  self.twoFour,  self.q1,  1)
-        ScoreSystem(self.score).updateScore(self.scoreLabels)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
 
 
 #*************************************** Page 5 *****************************************************************************
@@ -248,7 +250,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         create buffer
         """
-        self.bufferLayer = AddLayers().CheckBufferLayer(self.inputComboBox, self.bufferLineEdit,  self.distanceLineEdit,  self.bufferProgressBar)
+        self.bufferLayer = AddLayers().CheckBufferLayer(self.inputComboBox, self.bufferLineEdit,  self.distanceLineEdit)
 
 
 #*************************************** Page 6 *****************************************************************************
@@ -262,7 +264,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         msgBox.setIcon(3)
         
         if self.bufferLayer is not None:
-            colourManager().updateSingleColour(self.bufferLayer)
+            colourManager().updateSingleColour(self.bufferLayer,  self.starView)
         else:
             msgBox.setText("Could not re-colour the layer")
             msgBox.setInformativeText(" QGISforSchools cannot find the buffer layer. Try going back a step and making a new one.")
@@ -290,7 +292,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         self.distAnsClicks += 1
         self.score,  self.q2 = ScoreSystem(self.score).checkAnswers(self.distAnsClicks,  self.plates,  self.q2,  2)
-        ScoreSystem(self.score).updateScore(self.scoreLabels)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
 
 
 #*************************************** Page 7 *****************************************************************************
@@ -376,7 +378,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
             self.score += points
             self.q3 = True
             ScoreSystem(self.score).ansMsgBoxes(self.q3,  3)
-            ScoreSystem(self.score).updateScore(self.scoreLabels)
+            ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
         elif self.numSpinBox.value() == 14736 and self.q3 == True:
             msgBox.setText("Well done. Click Next to move on.")
             msgBox.exec_() 
@@ -393,7 +395,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.eqAnsClicks+= 1
         
         self.score,  self.q4,  self.q5 = ScoreSystem(self.score).checkAnswers(self.eqAnsClicks,  self.epicentre,  self.q4,  4,  self.plateMovement,  self.q5,  5)
-        ScoreSystem(self.score).updateScore(self.scoreLabels)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
         
         #set check box names for next page
         
@@ -470,18 +472,58 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.effAnsClicks+= 1
         
         self.score,  self.q6 = ScoreSystem(self.score).checkAnswers(self.effAnsClicks,  self.shake,  self.q6,  6)
-        ScoreSystem(self.score).updateScore(self.scoreLabels)
-        SpatialQuery().populateSrcBox(self.inputComboBox_3,  self.refComboBox_2)
+        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        SpatialQuery().populateSrcBox(self.inputComboBox_3)
 
 #*************************************** Page 11 *****************************************************************************
 
+    @pyqtSignature("")
+    def on_equatorBrowseButton_clicked(self):
+        """
+        Open a File Browser Dialog - for the countries layer and put the filepath in the line edit 
+        """
+        # set the chosen file as the input for the FilePathLineEdit
+        inputFile = QFileDialog.getOpenFileName(self, 'Open equator.shp','', 'Shapefiles (*.shp)')
+        self.equatorLineEdit.setText(inputFile)
+
+    @pyqtSignature("")
+    def on_AddLayerButton_2_clicked(self):
+        """
+        Add the equator to the map canvas
+        """
+        
+        equator = AddLayers().CheckAddLayers(self.equatorLineEdit,  "equator")
+        QgsMapLayerRegistry.instance().addMapLayer(equator)
+        SpatialQuery().populateSrcBox(self.inputComboBox_3)
+        SpatialQuery().populateSrcBox(self.inputComboBox_4,  self.refComboBox_2)
+        
+    @pyqtSignature("")
+    def on_bufferBrowseButton_2_clicked(self):
+        """
+        Open a File Browser Dialog to select location to save new layer
+        """
+        
+        inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
+        self.bufferLineEdit_2.setText(inputFile)
+
+    
+    @pyqtSignature("") 
+    def on_bufferButton_2_clicked(self):
+        """
+        create buffer
+        """
+        self.bufferLayer = AddLayers().CheckBufferLayer(self.inputComboBox_3, self.bufferLineEdit_2,  self.distanceLineEdit_2)
+
+
+#*************************************** Page 12 *****************************************************************************
+
     @pyqtSignature("QString")
-    def on_inputComboBox_3_activated(self,  p0):
+    def on_inputComboBox_4_activated(self,  p0):
         """
         Populate the reference comboBox with all layers but the selected input layer and populate query comboBox
         """
-        SpatialQuery().populateRefBox(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2)
-        #SpatialQuery().populateSrcBox(self.lyrComboBox_2)
+        SpatialQuery().populateRefBox(self.inputComboBox_4,  self.refComboBox_2,  self.queryComboBox_2)
+#        SpatialQuery().populateSrcBox(self.lyrComboBox)
     
 
     @pyqtSignature("QString")
@@ -489,8 +531,8 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         Populate the query combo box with options relevant to the input and reference layers chosen
         """
-        SpatialQuery().populateSelBox(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2)
-        #SpatialQuery().populateSrcBox(self.lyrComboBox)
+        SpatialQuery().populateSelBox(self.inputComboBox_4,  self.refComboBox_2,  self.queryComboBox_2)
+        SpatialQuery().populateSrcBox(self.lyrComboBox_2)
         
         
     @pyqtSignature("") 
@@ -498,9 +540,9 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         run the spatial query
         """
-        SpatialQuery().startSpatialQuery(self.inputComboBox_3,  self.refComboBox_2,  self.queryComboBox_2,  self.newLayercheckBox_2,  self.queryLineEdit_2,  self.queryProgBar_2)
-        #SpatialQuery().populateSrcBox(self.lyrComboBox)
-        #AttributeTable().attributeTable(self.lyrComboBox, self.attribTableView)
+        SpatialQuery().startSpatialQuery(self.inputComboBox_4,  self.refComboBox_2,  self.queryComboBox_2,  self.newLayercheckBox_2,  self.queryLineEdit_2,  self.queryProgBar_2)
+        SpatialQuery().populateSrcBox(self.lyrComboBox_2)
+        AttributeTable().attributeTable(self.lyrComboBox_2, self.attribTableView_2)
 
 
     @pyqtSignature("") 
@@ -516,14 +558,14 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
         enable browse button and queryLineEdit
         """
-        state = self.newLayercheckBox.checkState()
+        state = self.newLayercheckBox_2.checkState()
         
         if state:
-            self.queryLineEdit.setEnabled(True)
-            self.queryBrowseButton.setEnabled(True)
+            self.queryLineEdit_2.setEnabled(True)
+            self.queryBrowseButton_2.setEnabled(True)
         else:
-            self.queryLineEdit.setEnabled(False)
-            self.queryBrowseButton.setEnabled(False)
+            self.queryLineEdit_2.setEnabled(False)
+            self.queryBrowseButton_2.setEnabled(False)
     
     @pyqtSignature("") 
     def on_queryBrowseButton_2_clicked(self):
@@ -532,5 +574,35 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         """
 
         inputFile = QFileDialog.getSaveFileName(self, 'Save As','', 'Shapefiles (*.shp)')
-        self.queryLineEdit.setText(inputFile)
-    
+        self.queryLineEdit_2.setText(inputFile)
+
+#*************************************** Page 13 *****************************************************************************
+
+    @pyqtSignature("QString")
+    def on_lyrComboBox_2_activated(self,  p0):
+        """
+        fill the table view with an attribute table for that layer
+        """
+        AttributeTable().attributeTable(self.lyrComboBox_2, self.attribTableView_2)
+
+    @pyqtSignature("") 
+    def on_checkAnswersNum_2_clicked(self):
+        """
+        check answer to question 7 and assign points
+        """
+        self.numAnsClicks2 += 1
+        points = ScoreSystem(self.score).assignPoints(self.numAnsClicks)
+        msgBox=QMessageBox()
+        
+        if self.numSpinBox.value() == 4465 and self.q7 == False:
+            self.score += points
+            self.q7 = True
+            ScoreSystem(self.score).ansMsgBoxes(self.q7,  7)
+            ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        elif self.numSpinBox.value() == 4465 and self.q7 == True:
+            msgBox.setText("Well done. Click Next to move on.")
+            msgBox.exec_() 
+        else:
+            msgBox.setText("That is the wrong answer for question 7. Look at the attribute table and try again.")
+            msgBox.exec_() 
+
