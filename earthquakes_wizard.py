@@ -50,7 +50,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.q5 = False
         self.q6 = False
         self.q7 = False
-        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5,  self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9,  self.Score_label_10]
+        self.scoreLabels = [self.Score_label,  self.Score_label_2,  self.Score_label_3,  self.Score_label_4,  self.Score_label_5,  self.Score_label_6,  self.Score_label_7,  self.Score_label_8,  self.Score_label_9,  self.Score_label_10,  self.Score_label_11,  self.Score_label_12,  self.Score_label_13]
         self.bufferLayer = None
 #*************************************** Page 2 *****************************************************************************
     @pyqtSignature("")
@@ -264,7 +264,7 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         msgBox.setIcon(3)
         
         if self.bufferLayer is not None:
-            colourManager().updateSingleColour(self.bufferLayer,  self.starView)
+            colourManager().updateSingleColour(self.bufferLayer)
         else:
             msgBox.setText("Could not re-colour the layer")
             msgBox.setInformativeText(" QGISforSchools cannot find the buffer layer. Try going back a step and making a new one.")
@@ -407,8 +407,9 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         for layer in layers:
             i = layers.index(layer)
             name = layer.name()
-            checkbox = checkList[i]
-            checkbox.setText(name)
+            if i <len(checkList):
+                checkbox = checkList[i]
+                checkbox.setText(name)
 
  
 #*************************************** Page 10 *****************************************************************************
@@ -594,12 +595,12 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         points = ScoreSystem(self.score).assignPoints(self.numAnsClicks)
         msgBox=QMessageBox()
         
-        if self.numSpinBox.value() == 4465 and self.q7 == False:
+        if self.numSpinBox_2.value() == 4465 and self.q7 == False:
             self.score += points
             self.q7 = True
             ScoreSystem(self.score).ansMsgBoxes(self.q7,  7)
             ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
-        elif self.numSpinBox.value() == 4465 and self.q7 == True:
+        elif self.numSpinBox_2.value() == 4465 and self.q7 == True:
             msgBox.setText("Well done. Click Next to move on.")
             msgBox.exec_() 
         else:

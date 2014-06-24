@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Mon Jun 23 22:15:26 2014
+# Created: Tue Jun 24 10:05:13 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -991,6 +991,48 @@ class Ui_EQWizard(object):
         self.label_75.setFont(font)
         self.label_75.setObjectName(_fromUtf8("label_75"))
         EQWizard.addPage(self.wizardPage13)
+        self.wizardPage14 = QtGui.QWizardPage()
+        self.wizardPage14.setObjectName(_fromUtf8("wizardPage14"))
+        self.label_77 = QtGui.QLabel(self.wizardPage14)
+        self.label_77.setGeometry(QtCore.QRect(30, 50, 231, 21))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.label_77.setFont(font)
+        self.label_77.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_77.setObjectName(_fromUtf8("label_77"))
+        self.label_78 = QtGui.QLabel(self.wizardPage14)
+        self.label_78.setGeometry(QtCore.QRect(30, 20, 231, 21))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_78.setFont(font)
+        self.label_78.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_78.setObjectName(_fromUtf8("label_78"))
+        self.starView = QtGui.QGraphicsView(self.wizardPage14)
+        self.starView.setGeometry(QtCore.QRect(20, 260, 256, 192))
+        self.starView.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.starView.setFrameShadow(QtGui.QFrame.Sunken)
+        self.starView.setObjectName(_fromUtf8("starView"))
+        self.Score_label_13 = QtGui.QLabel(self.wizardPage14)
+        self.Score_label_13.setGeometry(QtCore.QRect(100, 140, 91, 71))
+        font = QtGui.QFont()
+        font.setPointSize(48)
+        self.Score_label_13.setFont(font)
+        self.Score_label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.Score_label_13.setObjectName(_fromUtf8("Score_label_13"))
+        self.label_79 = QtGui.QLabel(self.wizardPage14)
+        self.label_79.setGeometry(QtCore.QRect(50, 100, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Levenim MT"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_79.setFont(font)
+        self.label_79.setObjectName(_fromUtf8("label_79"))
+        EQWizard.addPage(self.wizardPage14)
 
         self.retranslateUi(EQWizard)
         QtCore.QObject.connect(self.alphaSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.alphaSpinBox.setValue)
@@ -1236,6 +1278,10 @@ class Ui_EQWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now answer the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes took place in 2011 that were within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary and were also in the tropics?&quot;</span><span style=\" font-size:10pt; color:#000000;\"> using the attribute table below.</span></p></body></html>", None))
         self.Score_label_12.setText(_translate("EQWizard", "0", None))
         self.label_75.setText(_translate("EQWizard", "Your Score:", None))
+        self.label_77.setText(_translate("EQWizard", "You have now completed Unit 2.", None))
+        self.label_78.setText(_translate("EQWizard", "Congratulations!", None))
+        self.Score_label_13.setText(_translate("EQWizard", "0", None))
+        self.label_79.setText(_translate("EQWizard", "SCORE:", None))
 
 
 if __name__ == "__main__":
