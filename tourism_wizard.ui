@@ -274,7 +274,7 @@ p, li { white-space: pre-wrap; }
       <string>Add Layer!</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -285,7 +285,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLineEdit" name="riversLineEdit"/>
+       <widget class="QLineEdit" name="woodLineEdit"/>
       </item>
       <item>
        <widget class="QPushButton" name="woodBrowseButton">
@@ -364,7 +364,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>220</y>
       <width>271</width>
-      <height>141</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="title">
@@ -374,7 +374,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>30</y>
        <width>171</width>
        <height>20</height>
       </rect>
@@ -384,7 +384,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
+       <y>70</y>
        <width>251</width>
        <height>21</height>
       </rect>
@@ -393,24 +393,11 @@ p, li { white-space: pre-wrap; }
       <string>Add Layer!</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>131</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add the rivers layer:</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="riverBrowseButton">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>50</y>
+       <y>30</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -424,9 +411,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>370</y>
+      <y>340</y>
       <width>271</width>
-      <height>121</height>
+      <height>161</height>
      </rect>
     </property>
     <property name="title">
@@ -513,6 +500,16 @@ p, li { white-space: pre-wrap; }
        <string>Dot Line</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>Dash Dot Line</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dash Dot Dot Line</string>
+      </property>
+     </item>
     </widget>
     <widget class="QDoubleSpinBox" name="riverWidth">
      <property name="geometry">
@@ -525,6 +522,19 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="value">
       <double>1.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="applyRiverStyle">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>130</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Apply Style</string>
      </property>
     </widget>
    </widget>
@@ -656,7 +666,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Now that we have added woodland and rivers to give the natural context, we can add some layers representing man-made features. Use the&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; Browse&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; button below to select the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;urban_region.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; file, then re-style it.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Now that we have added woodland and rivers to give the natural context, we can add some layers representing man-made features. Use the&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; Browse&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; button below to select the&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; buildings.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; file, then re-style it.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_5">
@@ -669,7 +679,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="title">
-     <string>Add urban_region.shp</string>
+     <string>Add buildings.shp</string>
     </property>
     <widget class="QLineEdit" name="urbanLineEdit">
      <property name="geometry">
@@ -718,7 +728,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="title">
-     <string>Re-style Urban regions</string>
+     <string>Re-style buildings</string>
     </property>
     <widget class="QLabel" name="label_33">
      <property name="geometry">
@@ -746,9 +756,6 @@ p, li { white-space: pre-wrap; }
       <string>Colour</string>
      </property>
     </widget>
-    <zorder>label_33</zorder>
-    <zorder>urbanColourButton</zorder>
-    <zorder>groupBox_8</zorder>
    </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
@@ -953,7 +960,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;It is important to make transportation features such as roads and rail stations very clear as tourists will require this information to get to Aviemore and its attractions. Use the functionality provided blow to add railway_line.shp, railway_station.shp, minor_road.shp, b_road.shp and primary_road.shp.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;It is important to make transportation features such as roads and rail stations very clear as tourists will require this information to get to Aviemore and its attractions. Use the functionality provided blow to add&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; railway_line.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;railway_station.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;minor_road.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;,&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; b_road.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; and &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;primary_road.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="AddLayersButton">
@@ -1013,7 +1020,7 @@ p, li { white-space: pre-wrap; }
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -1295,6 +1302,16 @@ p, li { white-space: pre-wrap; }
        <string>Dot Line</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>Dash Dot Line</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dash Dot Dot Line</string>
+      </property>
+     </item>
     </widget>
     <widget class="QDoubleSpinBox" name="lineWidth">
      <property name="geometry">
@@ -1350,9 +1367,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>350</y>
       <width>271</width>
-      <height>121</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="title">
@@ -1436,7 +1453,20 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <property name="value">
-      <double>1.000000000000000</double>
+      <double>2.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="applyStationStyle">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>120</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Apply Style</string>
      </property>
     </widget>
    </widget>
@@ -1716,7 +1746,7 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -1817,7 +1847,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>40</y>
       <width>271</width>
-      <height>131</height>
+      <height>191</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -1839,7 +1869,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
+      <y>160</y>
       <width>271</width>
       <height>111</height>
      </rect>
@@ -2104,7 +2134,7 @@ p, li { white-space: pre-wrap; }
       <x>20</x>
       <y>210</y>
       <width>256</width>
-      <height>281</height>
+      <height>71</height>
      </rect>
     </property>
    </widget>
@@ -2155,6 +2185,16 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Layer symbology:</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="svgView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>290</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>

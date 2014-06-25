@@ -28,17 +28,27 @@ class colourManager():
         colour = colorDialog.currentColor() 
         return colour
         
-    def updateSingleColour(self,  layerName):
+    def updateSingleColour(self,  layerName,  border=False):
         """
         Allow the user to select a single colour and update the map canvas and layer with the selected colour
         parameters: name of the layer that you wish to change the colour of
         """
         newColor = self.singleColourDialog()
+        print newColor
         
         layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         layerRenderer = layer.rendererV2()
         layerSymbol = layerRenderer.symbol()
         layerSymbol.setColor(newColor)
+        feats = layer.getFeatures()
+        feat = feats.next()
+       
+        if border:
+            if feat.geometry().type() == 2:
+                layerSymbol = QgsFillSymbolV2.createSimple({'color': newColor.name(),  'color_border': newColor.name()})
+            elif feat.geometry().type == 0:
+                layerSymbol = QgsMarkerSymbolV2.createSimple({'color': newColor.name(),  'color_border': newColor.name()})
+            layerRenderer.setSymbol(layerSymbol)
         
         #refresh the map and legend
         iface.mapCanvas().refresh()
@@ -252,6 +262,9 @@ class colourManager():
             
     
     def propSymbols(self,  layer,  expression):
+        """
+        Set the size of the symbols based on the expression
+        """
         
         renderer = layer.rendererV2()
 
@@ -260,4 +273,4 @@ class colourManager():
         layer.setRendererV2(renderer)
         
         iface.mapCanvas().refresh()
-        
+

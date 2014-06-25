@@ -17,8 +17,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>110</y>
-     <width>201</width>
+     <y>120</y>
+     <width>321</width>
      <height>17</height>
     </rect>
    </property>
@@ -33,26 +33,26 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>140</y>
-     <width>161</width>
+     <y>150</y>
+     <width>291</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Unit 2 - Earthquakes</string>
+    <string>Unit 2 - Tourism</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="unit3">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>170</y>
-     <width>82</width>
+     <y>180</y>
+     <width>261</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>Unit 3</string>
+    <string>Unit 3 - Earthquakes</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -92,7 +92,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>80</y>
+     <y>90</y>
      <width>231</width>
      <height>21</height>
     </rect>
@@ -112,6 +112,19 @@
    </property>
    <property name="text">
     <string>These tutorials use data which can be downloaded from:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>70</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;insertURLhere&gt;</string>
    </property>
   </widget>
  </widget>

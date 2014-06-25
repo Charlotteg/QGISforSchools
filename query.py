@@ -17,6 +17,9 @@ class SpatialQuery():
     Class that runs spatial queries etc.
     """
     def populateSrcBox(self,  inputbox,  refbox=None):
+        """
+        Populates the input and reference combo box if given, with all the layers currently loaded
+        """
         
         layers = iface.legendInterface().layers()
         
@@ -121,7 +124,7 @@ class SpatialQuery():
 
     def startSpatialQuery (self,  inputbox,  refbox,  querybox,  newLayercheckBox,  newLayerEdit,  progressBar = None):
         """
-        function description here
+        sets up the variables for, and runs, the spatial query formulated by the user
         """
         if progressBar is not None:
             progressBar.reset()
@@ -286,4 +289,22 @@ class SpatialQuery():
         
         for layer in layers:
             layer.removeSelection()
-    
+
+    def populateLineOnlyBox(self,  lineComboBox):
+        """
+        populates the given box with only layers that have line geometries
+        """        
+        layers = iface.legendInterface().layers()
+        
+        nameList = []
+        
+        for layer in layers:
+            name = layer.name()
+            feats = layer.getFeatures()
+            feat = feats.next()
+            if name not in nameList and feat.geometry().type() == 1:
+                nameList.append(name)
+        
+        lineComboBox.clear()
+        lineComboBox.addItems(nameList)
+        

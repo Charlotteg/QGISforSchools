@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\ui_qgisforschools.ui'
 #
-# Created: Sat Jun 21 17:37:51 2014
+# Created: Wed Jun 25 11:20:55 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,14 +28,14 @@ class Ui_QGISforSchools(object):
         QGISforSchools.setObjectName(_fromUtf8("QGISforSchools"))
         QGISforSchools.resize(403, 284)
         self.unit1 = QtGui.QRadioButton(QGISforSchools)
-        self.unit1.setGeometry(QtCore.QRect(30, 110, 201, 17))
+        self.unit1.setGeometry(QtCore.QRect(30, 120, 321, 17))
         self.unit1.setChecked(True)
         self.unit1.setObjectName(_fromUtf8("unit1"))
         self.unit2 = QtGui.QRadioButton(QGISforSchools)
-        self.unit2.setGeometry(QtCore.QRect(30, 140, 161, 16))
+        self.unit2.setGeometry(QtCore.QRect(30, 150, 291, 16))
         self.unit2.setObjectName(_fromUtf8("unit2"))
         self.unit3 = QtGui.QRadioButton(QGISforSchools)
-        self.unit3.setGeometry(QtCore.QRect(30, 170, 82, 17))
+        self.unit3.setGeometry(QtCore.QRect(30, 180, 261, 17))
         self.unit3.setObjectName(_fromUtf8("unit3"))
         self.label = QtGui.QLabel(QGISforSchools)
         self.label.setGeometry(QtCore.QRect(30, 20, 231, 21))
@@ -50,11 +50,14 @@ class Ui_QGISforSchools(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.label_2 = QtGui.QLabel(QGISforSchools)
-        self.label_2.setGeometry(QtCore.QRect(30, 80, 231, 21))
+        self.label_2.setGeometry(QtCore.QRect(30, 90, 231, 21))
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.label_3 = QtGui.QLabel(QGISforSchools)
         self.label_3.setGeometry(QtCore.QRect(30, 50, 301, 16))
         self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.label_4 = QtGui.QLabel(QGISforSchools)
+        self.label_4.setGeometry(QtCore.QRect(170, 70, 131, 16))
+        self.label_4.setObjectName(_fromUtf8("label_4"))
 
         self.retranslateUi(QGISforSchools)
         QtCore.QMetaObject.connectSlotsByName(QGISforSchools)
@@ -62,11 +65,12 @@ class Ui_QGISforSchools(object):
     def retranslateUi(self, QGISforSchools):
         QGISforSchools.setWindowTitle(_translate("QGISforSchools", "QGISforSchools", None))
         self.unit1.setText(_translate("QGISforSchools", "Unit 1 - Population &&  Development", None))
-        self.unit2.setText(_translate("QGISforSchools", "Unit 2 - Earthquakes", None))
-        self.unit3.setText(_translate("QGISforSchools", "Unit 3", None))
+        self.unit2.setText(_translate("QGISforSchools", "Unit 2 - Tourism", None))
+        self.unit3.setText(_translate("QGISforSchools", "Unit 3 - Earthquakes", None))
         self.label.setText(_translate("QGISforSchools", "Welcome to QGIS for Schools!", None))
         self.label_2.setText(_translate("QGISforSchools", "Which unit would you like to open?", None))
         self.label_3.setText(_translate("QGISforSchools", "These tutorials use data which can be downloaded from:", None))
+        self.label_4.setText(_translate("QGISforSchools", "<insertURLhere>", None))
 
 
 if __name__ == "__main__":

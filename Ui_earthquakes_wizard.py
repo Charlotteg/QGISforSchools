@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Tue Jun 24 10:05:13 2014
+# Created: Wed Jun 25 11:16:48 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -1047,7 +1047,7 @@ class Ui_EQWizard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">Unit 2</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">Unit 3</span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; color:#000000;\">Earthquakes</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Earthquakes are the vibration of the Earth’s crust caused by the release of pressure that has built up due to the movements of tectonic plates. The size, or magnitude, of an earthquake can be measured on the Richter scale which is numbered from 0 – 10.</span></p>\n"
@@ -1263,7 +1263,7 @@ class Ui_EQWizard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now use the spatial query functionality provided blow to make a layer of just those earthquakes that are within 10</span><span style=\" font-size:10pt; vertical-align:super;\">o</span><span style=\" font-size:10pt;\"> of a plate boundary and is within the tropics.</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now use the spatial query functionality provided below to make a layer of just those earthquakes that are within 10</span><span style=\" font-size:10pt; vertical-align:super;\">o</span><span style=\" font-size:10pt;\"> of a plate boundary and is within the tropics.</span></p></body></html>", None))
         self.label_71.setText(_translate("EQWizard", "Layer:", None))
         self.checkAnswersNum_2.setText(_translate("EQWizard", "Check my answer!", None))
         self.label_72.setText(_translate("EQWizard", "Attribute Tables", None))
@@ -1278,7 +1278,7 @@ class Ui_EQWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now answer the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes took place in 2011 that were within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary and were also in the tropics?&quot;</span><span style=\" font-size:10pt; color:#000000;\"> using the attribute table below.</span></p></body></html>", None))
         self.Score_label_12.setText(_translate("EQWizard", "0", None))
         self.label_75.setText(_translate("EQWizard", "Your Score:", None))
-        self.label_77.setText(_translate("EQWizard", "You have now completed Unit 2.", None))
+        self.label_77.setText(_translate("EQWizard", "You have now completed Unit 3.", None))
         self.label_78.setText(_translate("EQWizard", "Congratulations!", None))
         self.Score_label_13.setText(_translate("EQWizard", "0", None))
         self.label_79.setText(_translate("EQWizard", "SCORE:", None))

@@ -15,6 +15,7 @@ from unit_1_wizard import Unit1Wizard
 from Ui_Pop_dev_wizard import Ui_PopDevWizard
 from Pop_dev_wizard import PopDevWizard
 from earthquakes_wizard import EarthquakesWizard
+from tourism_wizard import TourismWizard
 
 class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     """
@@ -66,26 +67,25 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
             openWizard.show()
             result = openWizard.exec_()
         elif self.unit==2:
-            openWizard=EarthquakesWizard()
+            openWizard = TourismWizard()
             openWizard.show()
             result = openWizard.exec_()
         else:
-            msgBox.setText("Sorry, this unit is not quite ready yet!")
-            msgBox.exec_()
+            openWizard=EarthquakesWizard()
+            openWizard.show()
+            result = openWizard.exec_()
     
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
         """
-        Slot documentation goes here.
+        Close the window when cancel is clicked
         """
-        
-        #TODO: comment
         self.close()
     
-    @pyqtSignature("int")
-    def on_questions_stateChanged(self, p0):
-        """
-        Slot documentation goes here.
-        """
-        # TODO: not implemented yet
-        raise NotImplementedError
+#    @pyqtSignature("int")
+#    def on_questions_stateChanged(self, p0):
+#        """
+#        Slot documentation goes here.
+#        """
+#        # TODO: not implemented yet
+#        raise NotImplementedError
