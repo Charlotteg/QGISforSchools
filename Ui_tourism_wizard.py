@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\tourism_wizard.ui'
 #
-# Created: Wed Jun 25 23:32:05 2014
+# Created: Wed Jul 02 18:42:08 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -668,7 +668,7 @@ class Ui_TourismWizard(object):
         self.label_52.setAlignment(QtCore.Qt.AlignCenter)
         self.label_52.setObjectName(_fromUtf8("label_52"))
         self.AttractionTableView = QtGui.QTableView(self.wizardPage9)
-        self.AttractionTableView.setGeometry(QtCore.QRect(20, 210, 256, 71))
+        self.AttractionTableView.setGeometry(QtCore.QRect(20, 210, 256, 281))
         self.AttractionTableView.setObjectName(_fromUtf8("AttractionTableView"))
         self.fieldComboBox = QtGui.QComboBox(self.wizardPage9)
         self.fieldComboBox.setGeometry(QtCore.QRect(20, 160, 131, 21))
@@ -682,9 +682,6 @@ class Ui_TourismWizard(object):
         self.label_26 = QtGui.QLabel(self.wizardPage9)
         self.label_26.setGeometry(QtCore.QRect(20, 190, 91, 16))
         self.label_26.setObjectName(_fromUtf8("label_26"))
-        self.svgView = QtGui.QGraphicsView(self.wizardPage9)
-        self.svgView.setGeometry(QtCore.QRect(20, 290, 256, 192))
-        self.svgView.setObjectName(_fromUtf8("svgView"))
         TourismWizard.addPage(self.wizardPage9)
         self.wizardPage10 = QtGui.QWizardPage()
         self.wizardPage10.setObjectName(_fromUtf8("wizardPage10"))

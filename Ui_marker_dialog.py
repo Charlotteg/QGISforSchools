@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\marker_dialog.ui'
 #
-# Created: Wed Jun 25 21:19:17 2014
+# Created: Wed Jul 02 22:28:22 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -41,6 +41,7 @@ class Ui_Dialog(object):
         self.comboBox.addItem(_fromUtf8(""))
         self.doubleSpinBox = QtGui.QDoubleSpinBox(Dialog)
         self.doubleSpinBox.setGeometry(QtCore.QRect(351, 70, 101, 21))
+        self.doubleSpinBox.setProperty("value", 2.0)
         self.doubleSpinBox.setObjectName(_fromUtf8("doubleSpinBox"))
         self.label = QtGui.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(275, 70, 71, 20))

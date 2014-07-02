@@ -12,27 +12,37 @@ from qgis.gui import *
 from qgis.utils import *
 
 from magicMarkers import MagicMarkers
+from colours import colourManager
 
 from Ui_marker_dialog import Ui_Dialog
+from tourism_wizard import TourismWizard
 
-class MarkerDialog(QDialog, Ui_Dialog):
+class MarkerDialog(QDialog, Ui_Dialog, TourismWizard):
     """
     Class documentation goes here.
     """
-    def __init__(self, parent = None):
+    def __init__(self, attribute,  parent = TourismWizard):
         """
         Constructor
         """
         QDialog.__init__(self, parent)
         self.setupUi(self)
+        self.svgDict = None
+        self.scene = None
+        self.attribute = attribute
+        self.svgDict,  self.scene = MagicMarkers().viewSVGs(self.SVGView)
     
     @pyqtSignature("")
     def on_buttonBox_accepted(self):
         """
         Slot documentation goes here.
         """
-        # TODO: not implemented yet
-        raise NotImplementedError
+        if self.svgDict != None:
+            MagicMarkers().setSVG("tourist_attraction", self.attribute , self.scene,  self.svgDict)
+            attractions = QgsMapLayerRegistry.instance().mapLayersByName("tourist_attraction")[0]
+            colourManager().makeClassTable(attractions,  "LEGEND",  self.AttractionTableView)
+
+        self.close()
     
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
@@ -46,4 +56,4 @@ class MarkerDialog(QDialog, Ui_Dialog):
         """
         Slot documentation goes here.
         """
-        MagicMarkers().viewSVGs(self.SVGView)
+        self.svgDict,  self.scene = MagicMarkers().viewSVGs(self.SVGView)

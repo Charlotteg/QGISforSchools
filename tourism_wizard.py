@@ -251,10 +251,10 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         
         #add the layers to the map
         QgsMapLayerRegistry.instance().addMapLayer(railway)
-        QgsMapLayerRegistry.instance().addMapLayer(station)
         QgsMapLayerRegistry.instance().addMapLayer(minorRoad)
         QgsMapLayerRegistry.instance().addMapLayer(bRoad)
         QgsMapLayerRegistry.instance().addMapLayer(primaryRoad)
+        QgsMapLayerRegistry.instance().addMapLayer(station)
         
         # populate the line layers box on the next page
         SpatialQuery().populateLineOnlyBox(self.lineLyrComboBox)
@@ -405,6 +405,25 @@ class TourismWizard(QWizard, Ui_TourismWizard):
             attractionTypes = colourManager().getAttributes("LEGEND",  attractions)
             self.fieldComboBox.addItems(attractionTypes)
             
+            colorList = [QColor('#8dd3c7'), QColor('#ffffb3'), QColor('#bebada'), QColor('#fb8072'), QColor('#80b1d3'), QColor('#fdb462'), QColor('#b3de69'), QColor('#fccde5'), QColor('#d9d9d9'), QColor('#bc80bd'), QColor('#ccebc5'), QColor('#ffed6f'), QColor('#6699ff'),QColor('#ff1975'),QColor('#3399ff')]
+            catList = []
+            
+            for attraction in attractionTypes:
+                colorIndex = attractionTypes.index(attraction)
+                symbol = QgsSymbolV2.defaultSymbol(attractions.geometryType())
+                symbol.setColor(colorList[colorIndex])
+                cat = QgsRendererCategoryV2(attraction, symbol ,  str(attraction))
+                catList.append(cat)
+            
+            renderer = QgsCategorizedSymbolRendererV2("LEGEND", catList)
+            
+            attractions.setRendererV2(renderer)
+            
+            iface.mapCanvas().refresh()
+            iface.legendInterface().refreshLayerSymbology(attractions)
+            
+            colourManager().makeClassTable(attractions,  "LEGEND",  self.AttractionTableView)
+
 
     @pyqtSignature("")
     def on_checkAnswersEco_clicked(self):
@@ -423,22 +442,11 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         """
         put stuff here
         """
+        attribute = self.fieldComboBox.currentText()
 
-#        openDlg=MarkerDialog()
-#        openDlg.show()
-#        result = openDlg.exec_()
-        Layer = QgsMapLayerRegistry.instance().mapLayersByName("tourist_attraction")[0]
-        renderer = Layer.rendererV2()
-        symbol = renderer.symbol()
-        svgLayer = QgsSvgMarkerSymbolLayerV2("/arrows/Arrow_01.svg")
-        symbol.changeSymbolLayer(0, svgLayer)
-        iface.mapCanvas().refresh()
-        iface.legendInterface().refreshLayerSymbology(Layer)
-
-
-        #MagicMarkers().getSVGs()
-        MagicMarkers().viewSVGs(self.svgView)
-
+        openDlg=MarkerDialog(attribute)
+        openDlg.show()
+        result = openDlg.exec_()
 
 
 #*************************************** Page 10 *****************************************************************************     

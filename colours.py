@@ -67,13 +67,21 @@ class colourManager():
         
         Layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         
-        field = ColumncomboBox.currentText()
-        colorScheme = ColourRampcomboBox.currentText()
+        if isinstance (ColumncomboBox, str) and isinstance(ColourRampcomboBox,  str):
+            field = ColumncomboBox
+            colorScheme = QgsVectorColorBrewerColorRampV2.listSchemeNames()[0]
+        else:
+            field = ColumncomboBox.currentText()
+            colorScheme = ColourRampcomboBox.currentText()
+        
+        print colorScheme
         
         categories = self.getAttributes(field,  Layer)
+        print categories
         numColors = len(categories)
         
         colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors)
+        print colors
         catList =[]
         
         for category in categories:
@@ -184,7 +192,11 @@ class colourManager():
         
         parameters: layer, columncomboBox to define field, table views to update
         """
-        field = columncomboBox.currentText()
+        if isinstance (columncomboBox,  str):
+            field = columncomboBox
+        else:
+            field = columncomboBox.currentText()
+            
         if graduatedLabels is not None:
             values = graduatedLabels
         else:
