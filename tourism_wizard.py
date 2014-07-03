@@ -41,6 +41,7 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         self.landAnsClicks = 0
         self.negAnsClicks = 0
         self.sustAnsClicks = 0
+        self.accomAnsClicks = 0
         self.q1 = False
         self.q2 = False
         self.q3 = False
@@ -83,8 +84,8 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.landAnsClicks += 1
-        self.score,  self.q1 = ScoreSystem(self.score).checkAnswers(self.landAnsClicks,  self.landscapes,  self.q1,  1)
-        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        self.score,  self.q1 = ScoreSystem(self.score,  6).checkAnswers(self.landAnsClicks,  self.landscapes,  self.q1,  1)
+        ScoreSystem(self.score,  6).updateScore(self.scoreLabels,  self.starView)
 
 #*************************************** Page 3 *****************************************************************************   
 
@@ -187,8 +188,8 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.negAnsClicks += 1
-        self.score,  self.q2 = ScoreSystem(self.score).checkAnswers(self.negAnsClicks,  self.environment,  self.q2,  2)
-        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        self.score,  self.q2 = ScoreSystem(self.score,  6).checkAnswers(self.negAnsClicks,  self.environment,  self.q2,  2)
+        ScoreSystem(self.score,  6).updateScore(self.scoreLabels,  self.starView)
 
 #*************************************** Page 5 *****************************************************************************  
 
@@ -377,8 +378,8 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.sustAnsClicks += 1
-        self.score,  self.q3 = ScoreSystem(self.score).checkAnswers(self.sustAnsClicks,  self.balance,  self.q3,  3)
-        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        self.score,  self.q3 = ScoreSystem(self.score,  6).checkAnswers(self.sustAnsClicks,  self.balance,  self.q3,  3)
+        ScoreSystem(self.score,  6).updateScore(self.scoreLabels,  self.starView)
 
 #*************************************** Page 8 *****************************************************************************   
 
@@ -431,8 +432,8 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.sustAnsClicks += 1
-        self.score,  self.q4 = ScoreSystem(self.score).checkAnswers(self.sustAnsClicks,  self.sustainable,  self.q4,  4)
-        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        self.score,  self.q4 = ScoreSystem(self.score,  6).checkAnswers(self.sustAnsClicks,  self.sustainable,  self.q4,  4)
+        ScoreSystem(self.score,  6).updateScore(self.scoreLabels,  self.starView)
 
 
 #*************************************** Page 9 *****************************************************************************     
@@ -458,7 +459,7 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         check answers and add points if correct based on the number of answers already submitted
         """
         self.accomAnsClicks += 1
-        self.score,  self.q5,  self.q6 = ScoreSystem(self.score).checkAnswers(self.accomAnsClicks,  self.nature,  self.q5,  5,  self.camp,  self.q6, 6)
-        ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        self.score,  self.q5,  self.q6 = ScoreSystem(self.score,  6).checkAnswers(self.accomAnsClicks,  self.nature,  self.q5,  5,  self.camp,  self.q6, 6)
+        ScoreSystem(self.score,  6).updateScore(self.scoreLabels,  self.starView)
 
 

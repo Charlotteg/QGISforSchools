@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\tourism_wizard.ui'
 #
-# Created: Wed Jul 02 18:42:08 2014
+# Created: Thu Jul 03 21:53:39 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -29,13 +29,24 @@ class Ui_TourismWizard(object):
         TourismWizard.resize(292, 590)
         TourismWizard.setWizardStyle(QtGui.QWizard.ModernStyle)
         TourismWizard.setOptions(QtGui.QWizard.NoBackButtonOnStartPage)
+        self.wizardPage = QtGui.QWizardPage()
+        self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
+        self.textBrowser_11 = QtGui.QTextBrowser(self.wizardPage)
+        self.textBrowser_11.setGeometry(QtCore.QRect(20, 190, 256, 101))
+        self.textBrowser_11.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_11.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
+        TourismWizard.addPage(self.wizardPage)
         self.wizardPage1 = QtGui.QWizardPage()
         self.wizardPage1.setObjectName(_fromUtf8("wizardPage1"))
         self.IntrotextBrowser = QtGui.QTextBrowser(self.wizardPage1)
-        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 20, 256, 501))
+        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 20, 256, 491))
         self.IntrotextBrowser.setFrameShape(QtGui.QFrame.NoFrame)
         self.IntrotextBrowser.setFrameShadow(QtGui.QFrame.Plain)
         self.IntrotextBrowser.setObjectName(_fromUtf8("IntrotextBrowser"))
+        self.label_67 = QtGui.QLabel(self.wizardPage1)
+        self.label_67.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_67.setObjectName(_fromUtf8("label_67"))
         TourismWizard.addPage(self.wizardPage1)
         self.wizardPage2 = QtGui.QWizardPage()
         self.wizardPage2.setObjectName(_fromUtf8("wizardPage2"))
@@ -117,6 +128,9 @@ class Ui_TourismWizard(object):
         self.checkAnswersLand = QtGui.QPushButton(self.wizardPage2)
         self.checkAnswersLand.setGeometry(QtCore.QRect(20, 470, 251, 21))
         self.checkAnswersLand.setObjectName(_fromUtf8("checkAnswersLand"))
+        self.label_66 = QtGui.QLabel(self.wizardPage2)
+        self.label_66.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_66.setObjectName(_fromUtf8("label_66"))
         TourismWizard.addPage(self.wizardPage2)
         self.wizardPage3 = QtGui.QWizardPage()
         self.wizardPage3.setObjectName(_fromUtf8("wizardPage3"))
@@ -202,6 +216,9 @@ class Ui_TourismWizard(object):
         font.setWeight(75)
         self.label_4.setFont(font)
         self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.label_68 = QtGui.QLabel(self.wizardPage3)
+        self.label_68.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_68.setObjectName(_fromUtf8("label_68"))
         TourismWizard.addPage(self.wizardPage3)
         self.wizardPage4 = QtGui.QWizardPage()
         self.wizardPage4.setObjectName(_fromUtf8("wizardPage4"))
@@ -286,6 +303,9 @@ class Ui_TourismWizard(object):
         self.checkAnswersNeg = QtGui.QPushButton(self.wizardPage4)
         self.checkAnswersNeg.setGeometry(QtCore.QRect(20, 480, 251, 21))
         self.checkAnswersNeg.setObjectName(_fromUtf8("checkAnswersNeg"))
+        self.label_69 = QtGui.QLabel(self.wizardPage4)
+        self.label_69.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_69.setObjectName(_fromUtf8("label_69"))
         TourismWizard.addPage(self.wizardPage4)
         self.wizardPage5 = QtGui.QWizardPage()
         self.wizardPage5.setObjectName(_fromUtf8("wizardPage5"))
@@ -373,6 +393,9 @@ class Ui_TourismWizard(object):
         self.priRoadsBrowseButton = QtGui.QPushButton(self.layoutWidget1)
         self.priRoadsBrowseButton.setObjectName(_fromUtf8("priRoadsBrowseButton"))
         self.gridLayout.addWidget(self.priRoadsBrowseButton, 9, 1, 1, 1)
+        self.label_70 = QtGui.QLabel(self.wizardPage5)
+        self.label_70.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_70.setObjectName(_fromUtf8("label_70"))
         TourismWizard.addPage(self.wizardPage5)
         self.wizardPage6 = QtGui.QWizardPage()
         self.wizardPage6.setObjectName(_fromUtf8("wizardPage6"))
@@ -469,6 +492,9 @@ class Ui_TourismWizard(object):
         self.applyStationStyle = QtGui.QPushButton(self.groupBox_10)
         self.applyStationStyle.setGeometry(QtCore.QRect(50, 120, 161, 23))
         self.applyStationStyle.setObjectName(_fromUtf8("applyStationStyle"))
+        self.label_71 = QtGui.QLabel(self.wizardPage6)
+        self.label_71.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_71.setObjectName(_fromUtf8("label_71"))
         TourismWizard.addPage(self.wizardPage6)
         self.wizardPage7 = QtGui.QWizardPage()
         self.wizardPage7.setObjectName(_fromUtf8("wizardPage7"))
@@ -559,6 +585,9 @@ class Ui_TourismWizard(object):
         self.formatLabels = QtGui.QPushButton(self.layoutWidget2)
         self.formatLabels.setObjectName(_fromUtf8("formatLabels"))
         self.horizontalLayout.addWidget(self.formatLabels)
+        self.label_72 = QtGui.QLabel(self.wizardPage7)
+        self.label_72.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_72.setObjectName(_fromUtf8("label_72"))
         TourismWizard.addPage(self.wizardPage7)
         self.wizardPage8 = QtGui.QWizardPage()
         self.wizardPage8.setObjectName(_fromUtf8("wizardPage8"))
@@ -634,6 +663,9 @@ class Ui_TourismWizard(object):
         self.checkAnswersEco = QtGui.QPushButton(self.wizardPage8)
         self.checkAnswersEco.setGeometry(QtCore.QRect(20, 470, 251, 21))
         self.checkAnswersEco.setObjectName(_fromUtf8("checkAnswersEco"))
+        self.label_73 = QtGui.QLabel(self.wizardPage8)
+        self.label_73.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_73.setObjectName(_fromUtf8("label_73"))
         TourismWizard.addPage(self.wizardPage8)
         self.wizardPage9 = QtGui.QWizardPage()
         self.wizardPage9.setObjectName(_fromUtf8("wizardPage9"))
@@ -682,6 +714,9 @@ class Ui_TourismWizard(object):
         self.label_26 = QtGui.QLabel(self.wizardPage9)
         self.label_26.setGeometry(QtCore.QRect(20, 190, 91, 16))
         self.label_26.setObjectName(_fromUtf8("label_26"))
+        self.label_74 = QtGui.QLabel(self.wizardPage9)
+        self.label_74.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_74.setObjectName(_fromUtf8("label_74"))
         TourismWizard.addPage(self.wizardPage9)
         self.wizardPage10 = QtGui.QWizardPage()
         self.wizardPage10.setObjectName(_fromUtf8("wizardPage10"))
@@ -791,6 +826,9 @@ class Ui_TourismWizard(object):
         font.setPointSize(10)
         self.label_62.setFont(font)
         self.label_62.setObjectName(_fromUtf8("label_62"))
+        self.label_75 = QtGui.QLabel(self.wizardPage10)
+        self.label_75.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_75.setObjectName(_fromUtf8("label_75"))
         TourismWizard.addPage(self.wizardPage10)
         self.wizardPage11 = QtGui.QWizardPage()
         self.wizardPage11.setObjectName(_fromUtf8("wizardPage11"))
@@ -833,6 +871,9 @@ class Ui_TourismWizard(object):
         self.label_65.setFont(font)
         self.label_65.setAlignment(QtCore.Qt.AlignCenter)
         self.label_65.setObjectName(_fromUtf8("label_65"))
+        self.label_76 = QtGui.QLabel(self.wizardPage11)
+        self.label_76.setGeometry(QtCore.QRect(20, 520, 31, 16))
+        self.label_76.setObjectName(_fromUtf8("label_76"))
         TourismWizard.addPage(self.wizardPage11)
 
         self.retranslateUi(TourismWizard)
@@ -841,6 +882,11 @@ class Ui_TourismWizard(object):
 
     def retranslateUi(self, TourismWizard):
         TourismWizard.setWindowTitle(_translate("TourismWizard", "Tourist Maps", None))
+        self.textBrowser_11.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Please move this window to the right hand side of your screen now, then click Next&gt;.</span></p></body></html>", None))
         self.IntrotextBrowser.setWhatsThis(_translate("TourismWizard", "Population & Development Intro", None))
         self.IntrotextBrowser.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -857,6 +903,7 @@ class Ui_TourismWizard(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">You will be asked questions as you go. You will earn </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">5</span><span style=\" font-size:10pt;\"> points for getting the answer right first time, </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">3</span><span style=\" font-size:10pt;\"> for getting it right second time and </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">1</span><span style=\" font-size:10pt;\"> for getting it right any time thereafter.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+        self.label_67.setText(_translate("TourismWizard", "1/11", None))
         self.label_7.setText(_translate("TourismWizard", "Adding Layers", None))
         self.Score_label.setText(_translate("TourismWizard", "0", None))
         self.label.setText(_translate("TourismWizard", "Your Score:", None))
@@ -876,6 +923,7 @@ class Ui_TourismWizard(object):
         self.AddWoodLayer.setText(_translate("TourismWizard", "Add Layer!", None))
         self.woodBrowseButton.setText(_translate("TourismWizard", "Browse", None))
         self.checkAnswersLand.setText(_translate("TourismWizard", "Check my answer!", None))
+        self.label_66.setText(_translate("TourismWizard", "2/11", None))
         self.label_8.setText(_translate("TourismWizard", "Re-Styling Layers", None))
         self.textBrowser_4.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -902,6 +950,7 @@ class Ui_TourismWizard(object):
         self.woodColourButton.setText(_translate("TourismWizard", "Colour", None))
         self.Score_label_2.setText(_translate("TourismWizard", "0", None))
         self.label_4.setText(_translate("TourismWizard", "Your Score:", None))
+        self.label_68.setText(_translate("TourismWizard", "3/11", None))
         self.label_9.setText(_translate("TourismWizard", "Anthropogenic Layers", None))
         self.textBrowser_5.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -924,6 +973,7 @@ class Ui_TourismWizard(object):
         self.income.setText(_translate("TourismWizard", "Increased income for local businesses", None))
         self.label_24.setText(_translate("TourismWizard", "tourism in national parks?", None))
         self.checkAnswersNeg.setText(_translate("TourismWizard", "Check my answer!", None))
+        self.label_69.setText(_translate("TourismWizard", "4/11", None))
         self.label_11.setText(_translate("TourismWizard", "Transport Layers", None))
         self.textBrowser_6.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -943,6 +993,7 @@ class Ui_TourismWizard(object):
         self.bRoadsBrowseButton.setText(_translate("TourismWizard", "Browse", None))
         self.label_17.setText(_translate("TourismWizard", "Add the primary roads layer:", None))
         self.priRoadsBrowseButton.setText(_translate("TourismWizard", "Browse", None))
+        self.label_70.setText(_translate("TourismWizard", "5/11", None))
         self.textBrowser_7.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -971,6 +1022,7 @@ class Ui_TourismWizard(object):
         self.labelFormat.setText(_translate("TourismWizard", "Label format", None))
         self.label_43.setText(_translate("TourismWizard", "Set point size:", None))
         self.applyStationStyle.setText(_translate("TourismWizard", "Apply Style", None))
+        self.label_71.setText(_translate("TourismWizard", "6/11", None))
         self.textBrowser_8.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -994,6 +1046,7 @@ class Ui_TourismWizard(object):
         self.settlementBrowseButton.setText(_translate("TourismWizard", "Browse", None))
         self.label_25.setText(_translate("TourismWizard", "Style Labels:", None))
         self.formatLabels.setText(_translate("TourismWizard", "Format Labels", None))
+        self.label_72.setText(_translate("TourismWizard", "7/11", None))
         self.label_46.setText(_translate("TourismWizard", "Your Score:", None))
         self.Score_label_7.setText(_translate("TourismWizard", "0", None))
         self.label_47.setText(_translate("TourismWizard", "Tourist Attractions!", None))
@@ -1015,6 +1068,7 @@ class Ui_TourismWizard(object):
         self.label_49.setText(_translate("TourismWizard", "and traditions", None))
         self.label_50.setText(_translate("TourismWizard", "sustainable tourism", None))
         self.checkAnswersEco.setText(_translate("TourismWizard", "Check my answer!", None))
+        self.label_73.setText(_translate("TourismWizard", "8/11", None))
         self.Score_label_8.setText(_translate("TourismWizard", "0", None))
         self.label_51.setText(_translate("TourismWizard", "Your Score:", None))
         self.textBrowser_10.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -1026,6 +1080,7 @@ class Ui_TourismWizard(object):
         self.getIcons.setText(_translate("TourismWizard", "Get Icons", None))
         self.label_5.setText(_translate("TourismWizard", "Attraction Type:", None))
         self.label_26.setText(_translate("TourismWizard", "Layer symbology:", None))
+        self.label_74.setText(_translate("TourismWizard", "9/11", None))
         self.label_53.setText(_translate("TourismWizard", "Question Time", None))
         self.checkAnswersAccom.setText(_translate("TourismWizard", "Check my answers!", None))
         self.groupBox_15.setTitle(_translate("TourismWizard", "6.", None))
@@ -1048,10 +1103,12 @@ class Ui_TourismWizard(object):
         self.Score_label_9.setText(_translate("TourismWizard", "0", None))
         self.label_61.setText(_translate("TourismWizard", "Do you think your tourist map should have", None))
         self.label_62.setText(_translate("TourismWizard", "more information on it? What would you add?", None))
+        self.label_75.setText(_translate("TourismWizard", "10/11", None))
         self.label_63.setText(_translate("TourismWizard", "Congratulations!", None))
         self.label_64.setText(_translate("TourismWizard", "SCORE:", None))
         self.Score_label_10.setText(_translate("TourismWizard", "0", None))
         self.label_65.setText(_translate("TourismWizard", "You have now completed Unit 2.", None))
+        self.label_76.setText(_translate("TourismWizard", "11/11", None))
 
 
 if __name__ == "__main__":

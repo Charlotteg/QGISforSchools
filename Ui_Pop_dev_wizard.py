@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Sat Jun 21 17:37:52 2014
+# Created: Thu Jul 03 21:53:37 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,13 +31,24 @@ class Ui_PopDevWizard(object):
         PopDevWizard.setSizeGripEnabled(True)
         PopDevWizard.setWizardStyle(QtGui.QWizard.ModernStyle)
         PopDevWizard.setOptions(QtGui.QWizard.NoBackButtonOnStartPage)
+        self.wizardPage = QtGui.QWizardPage()
+        self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
+        self.textBrowser_7 = QtGui.QTextBrowser(self.wizardPage)
+        self.textBrowser_7.setGeometry(QtCore.QRect(20, 200, 256, 101))
+        self.textBrowser_7.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_7.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_7.setObjectName(_fromUtf8("textBrowser_7"))
+        PopDevWizard.addPage(self.wizardPage)
         self.wizardPage1 = QtGui.QWizardPage()
         self.wizardPage1.setObjectName(_fromUtf8("wizardPage1"))
         self.IntrotextBrowser = QtGui.QTextBrowser(self.wizardPage1)
-        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 30, 256, 481))
+        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 20, 256, 481))
         self.IntrotextBrowser.setFrameShape(QtGui.QFrame.NoFrame)
         self.IntrotextBrowser.setFrameShadow(QtGui.QFrame.Plain)
         self.IntrotextBrowser.setObjectName(_fromUtf8("IntrotextBrowser"))
+        self.label_52 = QtGui.QLabel(self.wizardPage1)
+        self.label_52.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_52.setObjectName(_fromUtf8("label_52"))
         PopDevWizard.addPage(self.wizardPage1)
         self.wizardPage2 = QtGui.QWizardPage()
         self.wizardPage2.setObjectName(_fromUtf8("wizardPage2"))
@@ -76,6 +87,9 @@ class Ui_PopDevWizard(object):
         self.textBrowser.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
+        self.label_53 = QtGui.QLabel(self.wizardPage2)
+        self.label_53.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_53.setObjectName(_fromUtf8("label_53"))
         PopDevWizard.addPage(self.wizardPage2)
         self.wizardPage3 = QtGui.QWizardPage()
         self.wizardPage3.setObjectName(_fromUtf8("wizardPage3"))
@@ -128,6 +142,9 @@ class Ui_PopDevWizard(object):
         self.colourRampLabel.setEnabled(False)
         self.colourRampLabel.setGeometry(QtCore.QRect(30, 240, 81, 16))
         self.colourRampLabel.setObjectName(_fromUtf8("colourRampLabel"))
+        self.label_54 = QtGui.QLabel(self.wizardPage3)
+        self.label_54.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_54.setObjectName(_fromUtf8("label_54"))
         PopDevWizard.addPage(self.wizardPage3)
         self.wizardPage4 = QtGui.QWizardPage()
         self.wizardPage4.setObjectName(_fromUtf8("wizardPage4"))
@@ -219,6 +236,9 @@ class Ui_PopDevWizard(object):
         font.setPointSize(10)
         self.label_9.setFont(font)
         self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.label_55 = QtGui.QLabel(self.wizardPage4)
+        self.label_55.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_55.setObjectName(_fromUtf8("label_55"))
         PopDevWizard.addPage(self.wizardPage4)
         self.wizardPage5 = QtGui.QWizardPage()
         self.wizardPage5.setObjectName(_fromUtf8("wizardPage5"))
@@ -283,6 +303,9 @@ class Ui_PopDevWizard(object):
         font.setWeight(75)
         self.label_11.setFont(font)
         self.label_11.setObjectName(_fromUtf8("label_11"))
+        self.label_56 = QtGui.QLabel(self.wizardPage5)
+        self.label_56.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_56.setObjectName(_fromUtf8("label_56"))
         PopDevWizard.addPage(self.wizardPage5)
         self.wizardPage6 = QtGui.QWizardPage()
         self.wizardPage6.setObjectName(_fromUtf8("wizardPage6"))
@@ -380,6 +403,9 @@ class Ui_PopDevWizard(object):
         self.Score_label_5.setFrameShape(QtGui.QFrame.Box)
         self.Score_label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.Score_label_5.setObjectName(_fromUtf8("Score_label_5"))
+        self.label_57 = QtGui.QLabel(self.wizardPage6)
+        self.label_57.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_57.setObjectName(_fromUtf8("label_57"))
         PopDevWizard.addPage(self.wizardPage6)
         self.wizardPage7 = QtGui.QWizardPage()
         self.wizardPage7.setObjectName(_fromUtf8("wizardPage7"))
@@ -427,6 +453,9 @@ class Ui_PopDevWizard(object):
         self.label_21.setFont(font)
         self.label_21.setAlignment(QtCore.Qt.AlignCenter)
         self.label_21.setObjectName(_fromUtf8("label_21"))
+        self.label_58 = QtGui.QLabel(self.wizardPage7)
+        self.label_58.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_58.setObjectName(_fromUtf8("label_58"))
         PopDevWizard.addPage(self.wizardPage7)
         self.wizardPage8 = QtGui.QWizardPage()
         self.wizardPage8.setObjectName(_fromUtf8("wizardPage8"))
@@ -493,16 +522,12 @@ class Ui_PopDevWizard(object):
         self.textBrowser_6.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_6.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_6.setObjectName(_fromUtf8("textBrowser_6"))
+        self.label_59 = QtGui.QLabel(self.wizardPage8)
+        self.label_59.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_59.setObjectName(_fromUtf8("label_59"))
         PopDevWizard.addPage(self.wizardPage8)
         self.wizardPage9 = QtGui.QWizardPage()
         self.wizardPage9.setObjectName(_fromUtf8("wizardPage9"))
-        self.countriesCheckBox = QtGui.QCheckBox(self.wizardPage9)
-        self.countriesCheckBox.setGeometry(QtCore.QRect(140, 110, 81, 16))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.countriesCheckBox.setFont(font)
-        self.countriesCheckBox.setChecked(True)
-        self.countriesCheckBox.setObjectName(_fromUtf8("countriesCheckBox"))
         self.label_24 = QtGui.QLabel(self.wizardPage9)
         self.label_24.setGeometry(QtCore.QRect(30, 10, 231, 21))
         font = QtGui.QFont()
@@ -567,7 +592,7 @@ class Ui_PopDevWizard(object):
         self.label_29.setFont(font)
         self.label_29.setObjectName(_fromUtf8("label_29"))
         self.obesityCheckBox = QtGui.QCheckBox(self.wizardPage9)
-        self.obesityCheckBox.setGeometry(QtCore.QRect(60, 110, 70, 17))
+        self.obesityCheckBox.setGeometry(QtCore.QRect(110, 110, 70, 17))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.obesityCheckBox.setFont(font)
@@ -619,6 +644,9 @@ class Ui_PopDevWizard(object):
         self.checkAnswersObs = QtGui.QPushButton(self.wizardPage9)
         self.checkAnswersObs.setGeometry(QtCore.QRect(20, 450, 251, 21))
         self.checkAnswersObs.setObjectName(_fromUtf8("checkAnswersObs"))
+        self.label_60 = QtGui.QLabel(self.wizardPage9)
+        self.label_60.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_60.setObjectName(_fromUtf8("label_60"))
         PopDevWizard.addPage(self.wizardPage9)
         self.wizardPage10 = QtGui.QWizardPage()
         self.wizardPage10.setObjectName(_fromUtf8("wizardPage10"))
@@ -752,6 +780,9 @@ class Ui_PopDevWizard(object):
         self.checkAnswersPopDens = QtGui.QPushButton(self.wizardPage10)
         self.checkAnswersPopDens.setGeometry(QtCore.QRect(10, 460, 271, 21))
         self.checkAnswersPopDens.setObjectName(_fromUtf8("checkAnswersPopDens"))
+        self.label_61 = QtGui.QLabel(self.wizardPage10)
+        self.label_61.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_61.setObjectName(_fromUtf8("label_61"))
         PopDevWizard.addPage(self.wizardPage10)
         self.wizardPage11 = QtGui.QWizardPage()
         self.wizardPage11.setObjectName(_fromUtf8("wizardPage11"))
@@ -794,6 +825,9 @@ class Ui_PopDevWizard(object):
         self.Score_label_10.setFont(font)
         self.Score_label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.Score_label_10.setObjectName(_fromUtf8("Score_label_10"))
+        self.label_62 = QtGui.QLabel(self.wizardPage11)
+        self.label_62.setGeometry(QtCore.QRect(20, 510, 31, 16))
+        self.label_62.setObjectName(_fromUtf8("label_62"))
         PopDevWizard.addPage(self.wizardPage11)
 
         self.retranslateUi(PopDevWizard)
@@ -806,6 +840,11 @@ class Ui_PopDevWizard(object):
     def retranslateUi(self, PopDevWizard):
         PopDevWizard.setWindowTitle(_translate("PopDevWizard", "Population and Development", None))
         PopDevWizard.setWhatsThis(_translate("PopDevWizard", "Population and Development", None))
+        self.textBrowser_7.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Please move this window to the right hand side of your screen now, then click Next&gt;.</span></p></body></html>", None))
         self.IntrotextBrowser.setWhatsThis(_translate("PopDevWizard", "Population & Development Intro", None))
         self.IntrotextBrowser.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -822,6 +861,7 @@ class Ui_PopDevWizard(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">You will be asked questions as you go. You will earn </span><span style=\" font-size:11pt; font-weight:600; color:#aa007f;\">5</span><span style=\" font-size:10pt;\"> points for getting the answer right first time, </span><span style=\" font-size:11pt; font-weight:600; color:#aa007f;\">3</span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\"> </span><span style=\" font-size:10pt;\">for getting it right second time and </span><span style=\" font-size:11pt; font-weight:600; color:#aa007f;\">1</span><span style=\" font-size:10pt;\"> for getting it right any time thereafter.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p></body></html>", None))
+        self.label_52.setText(_translate("PopDevWizard", "1/11", None))
         self.CountriesBrowseButton.setText(_translate("PopDevWizard", "Browse", None))
         self.AddCountriesLayerButton.setText(_translate("PopDevWizard", "Add Countries!", None))
         self.textBrowser_3.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -840,6 +880,7 @@ class Ui_PopDevWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">In every GIS project, you have to start by adding data to the map canvas. We are going to start by adding the countries of the world.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Click the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Browse</span><span style=\" font-size:10pt;\"> button below and navigate to the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Population &amp; Development</span><span style=\" font-size:10pt;\"> data folder and choose </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">countries.shp</span><span style=\" font-size:10pt;\">.</span></p></body></html>", None))
+        self.label_53.setText(_translate("PopDevWizard", "2/11", None))
         self.Score_label_2.setText(_translate("PopDevWizard", "0", None))
         self.label_2.setText(_translate("PopDevWizard", "Your Score:", None))
         self.textBrowser_2.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -853,6 +894,7 @@ class Ui_PopDevWizard(object):
         self.ChangeColourButton.setText(_translate("PopDevWizard", "Colour", None))
         self.columnLabel.setText(_translate("PopDevWizard", "Column:", None))
         self.colourRampLabel.setText(_translate("PopDevWizard", "Colour Ramp:", None))
+        self.label_54.setText(_translate("PopDevWizard", "3/11", None))
         self.Score_label_3.setText(_translate("PopDevWizard", "0", None))
         self.label_3.setText(_translate("PopDevWizard", "Your Score:", None))
         self.checkAnswersPop.setText(_translate("PopDevWizard", "Check my answers!", None))
@@ -872,6 +914,7 @@ class Ui_PopDevWizard(object):
         self.label_8.setText(_translate("PopDevWizard", "Which three countries fall into the \'very large", None))
         self.brazilPop.setText(_translate("PopDevWizard", "Brazil, Japan, Indonesia", None))
         self.label_9.setText(_translate("PopDevWizard", "population\' category?", None))
+        self.label_55.setText(_translate("PopDevWizard", "4/11", None))
         self.label_10.setText(_translate("PopDevWizard", "Your Score:", None))
         self.ChangeColourButton_2.setText(_translate("PopDevWizard", "Colour", None))
         self.colourRampLabel_2.setText(_translate("PopDevWizard", "Colour Ramp:", None))
@@ -888,6 +931,7 @@ class Ui_PopDevWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Use the options below to colour the map so that each </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">economy</span><span style=\" font-size:10pt;\"> is represented by a different colour, and click </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Next</span><span style=\" font-size:10pt;\">. </span></p></body></html>", None))
         self.columnLabel_2.setText(_translate("PopDevWizard", "Column:", None))
         self.label_11.setText(_translate("PopDevWizard", "Investigating Development", None))
+        self.label_56.setText(_translate("PopDevWizard", "5/11", None))
         self.groupBox_3.setTitle(_translate("PopDevWizard", "3.", None))
         self.sAmerica.setText(_translate("PopDevWizard", "South America", None))
         self.asia.setText(_translate("PopDevWizard", "Asia", None))
@@ -908,6 +952,7 @@ class Ui_PopDevWizard(object):
         self.checkAnswersDev.setText(_translate("PopDevWizard", "Check my answers!", None))
         self.label_18.setText(_translate("PopDevWizard", "Your Score:", None))
         self.Score_label_5.setText(_translate("PopDevWizard", "0", None))
+        self.label_57.setText(_translate("PopDevWizard", "6/11", None))
         self.IntrotextBrowser_2.setWhatsThis(_translate("PopDevWizard", "Population & Development Intro", None))
         self.IntrotextBrowser_2.setHtml(_translate("PopDevWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -926,6 +971,7 @@ class Ui_PopDevWizard(object):
         self.label_20.setText(_translate("PopDevWizard", "Your Score:", None))
         self.obesityBrowseButton.setText(_translate("PopDevWizard", "Browse", None))
         self.label_21.setText(_translate("PopDevWizard", "Development and Health", None))
+        self.label_58.setText(_translate("PopDevWizard", "7/11", None))
         self.groupBox_5.setTitle(_translate("PopDevWizard", "Countries", None))
         self.columnLabel_3.setText(_translate("PopDevWizard", "Column:", None))
         self.label_22.setText(_translate("PopDevWizard", "Your Score:", None))
@@ -939,7 +985,7 @@ class Ui_PopDevWizard(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Select</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> income_grp</span><span style=\" font-size:10pt;\"> for the countries column and </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">male_2010</span><span style=\" font-size:10pt;\"> for the obesity column, then click Next.</span></p></body></html>", None))
-        self.countriesCheckBox.setText(_translate("PopDevWizard", "Countries", None))
+        self.label_59.setText(_translate("PopDevWizard", "8/11", None))
         self.label_24.setText(_translate("PopDevWizard", "Looking for Correlations", None))
         self.label_25.setText(_translate("PopDevWizard", "Toggle the checkboxes below to turn the", None))
         self.label_26.setText(_translate("PopDevWizard", "loaded layers on and off. Look for similarities", None))
@@ -962,6 +1008,7 @@ class Ui_PopDevWizard(object):
         self.Score_label_8.setText(_translate("PopDevWizard", "0", None))
         self.label_32.setText(_translate("PopDevWizard", "Your Score:", None))
         self.checkAnswersObs.setText(_translate("PopDevWizard", "Check my answers!", None))
+        self.label_60.setText(_translate("PopDevWizard", "9/11", None))
         self.groupBox_9.setTitle(_translate("PopDevWizard", "6.", None))
         self.a.setText(_translate("PopDevWizard", "Density is the number of people in a given", None))
         self.c.setText(_translate("PopDevWizard", "Density is related to people\'s intelligence", None))
@@ -984,10 +1031,12 @@ class Ui_PopDevWizard(object):
         self.label_42.setText(_translate("PopDevWizard", "Why do some countries have a much higher", None))
         self.label_43.setText(_translate("PopDevWizard", "population than others?", None))
         self.checkAnswersPopDens.setText(_translate("PopDevWizard", "Check my answer!", None))
+        self.label_61.setText(_translate("PopDevWizard", "10/11", None))
         self.label_46.setText(_translate("PopDevWizard", "Congratulations!", None))
         self.label_47.setText(_translate("PopDevWizard", "You have now completed Unit 1.", None))
         self.label_51.setText(_translate("PopDevWizard", "SCORE:", None))
         self.Score_label_10.setText(_translate("PopDevWizard", "0", None))
+        self.label_62.setText(_translate("PopDevWizard", "11/11", None))
 
 
 if __name__ == "__main__":

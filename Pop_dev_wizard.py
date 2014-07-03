@@ -311,19 +311,19 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         colourManager().make3ClassTable("countries",  "obesity",  self.ColumncomboBox_3,  self.obesityColumncomboBox,  self.obesityTableView)
         
 #*************************************** Page 9 *****************************************************************************    
-
-    @pyqtSignature("")
-    def on_countriesCheckBox_clicked(self):
-        """
-        hide or show the countries layer depending on the state of the checkbox
-        """
-        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
-        state = self.countriesCheckBox.checkState()
-        legend = iface.legendInterface()
-        if state:
-            legend.setLayerVisible(layer,  True)
-        else:
-            legend.setLayerVisible(layer, False)
+#check box has been removed but code kept in case it should be re-instated
+#    @pyqtSignature("")
+#    def on_countriesCheckBox_clicked(self):
+#        """
+#        hide or show the countries layer depending on the state of the checkbox
+#        """
+#        layer = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
+#        state = self.countriesCheckBox.checkState()
+#        legend = iface.legendInterface()
+#        if state:
+#            legend.setLayerVisible(layer,  True)
+#        else:
+#            legend.setLayerVisible(layer, False)
     
     @pyqtSignature("")
     def on_obesityCheckBox_clicked(self):

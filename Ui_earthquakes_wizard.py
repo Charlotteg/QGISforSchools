@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Wed Jun 25 11:16:48 2014
+# Created: Thu Jul 03 21:53:38 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,13 +30,24 @@ class Ui_EQWizard(object):
         EQWizard.setSizeGripEnabled(True)
         EQWizard.setWizardStyle(QtGui.QWizard.ModernStyle)
         EQWizard.setOptions(QtGui.QWizard.NoBackButtonOnStartPage)
+        self.wizardPage = QtGui.QWizardPage()
+        self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
+        self.textBrowser_11 = QtGui.QTextBrowser(self.wizardPage)
+        self.textBrowser_11.setGeometry(QtCore.QRect(20, 190, 256, 101))
+        self.textBrowser_11.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_11.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
+        EQWizard.addPage(self.wizardPage)
         self.wizardPage1 = QtGui.QWizardPage()
         self.wizardPage1.setObjectName(_fromUtf8("wizardPage1"))
         self.IntrotextBrowser = QtGui.QTextBrowser(self.wizardPage1)
-        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 30, 256, 481))
+        self.IntrotextBrowser.setGeometry(QtCore.QRect(20, 30, 256, 471))
         self.IntrotextBrowser.setFrameShape(QtGui.QFrame.NoFrame)
         self.IntrotextBrowser.setFrameShadow(QtGui.QFrame.Plain)
         self.IntrotextBrowser.setObjectName(_fromUtf8("IntrotextBrowser"))
+        self.label_80 = QtGui.QLabel(self.wizardPage1)
+        self.label_80.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_80.setObjectName(_fromUtf8("label_80"))
         EQWizard.addPage(self.wizardPage1)
         self.wizardPage2 = QtGui.QWizardPage()
         self.wizardPage2.setObjectName(_fromUtf8("wizardPage2"))
@@ -133,6 +144,9 @@ class Ui_EQWizard(object):
         self.platesBrowseButton = QtGui.QPushButton(self.wizardPage2)
         self.platesBrowseButton.setGeometry(QtCore.QRect(200, 280, 75, 23))
         self.platesBrowseButton.setObjectName(_fromUtf8("platesBrowseButton"))
+        self.label_81 = QtGui.QLabel(self.wizardPage2)
+        self.label_81.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_81.setObjectName(_fromUtf8("label_81"))
         EQWizard.addPage(self.wizardPage2)
         self.wizardPage3 = QtGui.QWizardPage()
         self.wizardPage3.setObjectName(_fromUtf8("wizardPage3"))
@@ -197,6 +211,9 @@ class Ui_EQWizard(object):
         self.colourRampLabel.setEnabled(False)
         self.colourRampLabel.setGeometry(QtCore.QRect(20, 89, 81, 16))
         self.colourRampLabel.setObjectName(_fromUtf8("colourRampLabel"))
+        self.label_82 = QtGui.QLabel(self.wizardPage3)
+        self.label_82.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_82.setObjectName(_fromUtf8("label_82"))
         EQWizard.addPage(self.wizardPage3)
         self.wizardPage4 = QtGui.QWizardPage()
         self.wizardPage4.setObjectName(_fromUtf8("wizardPage4"))
@@ -281,6 +298,9 @@ class Ui_EQWizard(object):
         self.checkAnswersMag = QtGui.QPushButton(self.wizardPage4)
         self.checkAnswersMag.setGeometry(QtCore.QRect(10, 460, 261, 21))
         self.checkAnswersMag.setObjectName(_fromUtf8("checkAnswersMag"))
+        self.label_83 = QtGui.QLabel(self.wizardPage4)
+        self.label_83.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_83.setObjectName(_fromUtf8("label_83"))
         EQWizard.addPage(self.wizardPage4)
         self.wizardPage5 = QtGui.QWizardPage()
         self.wizardPage5.setObjectName(_fromUtf8("wizardPage5"))
@@ -344,6 +364,9 @@ class Ui_EQWizard(object):
         self.bufferButton = QtGui.QPushButton(self.groupBox_3)
         self.bufferButton.setGeometry(QtCore.QRect(10, 150, 221, 23))
         self.bufferButton.setObjectName(_fromUtf8("bufferButton"))
+        self.label_84 = QtGui.QLabel(self.wizardPage5)
+        self.label_84.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_84.setObjectName(_fromUtf8("label_84"))
         EQWizard.addPage(self.wizardPage5)
         self.wizardPage6 = QtGui.QWizardPage()
         self.wizardPage6.setObjectName(_fromUtf8("wizardPage6"))
@@ -429,6 +452,9 @@ class Ui_EQWizard(object):
         self.checkAnswersDist = QtGui.QPushButton(self.wizardPage6)
         self.checkAnswersDist.setGeometry(QtCore.QRect(10, 470, 271, 21))
         self.checkAnswersDist.setObjectName(_fromUtf8("checkAnswersDist"))
+        self.label_85 = QtGui.QLabel(self.wizardPage6)
+        self.label_85.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_85.setObjectName(_fromUtf8("label_85"))
         EQWizard.addPage(self.wizardPage6)
         self.wizardPage7 = QtGui.QWizardPage()
         self.wizardPage7.setObjectName(_fromUtf8("wizardPage7"))
@@ -498,7 +524,7 @@ class Ui_EQWizard(object):
         self.label_35.setGeometry(QtCore.QRect(30, 270, 121, 21))
         self.label_35.setObjectName(_fromUtf8("label_35"))
         self.label_36 = QtGui.QLabel(self.wizardPage7)
-        self.label_36.setGeometry(QtCore.QRect(10, 300, 131, 21))
+        self.label_36.setGeometry(QtCore.QRect(20, 300, 121, 21))
         self.label_36.setObjectName(_fromUtf8("label_36"))
         self.label_37 = QtGui.QLabel(self.wizardPage7)
         self.label_37.setGeometry(QtCore.QRect(160, 320, 101, 21))
@@ -507,6 +533,9 @@ class Ui_EQWizard(object):
         self.queryProgBar.setGeometry(QtCore.QRect(30, 480, 231, 16))
         self.queryProgBar.setProperty("value", 0)
         self.queryProgBar.setObjectName(_fromUtf8("queryProgBar"))
+        self.label_86 = QtGui.QLabel(self.wizardPage7)
+        self.label_86.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_86.setObjectName(_fromUtf8("label_86"))
         EQWizard.addPage(self.wizardPage7)
         self.wizardPage8 = QtGui.QWizardPage()
         self.wizardPage8.setObjectName(_fromUtf8("wizardPage8"))
@@ -571,6 +600,9 @@ class Ui_EQWizard(object):
         self.label_40 = QtGui.QLabel(self.wizardPage8)
         self.label_40.setGeometry(QtCore.QRect(90, 160, 46, 13))
         self.label_40.setObjectName(_fromUtf8("label_40"))
+        self.label_87 = QtGui.QLabel(self.wizardPage8)
+        self.label_87.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_87.setObjectName(_fromUtf8("label_87"))
         EQWizard.addPage(self.wizardPage8)
         self.wizardPage9 = QtGui.QWizardPage()
         self.wizardPage9.setObjectName(_fromUtf8("wizardPage9"))
@@ -677,6 +709,9 @@ class Ui_EQWizard(object):
         font.setPointSize(10)
         self.label_54.setFont(font)
         self.label_54.setObjectName(_fromUtf8("label_54"))
+        self.label_88 = QtGui.QLabel(self.wizardPage9)
+        self.label_88.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_88.setObjectName(_fromUtf8("label_88"))
         EQWizard.addPage(self.wizardPage9)
         self.wizardPage10 = QtGui.QWizardPage()
         self.wizardPage10.setObjectName(_fromUtf8("wizardPage10"))
@@ -763,6 +798,9 @@ class Ui_EQWizard(object):
         self.checkAnswersEffects = QtGui.QPushButton(self.wizardPage10)
         self.checkAnswersEffects.setGeometry(QtCore.QRect(20, 460, 251, 21))
         self.checkAnswersEffects.setObjectName(_fromUtf8("checkAnswersEffects"))
+        self.label_89 = QtGui.QLabel(self.wizardPage10)
+        self.label_89.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_89.setObjectName(_fromUtf8("label_89"))
         EQWizard.addPage(self.wizardPage10)
         self.wizardPage11 = QtGui.QWizardPage()
         self.wizardPage11.setObjectName(_fromUtf8("wizardPage11"))
@@ -842,6 +880,9 @@ class Ui_EQWizard(object):
         self.AddLayerButton_2 = QtGui.QPushButton(self.groupBox_13)
         self.AddLayerButton_2.setGeometry(QtCore.QRect(10, 60, 251, 21))
         self.AddLayerButton_2.setObjectName(_fromUtf8("AddLayerButton_2"))
+        self.label_90 = QtGui.QLabel(self.wizardPage11)
+        self.label_90.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_90.setObjectName(_fromUtf8("label_90"))
         EQWizard.addPage(self.wizardPage11)
         self.wizardPage12 = QtGui.QWizardPage()
         self.wizardPage12.setObjectName(_fromUtf8("wizardPage12"))
@@ -920,6 +961,9 @@ class Ui_EQWizard(object):
         self.textBrowser_9.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_9.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
+        self.label_91 = QtGui.QLabel(self.wizardPage12)
+        self.label_91.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_91.setObjectName(_fromUtf8("label_91"))
         EQWizard.addPage(self.wizardPage12)
         self.wizardPage13 = QtGui.QWizardPage()
         self.wizardPage13.setObjectName(_fromUtf8("wizardPage13"))
@@ -990,6 +1034,9 @@ class Ui_EQWizard(object):
         font.setWeight(75)
         self.label_75.setFont(font)
         self.label_75.setObjectName(_fromUtf8("label_75"))
+        self.label_92 = QtGui.QLabel(self.wizardPage13)
+        self.label_92.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_92.setObjectName(_fromUtf8("label_92"))
         EQWizard.addPage(self.wizardPage13)
         self.wizardPage14 = QtGui.QWizardPage()
         self.wizardPage14.setObjectName(_fromUtf8("wizardPage14"))
@@ -1032,6 +1079,9 @@ class Ui_EQWizard(object):
         font.setWeight(75)
         self.label_79.setFont(font)
         self.label_79.setObjectName(_fromUtf8("label_79"))
+        self.label_93 = QtGui.QLabel(self.wizardPage14)
+        self.label_93.setGeometry(QtCore.QRect(30, 520, 31, 16))
+        self.label_93.setObjectName(_fromUtf8("label_93"))
         EQWizard.addPage(self.wizardPage14)
 
         self.retranslateUi(EQWizard)
@@ -1042,6 +1092,11 @@ class Ui_EQWizard(object):
     def retranslateUi(self, EQWizard):
         EQWizard.setWindowTitle(_translate("EQWizard", "Earthquakes", None))
         EQWizard.setWhatsThis(_translate("EQWizard", "Earthquakes", None))
+        self.textBrowser_11.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Please move this window to the right hand side of your screen now, then click Next&gt;.</span></p></body></html>", None))
         self.IntrotextBrowser.setWhatsThis(_translate("EQWizard", "Population & Development Intro", None))
         self.IntrotextBrowser.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -1056,6 +1111,7 @@ class Ui_EQWizard(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">You will be asked questions as you go. You will earn </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">5</span><span style=\" font-size:10pt;\"> points for getting the answer right first time, </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">3</span><span style=\" font-size:10pt;\"> for getting it right second time and </span><span style=\" font-size:10pt; font-weight:600; color:#aa007f;\">1</span><span style=\" font-size:10pt;\"> for getting it right any time thereafter.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+        self.label_80.setText(_translate("EQWizard", "1/14", None))
         self.label_4.setText(_translate("EQWizard", "3. Add the earthquakes:", None))
         self.label_3.setText(_translate("EQWizard", "2. Add the plate boundaries:", None))
         self.label_2.setText(_translate("EQWizard", "1. Add the countries layer:", None))
@@ -1073,6 +1129,7 @@ class Ui_EQWizard(object):
         self.label_11.setText(_translate("EQWizard", "buttons below to select these layers from", None))
         self.label_12.setText(_translate("EQWizard", "the Earthquakes data file.", None))
         self.platesBrowseButton.setText(_translate("EQWizard", "Browse", None))
+        self.label_81.setText(_translate("EQWizard", "2/14", None))
         self.label_13.setText(_translate("EQWizard", "Your Score:", None))
         self.Score_label_2.setText(_translate("EQWizard", "0", None))
         self.textBrowser_2.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -1087,6 +1144,7 @@ class Ui_EQWizard(object):
         self.StyleTypecomboBox.setItemText(0, _translate("EQWizard", "Single Colour", None))
         self.StyleTypecomboBox.setItemText(1, _translate("EQWizard", "Graduated", None))
         self.colourRampLabel.setText(_translate("EQWizard", "Colour Ramp:", None))
+        self.label_82.setText(_translate("EQWizard", "3/14", None))
         self.textBrowser_3.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -1110,6 +1168,7 @@ class Ui_EQWizard(object):
         self.label_22.setText(_translate("EQWizard", "Your Score:", None))
         self.Score_label_3.setText(_translate("EQWizard", "0", None))
         self.checkAnswersMag.setText(_translate("EQWizard", "Check my answer!", None))
+        self.label_83.setText(_translate("EQWizard", "4/14", None))
         self.label_19.setText(_translate("EQWizard", "Buffering", None))
         self.textBrowser_4.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -1128,6 +1187,7 @@ class Ui_EQWizard(object):
         self.inputComboBox.setItemText(1, _translate("EQWizard", "plate_boundaries", None))
         self.inputComboBox.setItemText(2, _translate("EQWizard", "countries", None))
         self.bufferButton.setText(_translate("EQWizard", "Create Buffer!", None))
+        self.label_84.setText(_translate("EQWizard", "5/14", None))
         self.textBrowser_5.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -1149,6 +1209,7 @@ class Ui_EQWizard(object):
         self.even.setText(_translate("EQWizard", "They are evenly distributed across the globe", None))
         self.label_31.setText(_translate("EQWizard", "the distribution pattern of the earthquakes?", None))
         self.checkAnswersDist.setText(_translate("EQWizard", "Check my answer!", None))
+        self.label_85.setText(_translate("EQWizard", "6/14", None))
         self.textBrowser_6.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -1165,8 +1226,9 @@ class Ui_EQWizard(object):
         self.runQuery.setText(_translate("EQWizard", "Run Query!", None))
         self.label_34.setText(_translate("EQWizard", "Select from input layer:", None))
         self.label_35.setText(_translate("EQWizard", "With reference layer:", None))
-        self.label_36.setText(_translate("EQWizard", "Where the input layer is :", None))
+        self.label_36.setText(_translate("EQWizard", "Where the input layer :", None))
         self.label_37.setText(_translate("EQWizard", "the reference layer", None))
+        self.label_86.setText(_translate("EQWizard", "7/14", None))
         self.Score_label_7.setText(_translate("EQWizard", "0", None))
         self.label_38.setText(_translate("EQWizard", "Your Score:", None))
         self.textBrowser_7.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -1180,6 +1242,7 @@ class Ui_EQWizard(object):
         self.label_41.setText(_translate("EQWizard", "How many earthquakes are within 10 ", None))
         self.label_42.setText(_translate("EQWizard", "degrees of a plate boundary?", None))
         self.label_40.setText(_translate("EQWizard", "Layer:", None))
+        self.label_87.setText(_translate("EQWizard", "8/14", None))
         self.groupBox_8.setTitle(_translate("EQWizard", "4.", None))
         self.settlement.setText(_translate("EQWizard", "The closest settlement to the focus", None))
         self.focus.setText(_translate("EQWizard", "The point inside the crust where the earthquake", None))
@@ -1204,6 +1267,7 @@ class Ui_EQWizard(object):
         self.label_48.setText(_translate("EQWizard", "Your Score:", None))
         self.checkAnswersEQ.setText(_translate("EQWizard", "Check my answers!", None))
         self.label_54.setText(_translate("EQWizard", "answer the following questions:", None))
+        self.label_88.setText(_translate("EQWizard", "9/14", None))
         self.groupBox_10.setTitle(_translate("EQWizard", "Layers", None))
         self.lyrCheckBox.setText(_translate("EQWizard", "CheckBox", None))
         self.lyrCheckBox_2.setText(_translate("EQWizard", "CheckBox", None))
@@ -1226,6 +1290,7 @@ class Ui_EQWizard(object):
         self.disease.setText(_translate("EQWizard", "Spread of disease", None))
         self.label_62.setText(_translate("EQWizard", "of an earthquake?", None))
         self.checkAnswersEffects.setText(_translate("EQWizard", "Check my answers!", None))
+        self.label_89.setText(_translate("EQWizard", "10/14", None))
         self.Score_label_10.setText(_translate("EQWizard", "0", None))
         self.label_63.setText(_translate("EQWizard", "Your Score:", None))
         self.label_64.setText(_translate("EQWizard", "Further Enquiry", None))
@@ -1247,6 +1312,7 @@ class Ui_EQWizard(object):
         self.groupBox_13.setTitle(_translate("EQWizard", "Add the equator", None))
         self.equatorBrowseButton.setText(_translate("EQWizard", "Browse", None))
         self.AddLayerButton_2.setText(_translate("EQWizard", "Add Layer!", None))
+        self.label_90.setText(_translate("EQWizard", "11/14", None))
         self.label_55.setText(_translate("EQWizard", "Where the input layer is :", None))
         self.label_66.setText(_translate("EQWizard", "the reference layer", None))
         self.runQuery_2.setText(_translate("EQWizard", "Run Query!", None))
@@ -1264,6 +1330,7 @@ class Ui_EQWizard(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now use the spatial query functionality provided below to make a layer of just those earthquakes that are within 10</span><span style=\" font-size:10pt; vertical-align:super;\">o</span><span style=\" font-size:10pt;\"> of a plate boundary and is within the tropics.</span></p></body></html>", None))
+        self.label_91.setText(_translate("EQWizard", "12/14", None))
         self.label_71.setText(_translate("EQWizard", "Layer:", None))
         self.checkAnswersNum_2.setText(_translate("EQWizard", "Check my answer!", None))
         self.label_72.setText(_translate("EQWizard", "Attribute Tables", None))
@@ -1278,10 +1345,12 @@ class Ui_EQWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now answer the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes took place in 2011 that were within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary and were also in the tropics?&quot;</span><span style=\" font-size:10pt; color:#000000;\"> using the attribute table below.</span></p></body></html>", None))
         self.Score_label_12.setText(_translate("EQWizard", "0", None))
         self.label_75.setText(_translate("EQWizard", "Your Score:", None))
+        self.label_92.setText(_translate("EQWizard", "13/14", None))
         self.label_77.setText(_translate("EQWizard", "You have now completed Unit 3.", None))
         self.label_78.setText(_translate("EQWizard", "Congratulations!", None))
         self.Score_label_13.setText(_translate("EQWizard", "0", None))
         self.label_79.setText(_translate("EQWizard", "SCORE:", None))
+        self.label_93.setText(_translate("EQWizard", "14/14", None))
 
 
 if __name__ == "__main__":

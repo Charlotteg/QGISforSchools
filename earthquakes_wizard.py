@@ -269,6 +269,8 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
             msgBox.setText("Could not re-colour the layer")
             msgBox.setInformativeText(" QGISforSchools cannot find the buffer layer. Try going back a step and making a new one.")
             msgBox.exec_()
+        SpatialQuery().populateSrcBox(self.inputComboBox_2,  self.refComboBox)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
         
     @pyqtSignature("") 
     def on_transparencyButton_clicked(self):
@@ -293,6 +295,8 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
         self.distAnsClicks += 1
         self.score,  self.q2 = ScoreSystem(self.score).checkAnswers(self.distAnsClicks,  self.plates,  self.q2,  2)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+        SpatialQuery().populateSrcBox(self.inputComboBox_2,  self.refComboBox)
+        SpatialQuery().populateSrcBox(self.lyrComboBox)
 
 
 #*************************************** Page 7 *****************************************************************************

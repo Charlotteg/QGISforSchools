@@ -14,9 +14,10 @@ class ScoreSystem():
     """
     Class that deals with the scoring and star system
     """
-    def __init__(self,  score):
+    def __init__(self,  score,  questions=None):
         """ Constructor"""
         self.score = score
+        self.questions = questions
         
     def checkAnswers(self, buttonClicks,  answer1, qx, x, answer2 = None,  qy = None,  y = None):
         """
@@ -138,15 +139,24 @@ class ScoreSystem():
 
         polygon = QGraphicsPolygonItem()
         
-        if self.score > 30:
+        if self.questions == 6:
+            a=25
+            b=15
+            c = 6
+        else:
+            a=30
+            b=20
+            c=7
+        
+        if self.score > a:
             scene.addPolygon(starPoly,  yellowPen,  yellowBrush)
             scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
             scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
-        elif self.score <= 30 and self.score> 20:
+        elif self.score <= a and self.score> b:
             scene.addPolygon(starPoly,  greyPen,  greyBrush)
             scene.addPolygon(starPoly2, yellowPen,  yellowBrush)
             scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)
-        elif self.score <= 20 and self.score > 7 :
+        elif self.score <= b and self.score > c :
             scene.addPolygon(starPoly,  greyPen,  greyBrush)
             scene.addPolygon(starPoly2, greyPen,  greyBrush)
             scene.addPolygon(starPoly3,  yellowPen,  yellowBrush)  
