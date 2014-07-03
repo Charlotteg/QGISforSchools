@@ -444,9 +444,10 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         """
         attribute = self.fieldComboBox.currentText()
 
-        openDlg=MarkerDialog(attribute)
+        openDlg=MarkerDialog(attribute,  self.AttractionTableView)
         openDlg.show()
         result = openDlg.exec_()
+
 
 
 #*************************************** Page 10 *****************************************************************************     
@@ -459,4 +460,5 @@ class TourismWizard(QWizard, Ui_TourismWizard):
         self.accomAnsClicks += 1
         self.score,  self.q5,  self.q6 = ScoreSystem(self.score).checkAnswers(self.accomAnsClicks,  self.nature,  self.q5,  5,  self.camp,  self.q6, 6)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
+
 

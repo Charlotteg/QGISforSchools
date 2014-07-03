@@ -15,13 +15,13 @@ from magicMarkers import MagicMarkers
 from colours import colourManager
 
 from Ui_marker_dialog import Ui_Dialog
-from tourism_wizard import TourismWizard
 
-class MarkerDialog(QDialog, Ui_Dialog, TourismWizard):
+
+class MarkerDialog(QDialog, Ui_Dialog):
     """
     Class documentation goes here.
     """
-    def __init__(self, attribute,  parent = TourismWizard):
+    def __init__(self, attribute, tableView,  parent = None):
         """
         Constructor
         """
@@ -30,6 +30,7 @@ class MarkerDialog(QDialog, Ui_Dialog, TourismWizard):
         self.svgDict = None
         self.scene = None
         self.attribute = attribute
+        self.tableView = tableView
         self.svgDict,  self.scene = MagicMarkers().viewSVGs(self.SVGView)
     
     @pyqtSignature("")
@@ -40,7 +41,7 @@ class MarkerDialog(QDialog, Ui_Dialog, TourismWizard):
         if self.svgDict != None:
             MagicMarkers().setSVG("tourist_attraction", self.attribute , self.scene,  self.svgDict)
             attractions = QgsMapLayerRegistry.instance().mapLayersByName("tourist_attraction")[0]
-            colourManager().makeClassTable(attractions,  "LEGEND",  self.AttractionTableView)
+            colourManager().makeClassTable(attractions,  "LEGEND",  self.tableView)
 
         self.close()
     
