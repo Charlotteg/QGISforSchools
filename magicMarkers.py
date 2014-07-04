@@ -15,16 +15,17 @@ from qgis.utils import *
 
 class MagicMarkers():
     """
-    Class that deals with marker stuff
+    Class that deals with changing the marker
     """ 
 
     def viewSVGs(self,  graphicsView):
+        """
+        Get svgs and render them on the graphics view
+        """ 
         
         svgPath = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg"
         
         scene = QGraphicsScene()
-        #item = QGraphicsItem()
-        #graphicsView = MarkerDialog().SVGView
         graphicsView.setScene(scene)
         
         svgs = []
@@ -59,6 +60,10 @@ class MagicMarkers():
 
 
     def getSVGs(self):
+        """
+        Get svgs from QGIS files
+        """ 
+        
         svgPath = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg" 
         folders = os.listdir("C:/PROGRA~2/QGISVA~1/apps/qgis/svg")
         symbolNames = []
@@ -73,17 +78,17 @@ class MagicMarkers():
         
         
     def setSVG(self,  layerName, attribute, scene,  svgdict):
+        """
+        Set the layer symbol to the svg symbol chosen in the dialog
+        """ 
         
         Layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         renderer = Layer.rendererV2()
-        symbol = renderer.symbolForValue(attribute)
+        symbol = renderer.symbolForValue(str(attribute))
         selectedSvg = scene.selectedItems()[0]
         name = svgdict[selectedSvg]
         svgLayer = QgsSvgMarkerSymbolLayerV2(name)
         symbol.changeSymbolLayer(0, svgLayer)
-
-        #QgsRendererCategoryV2(attribute, symbol ,  str(attribute)) 
-
         
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Layer)

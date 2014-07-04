@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Thu Jul 03 21:53:37 2014
+# Created: Fri Jul 04 14:05:12 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -1009,7 +1009,7 @@ class Ui_PopDevWizard(object):
         self.label_32.setText(_translate("PopDevWizard", "Your Score:", None))
         self.checkAnswersObs.setText(_translate("PopDevWizard", "Check my answers!", None))
         self.label_60.setText(_translate("PopDevWizard", "9/11", None))
-        self.groupBox_9.setTitle(_translate("PopDevWizard", "6.", None))
+        self.groupBox_9.setTitle(_translate("PopDevWizard", "7.", None))
         self.a.setText(_translate("PopDevWizard", "Density is the number of people in a given", None))
         self.c.setText(_translate("PopDevWizard", "Density is related to people\'s intelligence", None))
         self.b.setText(_translate("PopDevWizard", "Density is related to people\'s weight and", None))

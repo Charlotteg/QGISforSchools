@@ -126,6 +126,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.ColumncomboBox.addItems(fieldList[3:])
             self.ColumncomboBox_2.addItems(fieldList[3:])
             self.ColumncomboBox_3.addItems(fieldList[3:])
+            
+            self.ColumncomboBox_2.setCurrentIndex(2)
             #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
             self.ColourRampcomboBox.clear()
             self.ColourRampcomboBox_2.clear()
@@ -216,6 +218,7 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             for field in fields:
                 fieldList.append(field.name())
             self.ColumncomboBox_2.addItems(fieldList[3:])
+            self.ColumncomboBox_2.setCurrentIndex(2)
             #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
             self.ColourRampcomboBox_2.clear()
             rampNames = QgsVectorColorBrewerColorRampV2.listSchemeNames()

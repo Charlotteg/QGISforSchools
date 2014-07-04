@@ -441,7 +441,7 @@ class TourismWizard(QWizard, Ui_TourismWizard):
     @pyqtSignature("")
     def on_getIcons_clicked(self):
         """
-        put stuff here
+        Open the MarkerDialog
         """
         attribute = self.fieldComboBox.currentText()
 
