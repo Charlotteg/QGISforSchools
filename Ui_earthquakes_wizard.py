@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Thu Jul 03 21:53:38 2014
+# Created: Mon Jul 07 10:30:32 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -887,49 +887,49 @@ class Ui_EQWizard(object):
         self.wizardPage12 = QtGui.QWizardPage()
         self.wizardPage12.setObjectName(_fromUtf8("wizardPage12"))
         self.label_55 = QtGui.QLabel(self.wizardPage12)
-        self.label_55.setGeometry(QtCore.QRect(20, 250, 131, 21))
+        self.label_55.setGeometry(QtCore.QRect(30, 280, 111, 21))
         self.label_55.setObjectName(_fromUtf8("label_55"))
         self.label_66 = QtGui.QLabel(self.wizardPage12)
-        self.label_66.setGeometry(QtCore.QRect(170, 270, 101, 21))
+        self.label_66.setGeometry(QtCore.QRect(170, 300, 101, 21))
         self.label_66.setObjectName(_fromUtf8("label_66"))
         self.queryProgBar_2 = QtGui.QProgressBar(self.wizardPage12)
-        self.queryProgBar_2.setGeometry(QtCore.QRect(40, 430, 231, 16))
+        self.queryProgBar_2.setGeometry(QtCore.QRect(40, 460, 231, 16))
         self.queryProgBar_2.setProperty("value", 0)
         self.queryProgBar_2.setObjectName(_fromUtf8("queryProgBar_2"))
         self.runQuery_2 = QtGui.QPushButton(self.wizardPage12)
-        self.runQuery_2.setGeometry(QtCore.QRect(160, 400, 101, 21))
+        self.runQuery_2.setGeometry(QtCore.QRect(160, 430, 101, 21))
         self.runQuery_2.setObjectName(_fromUtf8("runQuery_2"))
         self.newLayergroupBox_2 = QtGui.QGroupBox(self.wizardPage12)
-        self.newLayergroupBox_2.setGeometry(QtCore.QRect(30, 290, 241, 101))
+        self.newLayergroupBox_2.setGeometry(QtCore.QRect(30, 320, 241, 101))
         self.newLayergroupBox_2.setObjectName(_fromUtf8("newLayergroupBox_2"))
         self.newLayercheckBox_2 = QtGui.QCheckBox(self.newLayergroupBox_2)
-        self.newLayercheckBox_2.setGeometry(QtCore.QRect(10, 30, 241, 17))
+        self.newLayercheckBox_2.setGeometry(QtCore.QRect(10, 60, 241, 17))
         self.newLayercheckBox_2.setObjectName(_fromUtf8("newLayercheckBox_2"))
         self.queryLineEdit_2 = QtGui.QLineEdit(self.newLayergroupBox_2)
         self.queryLineEdit_2.setEnabled(False)
-        self.queryLineEdit_2.setGeometry(QtCore.QRect(10, 60, 131, 21))
+        self.queryLineEdit_2.setGeometry(QtCore.QRect(10, 90, 131, 21))
         self.queryLineEdit_2.setObjectName(_fromUtf8("queryLineEdit_2"))
         self.queryBrowseButton_2 = QtGui.QPushButton(self.newLayergroupBox_2)
         self.queryBrowseButton_2.setEnabled(False)
-        self.queryBrowseButton_2.setGeometry(QtCore.QRect(150, 60, 75, 23))
+        self.queryBrowseButton_2.setGeometry(QtCore.QRect(150, 90, 75, 23))
         self.queryBrowseButton_2.setObjectName(_fromUtf8("queryBrowseButton_2"))
         self.label_67 = QtGui.QLabel(self.wizardPage12)
-        self.label_67.setGeometry(QtCore.QRect(40, 220, 121, 21))
+        self.label_67.setGeometry(QtCore.QRect(40, 250, 121, 21))
         self.label_67.setObjectName(_fromUtf8("label_67"))
         self.label_68 = QtGui.QLabel(self.wizardPage12)
-        self.label_68.setGeometry(QtCore.QRect(30, 190, 121, 21))
+        self.label_68.setGeometry(QtCore.QRect(30, 220, 121, 21))
         self.label_68.setObjectName(_fromUtf8("label_68"))
         self.clearSelection_2 = QtGui.QPushButton(self.wizardPage12)
-        self.clearSelection_2.setGeometry(QtCore.QRect(40, 400, 101, 21))
+        self.clearSelection_2.setGeometry(QtCore.QRect(40, 430, 101, 21))
         self.clearSelection_2.setObjectName(_fromUtf8("clearSelection_2"))
         self.queryComboBox_2 = QtGui.QComboBox(self.wizardPage12)
-        self.queryComboBox_2.setGeometry(QtCore.QRect(150, 250, 111, 21))
+        self.queryComboBox_2.setGeometry(QtCore.QRect(150, 280, 111, 21))
         self.queryComboBox_2.setObjectName(_fromUtf8("queryComboBox_2"))
         self.inputComboBox_4 = QtGui.QComboBox(self.wizardPage12)
-        self.inputComboBox_4.setGeometry(QtCore.QRect(150, 190, 111, 21))
+        self.inputComboBox_4.setGeometry(QtCore.QRect(150, 220, 111, 21))
         self.inputComboBox_4.setObjectName(_fromUtf8("inputComboBox_4"))
         self.refComboBox_2 = QtGui.QComboBox(self.wizardPage12)
-        self.refComboBox_2.setGeometry(QtCore.QRect(150, 220, 111, 21))
+        self.refComboBox_2.setGeometry(QtCore.QRect(150, 250, 111, 21))
         self.refComboBox_2.setObjectName(_fromUtf8("refComboBox_2"))
         self.label_69 = QtGui.QLabel(self.wizardPage12)
         self.label_69.setGeometry(QtCore.QRect(150, 508, 81, 31))
@@ -957,7 +957,7 @@ class Ui_EQWizard(object):
         self.label_70.setAlignment(QtCore.Qt.AlignCenter)
         self.label_70.setObjectName(_fromUtf8("label_70"))
         self.textBrowser_9 = QtGui.QTextBrowser(self.wizardPage12)
-        self.textBrowser_9.setGeometry(QtCore.QRect(20, 40, 256, 111))
+        self.textBrowser_9.setGeometry(QtCore.QRect(20, 40, 256, 171))
         self.textBrowser_9.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_9.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_9.setObjectName(_fromUtf8("textBrowser_9"))
@@ -1215,7 +1215,7 @@ class Ui_EQWizard(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The next step towards answering the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes are within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary?&quot; </span><span style=\" font-size:10pt; color:#000000;\">is to count up the number of earthquakes that are within the buffer. We could count them by hand, but it is much quicker and easier to use </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Spatial Query</span><span style=\" font-size:10pt; color:#000000;\">.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#000000;\">We want to select the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">earthquakes</span><span style=\" font-size:10pt; color:#000000;\"> that are</span><span style=\" font-size:10pt; font-weight:600; color:#000000;\"> </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">within</span><span style=\" font-size:10pt; color:#000000;\"> the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">buffer layer</span><span style=\" font-size:10pt; color:#000000;\">. See if you can use the options below to make a new layer of plate boundary earthquakes.</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Select </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">earthquakes</span><span style=\" font-size:10pt;\"> as the input layer, </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">your new buffer layer</span><span style=\" font-size:10pt;\"> as the reference layer and choose </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">is within</span><span style=\" font-size:10pt;\"> as the relationship.</span></p></body></html>", None))
         self.label_32.setText(_translate("EQWizard", "Spatial Query", None))
         self.newLayergroupBox.setTitle(_translate("EQWizard", "New Layer", None))
         self.newLayercheckBox.setText(_translate("EQWizard", "Make a new layer from the selection", None))
@@ -1235,7 +1235,7 @@ class Ui_EQWizard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now answer the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes are within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary?&quot;</span><span style=\" font-size:10pt;\"> by looking at the attribute table of the new layer which contains information relating to each earthquake within the buffer. Use the table below to answer the question.</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now answer the question </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">&quot;how many earthquakes are within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of a plate boundary?&quot;</span><span style=\" font-size:10pt;\"> by looking at the attribute table of the new layer which contains information relating to each earthquake within the buffer. Each row in the table corresponds to a single earthquake.</span></p></body></html>", None))
         self.label_39.setText(_translate("EQWizard", "Attribute Tables", None))
         self.checkAnswersNum.setText(_translate("EQWizard", "Check my answer!", None))
         self.groupBox_7.setTitle(_translate("EQWizard", "3.", None))
@@ -1286,7 +1286,7 @@ class Ui_EQWizard(object):
         self.fire.setText(_translate("EQWizard", "Fires", None))
         self.shake.setText(_translate("EQWizard", "Buildings shake", None))
         self.income.setText(_translate("EQWizard", "Loss of income", None))
-        self.label_61.setText(_translate("EQWizard", "Whic of the following  is a primary effect", None))
+        self.label_61.setText(_translate("EQWizard", "Which of the following is a primary effect", None))
         self.disease.setText(_translate("EQWizard", "Spread of disease", None))
         self.label_62.setText(_translate("EQWizard", "of an earthquake?", None))
         self.checkAnswersEffects.setText(_translate("EQWizard", "Check my answers!", None))
@@ -1313,7 +1313,7 @@ class Ui_EQWizard(object):
         self.equatorBrowseButton.setText(_translate("EQWizard", "Browse", None))
         self.AddLayerButton_2.setText(_translate("EQWizard", "Add Layer!", None))
         self.label_90.setText(_translate("EQWizard", "11/14", None))
-        self.label_55.setText(_translate("EQWizard", "Where the input layer is :", None))
+        self.label_55.setText(_translate("EQWizard", "Where the input layer:", None))
         self.label_66.setText(_translate("EQWizard", "the reference layer", None))
         self.runQuery_2.setText(_translate("EQWizard", "Run Query!", None))
         self.newLayergroupBox_2.setTitle(_translate("EQWizard", "New Layer", None))
@@ -1329,7 +1329,7 @@ class Ui_EQWizard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now use the spatial query functionality provided below to make a layer of just those earthquakes that are within 10</span><span style=\" font-size:10pt; vertical-align:super;\">o</span><span style=\" font-size:10pt;\"> of a plate boundary and is within the tropics.</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">We can now use the spatial query functionality provided below to make a layer of just those earthquakes that are within 10</span><span style=\" font-size:10pt; vertical-align:super;\">o</span><span style=\" font-size:10pt;\"> of a plate boundary and is within the tropics. To do this, input your layer containing</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> earthquakes within 10</span><span style=\" font-size:10pt; font-weight:600; color:#00007f; vertical-align:super;\">o</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> of plate boundaries</span><span style=\" font-size:10pt;\"> as the input layer, the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">equator buffer layer</span><span style=\" font-size:10pt;\"> as the reference layer and </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">is within</span><span style=\" font-size:10pt;\"> as the relationship.</span></p></body></html>", None))
         self.label_91.setText(_translate("EQWizard", "12/14", None))
         self.label_71.setText(_translate("EQWizard", "Layer:", None))
         self.checkAnswersNum_2.setText(_translate("EQWizard", "Check my answer!", None))

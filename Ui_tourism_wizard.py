@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\tourism_wizard.ui'
 #
-# Created: Thu Jul 03 21:53:39 2014
+# Created: Mon Jul 07 10:30:33 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!

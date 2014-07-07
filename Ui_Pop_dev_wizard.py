@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\Pop_dev_wizard.ui'
 #
-# Created: Fri Jul 04 14:05:12 2014
+# Created: Mon Jul 07 10:30:31 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -287,7 +287,7 @@ class Ui_PopDevWizard(object):
         self.Score_label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.Score_label_4.setObjectName(_fromUtf8("Score_label_4"))
         self.textBrowser_4 = QtGui.QTextBrowser(self.wizardPage5)
-        self.textBrowser_4.setGeometry(QtCore.QRect(20, 70, 261, 91))
+        self.textBrowser_4.setGeometry(QtCore.QRect(20, 50, 261, 111))
         self.textBrowser_4.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_4.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_4.setObjectName(_fromUtf8("textBrowser_4"))
@@ -928,7 +928,7 @@ class Ui_PopDevWizard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Use the options below to colour the map so that each </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">economy</span><span style=\" font-size:10pt;\"> is represented by a different colour, and click </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Next</span><span style=\" font-size:10pt;\">. </span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Use the options below to colour the map so that each </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">economy</span><span style=\" font-size:10pt;\"> is represented by a different colour, and click </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Next</span><span style=\" font-size:10pt;\">. To do this, choose </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">economy</span><span style=\" font-size:10pt;\"> from the </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Column</span><span style=\" font-size:10pt;\"> dropdown box.</span></p></body></html>", None))
         self.columnLabel_2.setText(_translate("PopDevWizard", "Column:", None))
         self.label_11.setText(_translate("PopDevWizard", "Investigating Development", None))
         self.label_56.setText(_translate("PopDevWizard", "5/11", None))
@@ -987,8 +987,8 @@ class Ui_PopDevWizard(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Select</span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\"> income_grp</span><span style=\" font-size:10pt;\"> for the countries column and </span><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">male_2010</span><span style=\" font-size:10pt;\"> for the obesity column, then click Next.</span></p></body></html>", None))
         self.label_59.setText(_translate("PopDevWizard", "8/11", None))
         self.label_24.setText(_translate("PopDevWizard", "Looking for Correlations", None))
-        self.label_25.setText(_translate("PopDevWizard", "Toggle the checkboxes below to turn the", None))
-        self.label_26.setText(_translate("PopDevWizard", "loaded layers on and off. Look for similarities", None))
+        self.label_25.setText(_translate("PopDevWizard", "Toggle the checkbox below to turn the", None))
+        self.label_26.setText(_translate("PopDevWizard", "obesity layer on and off. Look for similarities", None))
         self.label_27.setText(_translate("PopDevWizard", "and differences between income and obesity.", None))
         self.groupBox_7.setTitle(_translate("PopDevWizard", "5.", None))
         self.hihi.setText(_translate("PopDevWizard", "High income: non OECD, high obesity", None))

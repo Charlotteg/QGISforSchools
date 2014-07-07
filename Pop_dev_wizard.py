@@ -75,7 +75,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             CountriesSymbol.setColor(QColor('#31a354'))
             
         
-        return QgsMapLayerRegistry.instance().addMapLayer(Countries),  iface.actionMapTips().trigger()
+        QgsMapLayerRegistry.instance().addMapLayer(Countries)
+        iface.actionMapTips().trigger()
         
             
 
@@ -278,6 +279,8 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         obesityLayer = AddLayers().CheckAddLayers(obesitylineEdit,  "obesity")
         
         QgsMapLayerRegistry.instance().addMapLayer(obesityLayer)
+        
+        iface.actionMapTips().trigger()
         
         fields = obesityLayer.pendingFields()
         fieldList = []
