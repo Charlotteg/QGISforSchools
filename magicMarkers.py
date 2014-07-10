@@ -38,7 +38,8 @@ class MagicMarkers():
         
         for name in svgNames:
             
-            path = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg"+ str(name)
+            #path = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg"+ str(name)
+            path = name
             pic = QPixmap(path)
             pic.scaled(10, 10)
             x += 30
@@ -64,17 +65,19 @@ class MagicMarkers():
         Get svgs from QGIS files
         """ 
         
-        svgPath = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg" 
-        folders = os.listdir("C:/PROGRA~2/QGISVA~1/apps/qgis/svg")
-        symbolNames = []
-        for folder in folders:
-            newPath = svgPath + "/"+str(folder)
-            svgFiles = os.listdir(newPath)
-            for file in svgFiles:
-                symbolName = "/"+str(folder)+"/"+str(file)
-                symbolNames.append(symbolName)
+#        svgPath = "C:/PROGRA~2/QGISVA~1/apps/qgis/svg" 
+#        folders = os.listdir("C:/PROGRA~2/QGISVA~1/apps/qgis/svg")
+        svgs = QgsSymbolLayerV2Utils.listSvgFiles()
+#        print svgs
+#        symbolNames = []
+#        for folder in folders:
+#            newPath = svgPath + "/"+str(folder)
+#            svgFiles = os.listdir(newPath)
+#            for file in svgFiles:
+#                symbolName = "/"+str(folder)+"/"+str(file)
+#                symbolNames.append(symbolName)
         
-        return symbolNames
+        return svgs
         
         
     def setSVG(self,  layerName, attribute, scene,  svgdict):

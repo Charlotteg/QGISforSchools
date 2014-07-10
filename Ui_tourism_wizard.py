@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\tourism_wizard.ui'
 #
-# Created: Mon Jul 07 10:30:33 2014
+# Created: Thu Jul 10 21:47:31 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -951,7 +951,7 @@ class Ui_TourismWizard(object):
         self.Score_label_2.setText(_translate("TourismWizard", "0", None))
         self.label_4.setText(_translate("TourismWizard", "Your Score:", None))
         self.label_68.setText(_translate("TourismWizard", "3/11", None))
-        self.label_9.setText(_translate("TourismWizard", "Anthropogenic Layers", None))
+        self.label_9.setText(_translate("TourismWizard", "Man-made Layers", None))
         self.textBrowser_5.setHtml(_translate("TourismWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -1095,9 +1095,9 @@ class Ui_TourismWizard(object):
         self.railway.setText(_translate("TourismWizard", "Preserved Railway", None))
         self.nature.setText(_translate("TourismWizard", "Nature Reserve", None))
         self.monument.setText(_translate("TourismWizard", "Monument", None))
-        self.label_57.setText(_translate("TourismWizard", "Which of the following provides a natural", None))
+        self.label_57.setText(_translate("TourismWizard", "Which of the following is not a man-made", None))
         self.karting.setText(_translate("TourismWizard", "Motor Racing Circuit", None))
-        self.label_60.setText(_translate("TourismWizard", "resource as the attraction?", None))
+        self.label_60.setText(_translate("TourismWizard", " attraction?", None))
         self.label_58.setText(_translate("TourismWizard", "questions:", None))
         self.label_59.setText(_translate("TourismWizard", "Your Score:", None))
         self.Score_label_9.setText(_translate("TourismWizard", "0", None))

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Mon Jul 07 10:30:32 2014
+# Created: Mon Jul 07 12:32:39 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -903,15 +903,15 @@ class Ui_EQWizard(object):
         self.newLayergroupBox_2.setGeometry(QtCore.QRect(30, 320, 241, 101))
         self.newLayergroupBox_2.setObjectName(_fromUtf8("newLayergroupBox_2"))
         self.newLayercheckBox_2 = QtGui.QCheckBox(self.newLayergroupBox_2)
-        self.newLayercheckBox_2.setGeometry(QtCore.QRect(10, 60, 241, 17))
+        self.newLayercheckBox_2.setGeometry(QtCore.QRect(10, 30, 241, 17))
         self.newLayercheckBox_2.setObjectName(_fromUtf8("newLayercheckBox_2"))
         self.queryLineEdit_2 = QtGui.QLineEdit(self.newLayergroupBox_2)
         self.queryLineEdit_2.setEnabled(False)
-        self.queryLineEdit_2.setGeometry(QtCore.QRect(10, 90, 131, 21))
+        self.queryLineEdit_2.setGeometry(QtCore.QRect(10, 60, 131, 21))
         self.queryLineEdit_2.setObjectName(_fromUtf8("queryLineEdit_2"))
         self.queryBrowseButton_2 = QtGui.QPushButton(self.newLayergroupBox_2)
         self.queryBrowseButton_2.setEnabled(False)
-        self.queryBrowseButton_2.setGeometry(QtCore.QRect(150, 90, 75, 23))
+        self.queryBrowseButton_2.setGeometry(QtCore.QRect(150, 60, 75, 23))
         self.queryBrowseButton_2.setObjectName(_fromUtf8("queryBrowseButton_2"))
         self.label_67 = QtGui.QLabel(self.wizardPage12)
         self.label_67.setGeometry(QtCore.QRect(40, 250, 121, 21))
@@ -1286,9 +1286,9 @@ class Ui_EQWizard(object):
         self.fire.setText(_translate("EQWizard", "Fires", None))
         self.shake.setText(_translate("EQWizard", "Buildings shake", None))
         self.income.setText(_translate("EQWizard", "Loss of income", None))
-        self.label_61.setText(_translate("EQWizard", "Which of the following is a primary effect", None))
+        self.label_61.setText(_translate("EQWizard", "Which one of the following is a primary", None))
         self.disease.setText(_translate("EQWizard", "Spread of disease", None))
-        self.label_62.setText(_translate("EQWizard", "of an earthquake?", None))
+        self.label_62.setText(_translate("EQWizard", "effect of an earthquake?", None))
         self.checkAnswersEffects.setText(_translate("EQWizard", "Check my answers!", None))
         self.label_89.setText(_translate("EQWizard", "10/14", None))
         self.Score_label_10.setText(_translate("EQWizard", "0", None))

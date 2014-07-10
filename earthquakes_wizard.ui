@@ -2612,7 +2612,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Which of the following is a primary effect</string>
+      <string>Which one of the following is a primary</string>
      </property>
     </widget>
     <widget class="QRadioButton" name="disease">
@@ -2643,7 +2643,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>of an earthquake?</string>
+      <string>effect of an earthquake?</string>
      </property>
     </widget>
    </widget>
@@ -3036,7 +3036,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
+       <y>30</y>
        <width>241</width>
        <height>17</height>
       </rect>
@@ -3052,7 +3052,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
+       <y>60</y>
        <width>131</width>
        <height>21</height>
       </rect>
@@ -3065,7 +3065,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>90</y>
+       <y>60</y>
        <width>75</width>
        <height>23</height>
       </rect>

@@ -97,8 +97,8 @@ class EarthquakesWizard(QWizard, Ui_EQWizard):
             CountriesRenderer = Countries.rendererV2()
             CountriesSymbol = CountriesRenderer.symbol()
             CountriesSymbol.setColor(QColor('#31a354'))
-            
-        earthquakes.setCrs(QgsCoordinateReferenceSystem(4326,  QgsCoordinateReferenceSystem.EpsgCrsId))
+        if earthquakes is not None:
+            earthquakes.setCrs(QgsCoordinateReferenceSystem(4326,  QgsCoordinateReferenceSystem.EpsgCrsId))
         layerList = [Countries,  plates,  earthquakes]
         QgsMapLayerRegistry.instance().addMapLayers(layerList)
         iface.actionMapTips().trigger()

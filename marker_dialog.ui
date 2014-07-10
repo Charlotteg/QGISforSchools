@@ -50,11 +50,6 @@
      <string>SVG Markers</string>
     </property>
    </item>
-   <item>
-    <property name="text">
-     <string>Simple Markers</string>
-    </property>
-   </item>
   </widget>
   <widget class="QDoubleSpinBox" name="doubleSpinBox">
    <property name="geometry">

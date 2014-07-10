@@ -704,7 +704,7 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="text">
-     <string>Anthropogenic Layers</string>
+     <string>Man-made Layers</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -2552,7 +2552,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Which of the following provides a natural</string>
+      <string>Which of the following is not a man-made</string>
      </property>
     </widget>
     <widget class="QRadioButton" name="karting">
@@ -2583,7 +2583,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>resource as the attraction?</string>
+      <string> attraction?</string>
      </property>
     </widget>
    </widget>
