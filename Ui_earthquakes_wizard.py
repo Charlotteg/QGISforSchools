@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\earthquakes_wizard.ui'
 #
-# Created: Mon Jul 07 12:32:39 2014
+# Created: Wed Jul 16 13:23:57 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,11 +32,11 @@ class Ui_EQWizard(object):
         EQWizard.setOptions(QtGui.QWizard.NoBackButtonOnStartPage)
         self.wizardPage = QtGui.QWizardPage()
         self.wizardPage.setObjectName(_fromUtf8("wizardPage"))
-        self.textBrowser_11 = QtGui.QTextBrowser(self.wizardPage)
-        self.textBrowser_11.setGeometry(QtCore.QRect(20, 190, 256, 101))
-        self.textBrowser_11.setFrameShape(QtGui.QFrame.NoFrame)
-        self.textBrowser_11.setFrameShadow(QtGui.QFrame.Plain)
-        self.textBrowser_11.setObjectName(_fromUtf8("textBrowser_11"))
+        self.textBrowser_12 = QtGui.QTextBrowser(self.wizardPage)
+        self.textBrowser_12.setGeometry(QtCore.QRect(20, 180, 256, 201))
+        self.textBrowser_12.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser_12.setFrameShadow(QtGui.QFrame.Plain)
+        self.textBrowser_12.setObjectName(_fromUtf8("textBrowser_12"))
         EQWizard.addPage(self.wizardPage)
         self.wizardPage1 = QtGui.QWizardPage()
         self.wizardPage1.setObjectName(_fromUtf8("wizardPage1"))
@@ -1092,11 +1092,15 @@ class Ui_EQWizard(object):
     def retranslateUi(self, EQWizard):
         EQWizard.setWindowTitle(_translate("EQWizard", "Earthquakes", None))
         EQWizard.setWhatsThis(_translate("EQWizard", "Earthquakes", None))
-        self.textBrowser_11.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.textBrowser_12.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Please move this window to the right hand side of your screen now, then click Next&gt;.</span></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; color:#00007f;\">Please move this window to the right hand side of your screen now.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; color:#00007f;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#000000;\">Please also make sure that the map canvas is blank. </span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#000000;\">If it is, click </span><span style=\" font-size:10pt; font-weight:600; color:#000000;\">Next&gt;</span><span style=\" font-size:10pt; color:#000000;\">.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#000000;\">If it is not, please open the </span><span style=\" font-size:10pt; font-weight:600; color:#000000;\">Project</span><span style=\" font-size:10pt; color:#000000;\"> menu in the top left hand corner of your screen and click </span><span style=\" font-size:10pt; font-weight:600; color:#000000;\">New</span><span style=\" font-size:10pt; color:#000000;\">. When a blank canvas has loaded, click </span><span style=\" font-size:10pt; font-weight:600; color:#000000;\">Next&gt;</span><span style=\" font-size:10pt; color:#000000;\">.</span></p></body></html>", None))
         self.IntrotextBrowser.setWhatsThis(_translate("EQWizard", "Population & Development Intro", None))
         self.IntrotextBrowser.setHtml(_translate("EQWizard", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -1309,7 +1313,7 @@ class Ui_EQWizard(object):
         self.inputComboBox_3.setItemText(2, _translate("EQWizard", "countries", None))
         self.bufferButton_2.setText(_translate("EQWizard", "Create Buffer!", None))
         self.label_65.setText(_translate("EQWizard", "Create a buffer of 23.5 degrees around the equator.", None))
-        self.groupBox_13.setTitle(_translate("EQWizard", "Add the equator", None))
+        self.groupBox_13.setTitle(_translate("EQWizard", "Add equator.shp", None))
         self.equatorBrowseButton.setText(_translate("EQWizard", "Browse", None))
         self.AddLayerButton_2.setText(_translate("EQWizard", "Add Layer!", None))
         self.label_90.setText(_translate("EQWizard", "11/14", None))

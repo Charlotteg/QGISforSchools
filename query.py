@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module containing a class that deals with changing the colour schemes of given layers
+Module containing a class that deals with spatial queries and related functions.
 """
 import ntpath
 

@@ -33,9 +33,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
+      <y>180</y>
       <width>256</width>
-      <height>101</height>
+      <height>201</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -49,7 +49,11 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Please move this window to the right hand side of your screen now, then click Next&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Please move this window to the right hand side of your screen now.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;Please also make sure that the map canvas is blank. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;If it is, click &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Next&amp;gt;&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;If it is not, please open the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Project&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt; menu in the top left hand corner of your screen and click &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;New&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;. When a blank canvas has loaded, click &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;Next&amp;gt;&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -254,7 +258,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>271</y>
+      <y>281</y>
       <width>256</width>
       <height>191</height>
      </rect>
@@ -313,7 +317,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>10</y>
       <width>271</width>
-      <height>161</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -328,14 +332,14 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Colour Schemes&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Using colour we can compare national characteristics like population. Experiment with the colour and column options below. Make sure that you choose &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Categorized&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; and the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;pop_group&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; column before you click &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Next&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; as this will help you with the following questions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Using colour we can compare national characteristics like population. Experiment with the colour and column options below. Make sure that you switch from Single Colour to &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Categorized &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;from the dropdown menu&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; and the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;pop_group &lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;from the&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; Column menu before you click &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Next&lt;/span&gt;&lt;span style=&quot; font-size:10pt; color:#000000;&quot;&gt;. T&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;his will help you with the following questions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QComboBox" name="StyleTypecomboBox">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>180</y>
+      <y>190</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -358,7 +362,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>240</y>
+      <y>250</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -368,7 +372,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>180</y>
+      <y>190</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -384,7 +388,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>210</y>
+      <y>220</y>
       <width>151</width>
       <height>20</height>
      </rect>
@@ -397,7 +401,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>210</y>
+      <y>220</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -413,7 +417,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>240</y>
+      <y>250</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -485,7 +489,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>450</y>
+      <y>460</y>
       <width>251</width>
       <height>21</height>
      </rect>
@@ -517,47 +521,11 @@ p, li { white-space: pre-wrap; }
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>50</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Look at the map and answer the following</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>questions:</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>110</y>
+      <y>120</y>
       <width>271</width>
       <height>151</height>
      </rect>
@@ -640,7 +608,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
+      <y>280</y>
       <width>271</width>
       <height>161</height>
      </rect>
@@ -750,6 +718,37 @@ p, li { white-space: pre-wrap; }
      <string>4/11</string>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textBrowser_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>256</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Answer the following questions using the map and the&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; countries&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; legend in the Layers column on the left hand side of the screen.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>Score_label_3</zorder>
+   <zorder>label_3</zorder>
+   <zorder>checkAnswersPop</zorder>
+   <zorder>label_5</zorder>
+   <zorder>groupBox_2</zorder>
+   <zorder>label_55</zorder>
+   <zorder>textBrowser_8</zorder>
+   <zorder>groupBox</zorder>
   </widget>
   <widget class="QWizardPage" name="wizardPage5">
    <widget class="QLabel" name="label_10">
@@ -986,7 +985,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>108</y>
+      <y>120</y>
       <width>271</width>
       <height>151</height>
      </rect>
@@ -1087,7 +1086,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>268</y>
+      <y>280</y>
       <width>271</width>
       <height>161</height>
      </rect>
@@ -1184,42 +1183,6 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label_15">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>68</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>questions:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_16">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>48</y>
-      <width>241</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Look at the map and answer the following</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_17">
     <property name="geometry">
      <rect>
@@ -1247,7 +1210,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>448</y>
+      <y>460</y>
       <width>251</width>
       <height>21</height>
      </rect>
@@ -1313,6 +1276,29 @@ p, li { white-space: pre-wrap; }
      <string>6/11</string>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textBrowser_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>256</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Answer the following questions using the map and the&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt; countries&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; legend in the Layers column on the left hand side of the screen.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWizardPage" name="wizardPage7">
    <widget class="QTextBrowser" name="IntrotextBrowser_2">
@@ -1338,7 +1324,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;You are now going to add another layer from the World Health Organisation (WHO) that contains data for male and female obesity across the globe. We can then compare this to national income to see if there is a correlation or not.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;You are now going to add another layer from the World Health Organisation (WHO) that contains data for male and female obesity across the globe. We can then compare this to national income to see if there is a pattern or not.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Click the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Browse&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; button below and navigate to the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;Population &amp;amp; Development&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; data folder and choose &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#00007f;&quot;&gt;obesity.shp&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>

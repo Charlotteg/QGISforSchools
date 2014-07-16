@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\charlottegraves\.qgis2\python\plugins\QGISforSchools\marker_dialog.ui'
 #
-# Created: Thu Jul 10 21:43:05 2014
+# Created: Wed Jul 16 13:24:00 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
