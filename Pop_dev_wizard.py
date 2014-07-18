@@ -280,8 +280,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         
         QgsMapLayerRegistry.instance().addMapLayer(obesityLayer)
         
-        iface.actionMapTips().trigger()
-        
         fields = obesityLayer.pendingFields()
         fieldList = []
         for field in fields:

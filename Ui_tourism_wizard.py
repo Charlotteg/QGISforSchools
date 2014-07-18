@@ -148,18 +148,24 @@ class Ui_TourismWizard(object):
         self.textBrowser_4.setFrameShape(QtGui.QFrame.NoFrame)
         self.textBrowser_4.setFrameShadow(QtGui.QFrame.Plain)
         self.textBrowser_4.setObjectName(_fromUtf8("textBrowser_4"))
+        
         self.groupBox = QtGui.QGroupBox(self.wizardPage3)
         self.groupBox.setGeometry(QtCore.QRect(10, 220, 271, 111))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
+        
         self.riverLineEdit = QtGui.QLineEdit(self.groupBox)
         self.riverLineEdit.setGeometry(QtCore.QRect(10, 30, 171, 20))
         self.riverLineEdit.setObjectName(_fromUtf8("riverLineEdit"))
+        
         self.AddRiverLayer = QtGui.QPushButton(self.groupBox)
         self.AddRiverLayer.setGeometry(QtCore.QRect(10, 70, 251, 21))
         self.AddRiverLayer.setObjectName(_fromUtf8("AddRiverLayer"))
+        
         self.riverBrowseButton = QtGui.QPushButton(self.groupBox)
         self.riverBrowseButton.setGeometry(QtCore.QRect(190, 30, 75, 23))
         self.riverBrowseButton.setObjectName(_fromUtf8("riverBrowseButton"))
+        
+        
         self.groupBox_3 = QtGui.QGroupBox(self.wizardPage3)
         self.groupBox_3.setGeometry(QtCore.QRect(10, 340, 271, 161))
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))

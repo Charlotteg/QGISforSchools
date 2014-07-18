@@ -21,7 +21,7 @@ class AddLayers():
     def CheckAddLayers(self, LineEditName,  LayerString): 
         """
         Performs checks to determine whether the layers to be added to the canvas:
-        1. have not already been addedp
+        1. have not already been added
         2. have a file specified
         3. are valid
         4. are the correct layers

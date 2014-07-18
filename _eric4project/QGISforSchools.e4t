@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project QGISforSchools -->
-<!-- Saved: 2014-07-16, 13:24:18 -->
+<!-- Saved: 2014-07-18, 11:07:59 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
@@ -15,46 +15,46 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2014-06-25, 21:26:15</Created>
-    <Resource>
-      <Filename>ui_qgisforschools.py</Filename>
-      <Linenumber>37</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: not implemented yet</Summary>
-    <Description></Description>
-    <Created>2014-06-25, 21:26:15</Created>
-    <Resource>
-      <Filename>ui_qgisforschools.py</Filename>
-      <Linenumber>45</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: not implemented yet</Summary>
-    <Description></Description>
-    <Created>2014-06-25, 21:26:15</Created>
-    <Resource>
-      <Filename>ui_qgisforschools.py</Filename>
-      <Linenumber>53</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: not implemented yet</Summary>
-    <Description></Description>
-    <Created>2014-06-25, 21:26:15</Created>
-    <Resource>
-      <Filename>ui_qgisforschools.py</Filename>
-      <Linenumber>90</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: not implemented yet</Summary>
-    <Description></Description>
-    <Created>2014-07-02, 17:15:03</Created>
+    <Created>2014-07-18, 10:33:50</Created>
     <Resource>
       <Filename>unit_1_wizard.py</Filename>
       <Linenumber>52</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-07-18, 10:36:54</Created>
+    <Resource>
+      <Filename>ui_qgisforschools.py</Filename>
+      <Linenumber>38</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-07-18, 10:36:54</Created>
+    <Resource>
+      <Filename>ui_qgisforschools.py</Filename>
+      <Linenumber>46</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-07-18, 10:36:54</Created>
+    <Resource>
+      <Filename>ui_qgisforschools.py</Filename>
+      <Linenumber>54</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2014-07-18, 10:36:54</Created>
+    <Resource>
+      <Filename>ui_qgisforschools.py</Filename>
+      <Linenumber>91</Linenumber>
     </Resource>
   </Task>
 </Tasks>
