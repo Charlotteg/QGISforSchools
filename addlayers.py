@@ -15,7 +15,7 @@ from qgis.analysis import *
 
 class AddLayers():
     """
-    Class defining functionalities pertaining to adding a layer to the map canvas
+    Class defining functionalities related to adding a layer to the map canvas
     """
 
     def CheckAddLayers(self, LineEditName,  LayerString): 
@@ -26,15 +26,13 @@ class AddLayers():
         3. are valid
         4. are the correct layers
         
-        Parameters: The name of the LineEdit that contains the filePath (LineEditName)
-                        The string that you wish the layer to be called in the legend/shapefile name.This string must be in the shapefile name for the layer to load.
-        
         """
 
         LayerFile = LineEditName.text()
         NewLayer = QgsVectorLayer(LayerFile,  LayerString,  'ogr')
         LayerAdded = QgsMapLayerRegistry.instance().mapLayersByName(LayerString)
-            
+           
+        #set up message boxes
         msgBox=QMessageBox()
         msgBox.setIcon(3)
          
@@ -59,14 +57,19 @@ class AddLayers():
             return NewLayer
            
     def CheckBufferLayer(self, inputComboBox,  filePathEdit,  distanceEdit,  progressBar=None): 
-            
+        """
+        Checks that layer and buffer distance are valid, then creates a buffer of designated distance
+        around the layer and returns it to the canvas
+        """
+          
         layerName = inputComboBox.currentText()
         layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         
-        
+        #manual progress bar
         if progressBar is not None:
             progressBar.setValue(10)
         
+        #use the specified file path to get the layer name
         newLayerFilePath = filePathEdit.text()
         newLayerSuffix =  ntpath.basename(newLayerFilePath)
         newLayerName = newLayerSuffix.split( '.')[0]
@@ -76,18 +79,20 @@ class AddLayers():
         if progressBar is not None:
             progressBar.setValue(20)
         
-        
+        #set up message box
         msgBox=QMessageBox()
         msgBox.setIcon(3)
-
+        
+        #check that a number has been typed into the distance box, provide an error box if not
         try:
             distFloat = float(distance)
-
+        
         except ValueError:
             msgBox.setText("Could not create the layer")
             msgBox.setInformativeText(" Please make sure that you have typed a number into the distance box")
             msgBox.exec_()
-            
+
+        # buffer the given layer and save it at the chosen file path
         else:
             
             if progressBar is not None:
@@ -104,7 +109,7 @@ class AddLayers():
 
             if not newLayerFilePath:
                 return None
-            #If the file selected is not a vaild layer, execute an error message box
+            #If the file selected is not a valid layer, execute an error message box
             elif not bufferLayer.isValid():
                 msgBox.setText("Could not create the layer")
                 msgBox.setInformativeText(" Please make sure that you have used the Browse button to select a valid save location for the new layer")
@@ -119,23 +124,31 @@ class AddLayers():
     
 
     def clipLayer(self, inputComboBox, refComboBox, filePathEdit): 
-        
+        """ 
+        Create a new vector layer from clipping two layers
+        """
+        #get layer names
         layerAName = inputComboBox.currentText()
         layerBName = refComboBox.currentText()
         
+        #get layers
         layerA = QgsMapLayerRegistry.instance().mapLayersByName(layerAName)[0]
         layerB = QgsMapLayerRegistry.instance().mapLayersByName(layerBName)[0]
         
+        #get filepath for new clipped layer
         newPath = filePathEdit.text()
         
+        #show progress bar as clipping is done
         progress = QProgressDialog("Clipping Layer...",  "Cancel",  0,  100)
         
+        #clip layer
         QgsOverlayAnalyzer().intersection(layerA,  layerB,  newPath, False,  progress)
         
-
+        #get the name.shp
         newLayerSuffix =  ntpath.basename(newPath)
+        #get the name without .shp
         newLayerName = newLayerSuffix.split( '.')[0]
-        
+        #create new layer
         newLayer = QgsVectorLayer(newPath,  newLayerName,  'ogr')
         
         return newLayer

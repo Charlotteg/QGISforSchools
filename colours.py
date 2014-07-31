@@ -33,9 +33,10 @@ class colourManager():
         Allow the user to select a single colour and update the map canvas and layer with the selected colour
         parameters: name of the layer that you wish to change the colour of
         """
+        #get colour from singleColourDialog
         newColor = self.singleColourDialog()
-        print newColor
         
+        #Set the symbol fill to the selected colour
         layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         layerRenderer = layer.rendererV2()
         layerSymbol = layerRenderer.symbol()
@@ -43,6 +44,7 @@ class colourManager():
         feats = layer.getFeatures()
         feat = feats.next()
        
+       #If border = True, set the border of the symbol to the same colour as the fill
         if border:
             if feat.geometry().type() == 2:
                 layerSymbol = QgsFillSymbolV2.createSimple({'color': newColor.name(),  'color_border': newColor.name()})
@@ -67,6 +69,7 @@ class colourManager():
         
         Layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         
+        #check if the combobox parameters that have been passed are objects or strings and get the correct data accordingly
         if isinstance (ColumncomboBox, str) and isinstance(ColourRampcomboBox,  str):
             field = ColumncomboBox
             colorScheme = QgsVectorColorBrewerColorRampV2.listSchemeNames()[0]
@@ -74,16 +77,15 @@ class colourManager():
             field = ColumncomboBox.currentText()
             colorScheme = ColourRampcomboBox.currentText()
         
-        print colorScheme
         
         categories = self.getAttributes(field,  Layer)
-        print categories
         numColors = len(categories)
         
+        #get colours based on the selected colour ramps and the number of categories in the field
         colors = QgsColorBrewerPalette.listSchemeColors(colorScheme, numColors)
-        print colors
         catList =[]
         
+        #set the colours to the categorised symbols
         for category in categories:
             colorIndex = categories.index(category)
             symbol = QgsSymbolV2.defaultSymbol(Layer.geometryType())
@@ -95,9 +97,11 @@ class colourManager():
         
         Layer.setRendererV2(renderer)
         
+        #refresh map canvas and legend
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Layer)
         
+        #populate any table views with an updated legend
         if tableViews is not None:
             self.makeClassTable(Layer,  ColumncomboBox, tableViews)
             
@@ -113,9 +117,10 @@ class colourManager():
         Parameters: layer name, rangeList, ColumncomboBox, ColourRampcomboBox, numColors
         table views (optional parameter, can pass a list or individual)
         """
-        
+        #get layer
         Layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         
+        #get field
         field = ColumncomboBox.currentText()
         colorScheme = ColourRampcomboBox.currentText()
         symbol = QgsSymbolV2.defaultSymbol(Layer.geometryType())
@@ -124,16 +129,21 @@ class colourManager():
             if Layer.geometryType() == QGis.Point:
                 symbol = QgsMarkerSymbolV2()
         
+        #create and set a graduated colour ramp based on a scheme name and number of colours
         colorRamp = QgsVectorColorBrewerColorRampV2.create({'schemeName': str(colorScheme),  'colors': str(numColors)})
         renderer = QgsGraduatedSymbolRendererV2.createRenderer(Layer,  field,  numColors,  QgsGraduatedSymbolRendererV2.Pretty,  symbol,  colorRamp)
         Layer.setRendererV2(renderer)
+        
+        #refresh the map canvas and legend
         iface.mapCanvas().refresh()
         iface.legendInterface().refreshLayerSymbology(Layer)
         
+        #get and set range labels (for legend)
         Labels = []
         for range in renderer.ranges():
             Labels.append(range.label())
-            
+        
+        #update within plugin legends
         if tableViews is not None:
             self.makeClassTable(Layer,  ColumncomboBox,  tableViews,  Labels)
         
@@ -146,9 +156,10 @@ class colourManager():
         
         returns: list of elements
         """
-
+        # get features
         feats = layer.getFeatures()
         
+        #get index
         fieldIndex = layer.fieldNameIndex(field)
         
         valueList = []
@@ -156,7 +167,7 @@ class colourManager():
         for feat in feats:
             valueList.append(feat.attributes()[fieldIndex] )
         
-        
+        #get a sorted set list
         newValueList = sorted(set(valueList))
         
         return newValueList
@@ -167,10 +178,13 @@ class colourManager():
         """
         make and return a list of Qicons from the symbols currently used to represent the given layer
         """
+        #get required information
         Layer = layer
         renderer = Layer.rendererV2()
         symbols = renderer.symbols()
         icons = []
+        
+        # if symbol is a point make icon 10x10, if a fill make 50x50
         for symbol in symbols:
             if symbol.type() == 0:
                 width = 10
@@ -192,15 +206,18 @@ class colourManager():
         
         parameters: layer, columncomboBox to define field, table views to update
         """
+        #check if the combobox parameters that have been passed are objects or strings and get the correct data accordingly
         if isinstance (columncomboBox,  str):
             field = columncomboBox
         else:
             field = columncomboBox.currentText()
-            
+         
         if graduatedLabels is not None:
             values = graduatedLabels
         else:
             values = self.getAttributes(field,  layer)
+        
+        #set up model to display the within-plugin legend
         rows = len(values)
         cols = 2
         model = QStandardItemModel(rows,  cols) 
@@ -208,7 +225,7 @@ class colourManager():
         model.setHorizontalHeaderItem(1, QStandardItem("Value"))
         icons = self.getIcons(layer)
 
-        
+        #populate model with symbols and labels
         for value in values:
             item = QStandardItem(value)
             row = values.index(value) 
@@ -217,7 +234,8 @@ class colourManager():
                 index = model.createIndex(row,  0)
                 iconItem = QStandardItem(icons[row],  ' ') 
                 model.setItem(row, 0,  iconItem)
-                
+        
+        #set the table view
         self.setTableViews(model,  tableViews)
 
 
@@ -230,12 +248,15 @@ class colourManager():
         Parameters: layer names of both layers, column combo boxes that determine 
         which field will be categorised and the relevant table views to be updated
         """
+        
         layer = QgsMapLayerRegistry.instance().mapLayersByName(layerName)[0]
         otherLayer = QgsMapLayerRegistry.instance().mapLayersByName(otherLayerName)[0]
         field = ColumncomboBox.currentText()
         values = self.getAttributes(field,  layer)
         otherField = otherColumncomboBox.currentText()
         otherValues = self.getAttributes(otherField,  otherLayer)
+        
+        #set up model to display the within-plugin legend
         rows = len(otherValues)
         cols = 3
         model = QStandardItemModel(rows,  cols) 
@@ -244,6 +265,7 @@ class colourManager():
         model.setHorizontalHeaderItem(2, QStandardItem(layerName))
         icons = self.getIcons(layer)
         
+        #populate model with symbols and label
         for value in otherValues:
             item = QStandardItem(value)
             row = otherValues.index(value) 
@@ -256,6 +278,7 @@ class colourManager():
                 iItem = QStandardItem(values[row])
                 model.setItem(row, 2,  iItem)
 
+        #set the table view
         self.setTableViews(model,  tableViews)
 
 
@@ -265,6 +288,7 @@ class colourManager():
         
         parameters: the model to update the table view with and the table view to update
         """
+        
         if isinstance(tableViews,  list):
             for tableView in tableViews:
                 tableView.setModel(model)

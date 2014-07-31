@@ -67,14 +67,16 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         CountrieslineEdit = self.CountrieslineEdit
         
+        #Check the layer is valid
         Countries = AddLayers().CheckAddLayers(CountrieslineEdit,  "countries")
         
+        #ensure that the layer renders in a suitable colour
         if Countries is not None:
             CountriesRenderer = Countries.rendererV2()
             CountriesSymbol = CountriesRenderer.symbol()
             CountriesSymbol.setColor(QColor('#31a354'))
             
-        
+        #add the layer to the canvas and trigger map tips on
         QgsMapLayerRegistry.instance().addMapLayer(Countries)
         iface.actionMapTips().trigger()
         
@@ -95,26 +97,33 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Enable or disable the column/colour ramp comboBoxes or the colour selection button depending on what style type is selected
         """
+        
         style = self.StyleTypecomboBox.currentText()
         Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         
         if style == "Single Colour":
+            # Disable the categorised colour categories
             self.ColourRampcomboBox.setEnabled(False)
             self.ColumncomboBox.setEnabled(False)
             self.colourRampLabel.setEnabled(False)
             self.columnLabel.setEnabled(False)
+            #enable the single colour button
             self.ChangeColourButton.setEnabled(True)
+            #set the renderer to single symbol (i.e. all the same)
             symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
             Countries.setRendererV2(QgsSingleSymbolRendererV2(symbol))
+            #refresh the within-plugin legend
             model = QStandardItemModel(0, 0)
             model.clear()
             self.categoryTableView.setModel(model)
             
         else:
+            #Enable the categorised colour categories
             self.ColourRampcomboBox.setEnabled(True)
             self.ColumncomboBox.setEnabled(True)
             self.colourRampLabel.setEnabled(True)
             self.columnLabel.setEnabled(True)
+            # disable the single colour button
             self.ChangeColourButton.setEnabled(False) 
             #Populate the countries column comboBox with the layer fields that you can style by
             self.ColumncomboBox.clear()
@@ -127,9 +136,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             self.ColumncomboBox.addItems(fieldList[3:])
             self.ColumncomboBox_2.addItems(fieldList[3:])
             self.ColumncomboBox_3.addItems(fieldList[3:])
-            
+            #Ensure that the pop_group item is displayed by default
             self.ColumncomboBox_2.setCurrentIndex(2)
-            #Populate the color ramp combobox with the names of the Color Brewer, color ramp schemes
+            #Populate the color ramp combobox with the names of the Color Brewer color ramp schemes
             self.ColourRampcomboBox.clear()
             self.ColourRampcomboBox_2.clear()
             rampNames = QgsVectorColorBrewerColorRampV2.listSchemeNames()
@@ -150,7 +159,6 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         classify the chosen field and colour each class based on the colour ramp selected
         """
-        #self.changeColumnColor()
         tableViews = [self.categoryTableView,  self.categoryTableView_2]
         colourManager().changeColumnColor("countries",  self.ColumncomboBox,  self.ColourRampcomboBox,  tableViews)
 
@@ -171,7 +179,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         check answers and add points if correct based on the number of answers already submitted
         """
+        # log the number of times that the check answers button has been clicked
         self.popAnsClicks += 1
+        #check answers and update score
         self.score,  self.q1,  self.q2 = ScoreSystem(self.score).checkAnswers(self.popAnsClicks,  self.mediumPop,  self.q1,  1,  self.usaPop,  self.q2,  2)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
             
@@ -191,26 +201,33 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         Enable or disable the column/colour ramp comboBoxes or the colour selection button depending on what style type is selected
         """
+        
         style = self.StyleTypecomboBox_2.currentText()
         Countries = QgsMapLayerRegistry.instance().mapLayersByName("countries")[0]
         
         if style == "Single Colour":
+            # Disable the categorised colour categories
             self.ColourRampcomboBox_2.setEnabled(False)
             self.ColumncomboBox_2.setEnabled(False)
             self.colourRampLabel_2.setEnabled(False)
             self.columnLabel_2.setEnabled(False)
+            #enable the single colour button
             self.ChangeColourButton_2.setEnabled(True)
+            #set the renderer to single symbol (i.e. all the same)
             symbol = QgsSymbolV2.defaultSymbol(Countries.geometryType())
             Countries.setRendererV2(QgsSingleSymbolRendererV2(symbol))
+            #refresh the within-plugin legend
             model = QStandardItemModel(0, 0)
             model.clear()
             self.categoryTableView.setModel(model)
             
         else:
+            #Enable the categorised colour categories
             self.ColourRampcomboBox_2.setEnabled(True)
             self.ColumncomboBox_2.setEnabled(True)
             self.colourRampLabel_2.setEnabled(True)
             self.columnLabel_2.setEnabled(True)
+            # disable the single colour button
             self.ChangeColourButton_2.setEnabled(False) 
             #Populate the countries column comboBox with the layer fields that you can style by
             self.ColumncomboBox_2.clear()
@@ -228,12 +245,15 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
             for name in rampNames:
                 self.ColourRampcomboBox_2.addItem(name)
                 
-                
+            #add the layer to the canvas and trigger map tips on
             tableViews = [self.categoryTableView,  self.categoryTableView_2]
             colourManager().makeClassTable(Countries,  self.ColumncomboBox_2, tableViews)
 
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_2_activated(self,  p0):
+        """
+        classify the chosen field and colour each class based on the colour ramp selected
+        """
         tableViews = [self.categoryTableView,  self.categoryTableView_2]
         colourManager().changeColumnColor("countries",  self.ColumncomboBox_2,  self.ColourRampcomboBox_2,  tableViews)
         
@@ -253,8 +273,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         check answers and add points if correct based on the number of answers already submitted
         """
-        
+        # log the number of times that the check answers button has been clicked
         self.devAnsClicks += 1
+        #check answers and update score
         self.score,  self.q3,  self.q4 = ScoreSystem(self.score).checkAnswers(self.devAnsClicks,  self.africa,  self.q3,  3,  self.ufi,  self.q4,  4)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView)
             
@@ -291,7 +312,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
 
     @pyqtSignature("QString")
     def on_ColourRampcomboBox_3_activated(self,  p0):
-
+        """
+        classify the chosen field and colour each class based on the colour ramp selected
+        """
         colourManager().changeColumnColor("countries",  self.ColumncomboBox_3,  self.ColourRampcomboBox_3)
         colourManager().changeColumnColor("obesity",  self.obesityColumncomboBox,  self.ColourRampcomboBox_3)
         colourManager().make3ClassTable("countries",  "obesity",  self.ColumncomboBox_3,  self.obesityColumncomboBox,  self.obesityTableView)
@@ -334,11 +357,14 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         hide or show the countries layer depending on the state of the checkbox
         """
+        #get obesity layer and check if the checkbox is toggled on or off
         layer = QgsMapLayerRegistry.instance().mapLayersByName("obesity")[0]
         state = self.obesityCheckBox.checkState()
         legend = iface.legendInterface()
+        #if toggle's on, ensure obesity layer is visible
         if state:
             legend.setLayerVisible(layer,  True)
+        # if off, ensure obesity layer is hidden
         else:
             legend.setLayerVisible(layer, False)
 
@@ -347,7 +373,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         check answers and add points if correct based on the number of answers already submitted
         """
+        # log the number of times that the check answers button has been clicked
         self.obsAnsClicks += 1
+        #check answers and update score
         self.score,  self.q5,  self.q6 = ScoreSystem(self.score).checkAnswers(self.obsAnsClicks,  self.hivhi,  self.q5,  5,  self.vLoOb,  self.q6,  6)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView) 
   
@@ -359,8 +387,9 @@ class PopDevWizard(QWizard, Ui_PopDevWizard):
         """
         check answers and add points if correct based on the number of answers already submitted
         """
+        # log the number of times that the check answers button has been clicked
         self.popDensAnsClicks += 1
-        
+        #check answers and update score
         self.score,  self.q7 = ScoreSystem(self.score).checkAnswers(self.popDensAnsClicks,  self.a,  self.q7,  7)
         ScoreSystem(self.score).updateScore(self.scoreLabels,  self.starView) 
         

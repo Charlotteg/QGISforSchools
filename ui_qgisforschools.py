@@ -20,7 +20,7 @@ from tourism_wizard import TourismWizard
 
 class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     """
-    Class documentation goes here.
+    Open unit based on user selection
     """
     def __init__(self, parent = None):
         """
@@ -33,23 +33,21 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
     @pyqtSignature("bool")
     def on_unit1_clicked(self, checked):
         """
-        Slot documentation goes here.
+        record that unit one has been chosen
         """
-        # TODO: not implemented yet
         self.unit=1
     
     @pyqtSignature("bool")
     def on_unit2_clicked(self, checked):
         """
-        Slot documentation goes here.
+        record that unit two has been chosen
         """
-        # TODO: not implemented yet
         self.unit=2
     
     @pyqtSignature("bool")
     def on_unit3_clicked(self, checked):
         """
-        Slot documentation goes here.
+        record that unit three has been chosen
         """
         # TODO: not implemented yet
         self.unit=3
@@ -59,18 +57,24 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
         """
         Open the correct unit wizard based on the selection made
         """
+        #set up messaage box
         msgBox=QMessageBox()
         msgBox.setIcon(3)
         
+        #close welcome screen
         self.close()
+        
+        #if unit 1 chosen, open unit 1
         if self.unit==1:
             openWizard=PopDevWizard()
             openWizard.show()
             result = openWizard.exec_()
+        #if unit 2 chosen, open unit 2
         elif self.unit==2:
             openWizard = TourismWizard()
             openWizard.show()
             result = openWizard.exec_()
+        #if unit 3 chosen, open unit 3
         else:
             openWizard=EarthquakesWizard()
             openWizard.show()
@@ -83,10 +87,4 @@ class QGISforSchoolsDialog(QDialog, Ui_QGISforSchools):
         """
         self.close()
     
-#    @pyqtSignature("int")
-#    def on_questions_stateChanged(self, p0):
-#        """
-#        Slot documentation goes here.
-#        """
-#        # TODO: not implemented yet
-#        raise NotImplementedError
+

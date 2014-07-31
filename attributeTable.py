@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module containing a class that deals with changing the colour schemes of given layers
+Module containing a class that deals with creating an attrubute table
 """
 import numpy as np
 
@@ -20,20 +20,23 @@ class AttributeTable():
         """
         populate the attribute table with data based on the layer chosen in the lyrcomboBox
         """
-
+        #get all required information
         lyrName = lyrComboBox.currentText()
         lyr = QgsMapLayerRegistry.instance().mapLayersByName(lyrName)[0]
         lyrFeats = lyr.getFeatures()
         
+        #get array of attributes
         featureArray = self.createFeatureArray(lyrFeats)
         shape = featureArray.shape
         rows = shape[0]
         cols = shape[1]
         
+        #set up the model for the table view
         model = QStandardItemModel(rows,  cols)
         
         self.setFieldNames(model,  lyr)
         
+        #load data into the model, dealing with NULL values
         for i in range(rows):
             for j in range(cols):
                 if type(featureArray[i, j]) == QPyNullVariant:
@@ -45,7 +48,7 @@ class AttributeTable():
   
         tableView.setModel(model)
   
-    
+#       below is the beginnings of support for sorting the tables     
 #        if sorting:
 #            self.attributeTableView.setSortingEnabled(True)
 #        
@@ -71,16 +74,19 @@ class AttributeTable():
         """        
         featIdlist = []
         fullFeatureList= []
+        #add features to the attribute list
         for feat in lyrFeats:
             if feat == NULL:
                 feat = None
             featIdlist.append(feat.id())
             featAttributes = feat.attributes()
             fullFeatureList.extend(featAttributes)
-        
+            
+        #get size of attribute table
         rows = len(featIdlist)
         cols = len(featAttributes)
     
+        #create an array af attributes and return it
         featArray = np.array([fullFeatureList])
         featArray2 = np.reshape(featArray, (rows, cols))
         return featArray2
@@ -90,10 +96,12 @@ class AttributeTable():
     def setFieldNames(self, model,  lyr):
         """
         Set the column names for the attribute table
-        """        
+        """  
+        #get the fields
         fields = lyr.pendingFields()
         position = 0
         
+        #set column names
         for field in fields:
             model.setHorizontalHeaderItem(position, QStandardItem(field.name()))
             position+=1
